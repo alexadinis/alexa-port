@@ -1,3 +1,15 @@
 @import "tailwindcss";
 
 @config "../tailwind.config.ts";
+
+@theme {
+  --color-black: #000;
+  --color-white: #ececec;
+  --color-blue: #3476ee;
+  --color-red: #e84e3c;
+  --color-green: #44985a;
+  --color-yellow: #f4c755;
+  --color-orange: #ebab07;
+  --color-purple: #6607eb;
+  --color-pink: #f2cddd;
+}
