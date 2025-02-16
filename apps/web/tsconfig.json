@@ -5,7 +5,19 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "@/components/*": ["../../packages/ui/src/components/*"],
+      "@/layouts/*": ["../../packages/ui/src/components/layouts/*"],
+      "@/primitives/*": ["../../packages/ui/src/components/primitives/*"],
+      "@/constants/*": ["../../packages/ui/src/constants/*"],
+      "@/utils": ["../../packages/ui/src/utils"],
+      "@/utils/*": ["../../packages/ui/src/utils/*"],
+      "@/styles/*": ["../../packages/ui/src/styles/*"],
+      "@/icons": ["../../packages/ui/icons"],
+      "@/icons/*": ["../../packages/ui/icons/*"],
+      "@/hooks/*": ["../../packages/ui/src/hooks/*"]
+    }
   },
   "include": [
     "**/*.ts",
