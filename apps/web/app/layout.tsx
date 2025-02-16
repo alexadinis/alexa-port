@@ -1,9 +1,8 @@
 import "./globals.css";
-import "@repo/ui/styles.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import Logo from "../src/icons/Logo";
 
-import Logo from "@/icons/Logo";
 import Navbar from "../src/components/Navbar/Navbar";
 
 const NAV_LINKS = [

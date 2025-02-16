@@ -1,6 +1,6 @@
-import { Detail } from "@/icons";
 import { Paytone_One } from "next/font/google";
 import Footer from "./Footer";
+import Detail from "../../icons/Detail";
 
 interface HeroProps {
   title: string | React.ReactNode;

@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",
-    "@repo/ui": "workspace:*",
     "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
