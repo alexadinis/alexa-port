@@ -13,11 +13,15 @@ const DetailMarquee = ({
   isRotate = true,
   ...rest
 }: DetailMarqueeProps) => {
-  const rotationValue = isRotate ? `rotate-1` : `-rotate-1`;
+  const rotationValue = isRotate ? `rotate-2` : `-rotate-2`;
 
   return (
-    <div className={`${rotationValue}`}>
-      <Marquee autoFill className={`w-full py-1 ${className}`} {...rest}>
+    <div className={`${rotationValue} relative z-10`}>
+      <Marquee
+        autoFill
+        className={`relative z-10 w-full py-1 ${className}`}
+        {...rest}
+      >
         {Icon}
       </Marquee>
     </div>

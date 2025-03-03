@@ -1,26 +1,31 @@
 import Hero from "../src/components/Hero/Hero";
 import { FireSimple, Seal } from "@phosphor-icons/react/dist/ssr";
 import SectionLineMarquees from "../src/components/SectionLineMarquees/SectionLineMarquees";
+import Work from "../src/components/Work/Work";
+
 export default function Page() {
   return (
     <main>
-      <div className="flex flex-col items-center justify-between h-[calc(100dvh-200px)] p-24">
+      <div className="flex flex-col items-center justify-center h-[calc(100dvh-90px)] p-4 md:p-16 relative">
         <Hero
           title={
             <>
               Hello, <br /> I&apos;m Alexa.
             </>
           }
-          description="Combining her communication expertise with a love for design, she crafts brands and content that tell stories and help businesses grow. Cheerful, dedicated, and always ready to go the extra mile."
         />
       </div>
-      <SectionLineMarquees
-        icons={[
-          <Seal key="1" className="w-16 h-16 text-black mr-2" />,
-          <FireSimple key="2" className="w-16 h-16 text-black mr-2" />,
-        ]}
-        colors={["red", "green"]}
-      />
+
+      <div className="relative -mt-12 -mb-12 z-10">
+        <SectionLineMarquees
+          icons={[
+            <Seal key="1" className="w-16 h-16 text-black mr-2" />,
+            <FireSimple key="2" className="w-16 h-16 text-black mr-2" />,
+          ]}
+        />
+      </div>
+
+      <Work />
     </main>
   );
 }

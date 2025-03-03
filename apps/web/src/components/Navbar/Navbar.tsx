@@ -12,9 +12,9 @@ interface NavbarProps {
 
 const Navbar = ({ navLinks, logo }: NavbarProps) => {
   return (
-    <nav className="flex items-center justify-between p-4">
+    <nav className="flex items-center justify-between p-4 fixed top-0 left-0 right-0 z-10 bg-black z-20">
       <div>{logo}</div>
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-6 hidden md:flex">
         {navLinks.map((link) => (
           <Link key={link.href} href={link.href}>
             {link.label.toLowerCase()}
