@@ -1,0 +1,51 @@
+.embla__container {
+  @apply flex;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+  @apply relative pl-[var(--slide-spacing)] opacity-25;
+  min-width: 0;
+  flex: 0 0 var(--slide-size);
+  transition: opacity 0.3s ease-out;
+}
+
+/* Responsive breakpoints */
+@media (min-width: 640px) {
+  .embla__slide {
+    flex: 0 0 var(--slide-size-sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .embla__slide {
+    flex: 0 0 var(--slide-size-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .embla__slide {
+    flex: 0 0 var(--slide-size-lg);
+  }
+}
+
+@media (min-width: 1280px) {
+  .embla__slide {
+    flex: 0 0 var(--slide-size-xl);
+  }
+}
+
+@media (min-width: 1536px) {
+  .embla__slide {
+    flex: 0 0 var(--slide-size-2xl);
+  }
+}
+
+.embla__slide[data-intro="true"] {
+  flex: 0 0 var(--intro-width);
+  min-width: var(--intro-width);
+}
+
+.embla__slide__inner {
+  @apply relative h-full;
+}
