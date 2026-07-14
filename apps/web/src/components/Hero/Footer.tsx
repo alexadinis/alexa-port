@@ -7,13 +7,13 @@ export default function Footer() {
   return (
     <Button
       size="lg"
-      className="flex items-center gap-2 border-red text-red hover:bg-red hover:text-white max-w-[200px] mt-3 group/button"
+      className="hero-talk-button group/button mt-3 flex max-w-[200px] items-center gap-2 overflow-hidden border-red text-red hover:bg-red hover:text-white"
       onClick={() => {
-        window.location.href = "mailto:alexa.dn.barbosa@gmail.com";
+        window.location.href = "mailto:alexandra.dn.barbosa@gmail.com";
       }}
     >
       let&apos;s talk
-      <ArrowRight className="opacity-0 w-6 h-6 transition-transform duration-300 group-hover/button:translate-x-10 group-hover/button:opacity-100" />
+      <ArrowRight className="hero-talk-arrow h-6 w-6" />
     </Button>
   );
 }

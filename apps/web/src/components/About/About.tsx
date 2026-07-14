@@ -1,140 +1,99 @@
-import {
-	BehanceLogo,
-	EnvelopeSimple,
-	LinkedinLogo,
-} from "@phosphor-icons/react/dist/ssr";
 import { Paytone_One } from "next/font/google";
 import Image from "next/image";
-import Button from "../Button/Button";
-import ExperienceSlider from "./ExperienceSlider";
+import BrandsMarquee from "./BrandsMarquee";
+import StoryTypewriter from "./StoryTypewriter";
 
 const paytoneOne = Paytone_One({ subsets: ["latin"], weight: ["400"] });
 
+const ABOUT_DETAILS = [
+  { label: "Name", value: "Alexandra Barbosa" },
+  { label: "Focus", value: "Social media & design" },
+  { label: "Status", value: "Freelance" },
+  { label: "Based in", value: "Porto, Portugal" },
+];
+
 const About = () => {
-	return (
-		<section className="flex flex-col bg-black w-full overflow-hidden pt-24">
-			{/* ── "About me." heading ── */}
+  return (
+    <section
+      id="about"
+      className="flex w-full scroll-mt-20 flex-col overflow-hidden bg-black text-white"
+    >
+      <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-12 px-6 pb-16 pt-24 sm:px-10 md:gap-16 md:px-16 md:pt-32 lg:px-24">
+        <h2
+          className={`${paytoneOne.className} max-w-max text-[clamp(3.5rem,8vw,6rem)] leading-none tracking-[-0.03em]`}
+        >
+          About me.
+        </h2>
 
-			{/* ── Stacked rows ── */}
-			<div className="flex flex-col gap-8 md:gap-12 p-8 md:p-16 lg:p-24 lg:pt-12">
-				{/* Top row — Photo + info card side by side */}
-				<div className="flex flex-col md:flex-row gap-8 md:gap-12">
-					{/* Portrait photo (standalone, logo asterisk clip-mask) */}
-					<div className="md:w-1/3 shrink-0 flex items-center justify-center">
-						{/* Hidden SVG defining the clip path from the navbar logo icon */}
-						<svg className="absolute w-0 h-0" aria-hidden="true">
-							<defs>
-								<clipPath id="logo-clip" clipPathUnits="objectBoundingBox">
-									<path
-										transform="translate(0.5, 0.5) scale(0.03125) translate(-28.5, -27)"
-										d="M41.722 24.223h-6.517l4.608-4.609a2.777 2.777 0 1 0-3.927-3.927l-4.609 4.608v-6.518a2.777 2.777 0 1 0-5.555 0v6.518l-4.608-4.608a2.777 2.777 0 1 0-3.927 3.927l4.608 4.608h-6.518a2.777 2.777 0 1 0 0 5.555h6.518l-4.608 4.609a2.777 2.777 0 1 0 3.927 3.927l4.608-4.608v6.517a2.777 2.777 0 1 0 5.555 0v-6.517l4.609 4.608a2.777 2.777 0 1 0 3.927-3.927l-4.608-4.609h6.517a2.777 2.777 0 1 0 0-5.555Z"
-									/>
-								</clipPath>
-							</defs>
-						</svg>
-						<Image
-							src="/alexandra-barbosa.jpg"
-							alt="Alexandra Barbosa"
-							width={480}
-							height={480}
-							className="w-full aspect-square object-cover"
-							style={{ clipPath: "url(#logo-clip)" }}
-							priority
-						/>
-					</div>
-					<div className="flex flex-col gap-6">
-						<h2
-							className={`${paytoneOne.className} text-[#fff] text-[48px] md:text-[86px] text-center md:text-left leading-none ml-auto`}
-						>
-							About me.
-						</h2>
+        <dl className="grid grid-cols-1 border-y border-white/25 sm:grid-cols-2 lg:grid-cols-4">
+          {ABOUT_DETAILS.map((detail) => (
+            <div
+              key={detail.label}
+              className="flex flex-col gap-2 border-white/25 px-6 py-5 sm:[&:nth-child(2)]:border-l sm:[&:nth-child(n+3)]:border-t lg:border-l lg:border-t-0 lg:first:border-l-0"
+            >
+              <dt className="text-sm font-medium text-white/70">
+                {detail.label}
+              </dt>
+              <dd className="text-lg font-medium leading-snug text-white md:text-xl">
+                {detail.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
 
-						{/* Info card — bio + CV download */}
-						<div className="bg-[#fff] rounded-[32px] md:rounded-[48px] p-8 md:p-12 flex flex-col gap-6 flex-1 self-start mt-auto">
-							{/* Bio text */}
-							<p className="text-black/80 text-base md:text-lg leading-relaxed">
-								(Fluent) Speak in memes, dream about design and live to tell
-								(learn, share, read &hellip;) great stories. I create authentic
-								content, craft effective strategies, and give brands a unique
-								voice (with a touch of humor) in the digital world.
-							</p>
+        <div className="grid items-stretch gap-8 md:grid-cols-[minmax(260px,0.8fr)_minmax(0,1.2fr)] md:gap-12 lg:gap-16">
+          <div className="relative aspect-[4/5] w-full max-w-[340px] overflow-hidden md:aspect-auto md:h-full md:max-w-none">
+            <Image
+              src="/alexandra-barbosa.jpg"
+              alt="Alexandra Barbosa in profile"
+              fill
+              sizes="(max-width: 767px) 340px, 40vw"
+              className="object-cover object-[50%_48%]"
+              priority
+            />
+          </div>
 
-							{/* CV download section */}
-							<div className="flex flex-col gap-3">
-								<p className="text-black font-semibold text-base">
-									Check the full information.
-								</p>
-								<a
-									href="/alexandra-barbosa-cv.pdf"
-									download
-									className="self-start"
-								>
-									<Button
-										variant="outline"
-										size="md"
-										className="border-red text-red hover:bg-red hover:text-[#fff] mt-1"
-									>
-										download CV
-									</Button>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+          <div className="flex min-w-0 flex-col items-start gap-8">
+            <p className="max-w-[24ch] text-pretty text-[clamp(1.8rem,3.4vw,4rem)] font-medium leading-[1.08] tracking-[-0.035em]">
+              Fluent in memes, dream about design and live to{" "}
+              <StoryTypewriter /> great stories. I create authentic content,
+              craft effective strategies, and give brands a unique voice in the
+              digital world.
+            </p>
 
-				{/* Bottom card — Past experience + social */}
-				<div className="bg-[#fff] rounded-[32px] md:rounded-[48px] p-8 md:p-12 flex flex-col gap-6">
-					<h3
-						className={`${paytoneOne.className} text-black text-3xl md:text-4xl leading-tight`}
-					>
-						Past experience.
-					</h3>
-					<p className="text-black/60 text-sm md:text-base leading-relaxed">
-						From small businesses to big brands, I develop social media
-						strategies, create content, write copy, and manage communities.
-					</p>
-					<ExperienceSlider />
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="/alexandra-barbosa-cv.pdf"
+                download
+                className="about-action-button about-action-button--red inline-flex items-center justify-center rounded-full border-2 px-6 py-4 text-base font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red"
+              >
+                download CV
+              </a>
+              <a
+                href="https://www.behance.net/alexadinis"
+                target="_blank"
+                rel="noreferrer"
+                className="about-action-button about-action-button--green inline-flex items-center justify-center rounded-full border-2 px-6 py-4 text-base font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#44985a]"
+              >
+                behance
+              </a>
+              <a
+                href="https://www.linkedin.com/in/alexadinis"
+                target="_blank"
+                rel="noreferrer"
+                className="about-action-button about-action-button--blue inline-flex items-center justify-center rounded-full border-2 px-6 py-4 text-base font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3476ee]"
+              >
+                linkedin
+              </a>
+            </div>
+          </div>
+        </div>
 
-					{/* Social footer — "Are you looking for me?" */}
-					<div className="flex flex-col items-center gap-4 pt-4 border-t border-black/10">
-						<p className="text-black font-bold text-lg md:text-xl">
-							Are you looking for me?
-						</p>
+      </div>
 
-						<div className="flex items-center gap-4">
-							<a
-								href="mailto:alexandra.dn.barbosa@gmail.com"
-								aria-label="Send email"
-								className="flex items-center justify-center w-14 h-14 rounded-full bg-red text-[#fff] hover:opacity-90 transition-opacity duration-300"
-							>
-								<EnvelopeSimple size={24} weight="bold" />
-							</a>
-
-							<a
-								href="https://behance.net/alexadinis"
-								target="_blank"
-								rel="noopener noreferrer"
-								aria-label="Behance profile"
-								className="flex items-center justify-center w-14 h-14 rounded-full bg-black text-[#fff] hover:opacity-90 transition-opacity duration-300"
-							>
-								<BehanceLogo size={24} weight="bold" />
-							</a>
-
-							<a
-								href="https://linkedin.com/in/alexadinis"
-								target="_blank"
-								rel="noopener noreferrer"
-								aria-label="LinkedIn profile"
-								className="flex items-center justify-center w-14 h-14 rounded-full bg-blue text-[#fff] hover:opacity-90 transition-opacity duration-300"
-							>
-								<LinkedinLogo size={24} weight="bold" />
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	);
+      <BrandsMarquee />
+    </section>
+  );
 };
 
 export default About;

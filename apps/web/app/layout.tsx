@@ -12,15 +12,15 @@ const NAV_LINKS = [
   },
   {
     label: "About me",
-    href: "/about",
+    href: "/#about",
   },
   {
     label: "Projects",
-    href: "/projects",
+    href: "/#work",
   },
   {
     label: "Contact",
-    href: "/contact",
+    href: "/#contact",
   },
 ];
 

@@ -21,7 +21,7 @@ const Description = () => {
         ]}
         wrapper="span"
         speed={20}
-        style={{ display: "inline-block", color: "#6607eb !important" }}
+        style={{ display: "inline-block", color: "#44985a" }}
         repeat={Infinity}
         className="font-bold"
       />
