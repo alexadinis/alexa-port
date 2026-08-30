@@ -1,7 +1,6 @@
 "use client";
 
 import { Paytone_One } from "next/font/google";
-import { useEffect, useState } from "react";
 import { PROJECTS } from "../../data/projects";
 import ProjectPolaroid from "./ProjectPolaroid";
 import ProjectReveal from "./ProjectReveal";
@@ -10,23 +9,25 @@ import { localizeProject } from "../../data/projectTranslations";
 
 const paytoneOne = Paytone_One({ subsets: ["latin"], weight: ["400"] });
 
+const PROJECT_ORDER = [
+  "endesa-portugal",
+  "kfc-portugal",
+  "psicomorfose-psicologia",
+  "lr-opticas",
+  "cockburns",
+  "munchie",
+  "authentic-classical-pilates",
+  "feel-better",
+  "padaria-alianca",
+] as const;
+
+const ORDERED_PROJECTS = PROJECT_ORDER.flatMap((slug) => {
+  const project = PROJECTS.find((item) => item.slug === slug);
+  return project ? [project] : [];
+});
+
 const Work = () => {
   const { language } = useLanguage();
-  const [projects, setProjects] = useState(PROJECTS);
-
-  useEffect(() => {
-    const shuffledProjects = [...PROJECTS];
-
-    for (let index = shuffledProjects.length - 1; index > 0; index -= 1) {
-      const randomIndex = Math.floor(Math.random() * (index + 1));
-      [shuffledProjects[index], shuffledProjects[randomIndex]] = [
-        shuffledProjects[randomIndex]!,
-        shuffledProjects[index]!,
-      ];
-    }
-
-    setProjects(shuffledProjects);
-  }, []);
 
   return (
     <section
@@ -46,7 +47,7 @@ const Work = () => {
         </header>
 
         <div className="mx-auto grid w-full max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2 xl:max-w-6xl xl:grid-cols-3">
-          {projects.map((project) => (
+          {ORDERED_PROJECTS.map((project) => (
             <ProjectReveal key={project.slug} className="h-full min-w-0">
               <ProjectPolaroid
                 project={localizeProject(project, language)}
