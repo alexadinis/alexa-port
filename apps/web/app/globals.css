@@ -246,6 +246,9 @@ html {
 }
 
 .project-back-mark {
+  --focus-logo-outer: var(--color-white);
+  --focus-logo-eye: var(--color-black);
+  --focus-logo-pupil: var(--color-white);
   opacity: 0;
   transform: rotate(-45deg) scale(0.55);
 }

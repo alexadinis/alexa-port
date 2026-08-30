@@ -21,7 +21,7 @@ import VideoReels from "../../../src/components/Project/VideoReels";
 import { getProject, PROJECTS } from "../../../src/data/projects";
 import { localizeProject } from "../../../src/data/projectTranslations";
 import { getLanguage } from "../../../src/lib/getLanguage";
-import LogoMark from "../../../src/icons/LogoMark";
+import BrandEyeMark from "../../../src/icons/BrandEyeMark";
 import Mushroom from "../../../src/icons/Mushroom";
 
 interface ProjectPageProps {
@@ -149,7 +149,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     weight="bold"
                     className="project-back-arrow absolute inset-0"
                   />
-                  <LogoMark className="project-back-mark absolute inset-0 size-[18px] text-pink" />
+                  <BrandEyeMark className="project-back-mark absolute inset-0 size-[18px]" />
                 </span>
                 {language === "pt" ? "Voltar aos projetos" : "Back to project"}
               </Link>
