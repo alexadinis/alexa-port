@@ -21,6 +21,8 @@ const servicePt: Record<string, string> = {
 
 const pt: Record<string, Partial<Project>> = {
   "endesa-portugal": {
+    metaDescription:
+      "Estratégia de redes sociais para a Endesa Portugal que duplicou o alcance e as impressões no Facebook e no Instagram em 11 meses.",
     summary: "A criatividade que dá energia às redes sociais da Endesa. ⚡",
     intro:
       "A criar conteúdo que reflete os valores da Endesa, a tornar a energia excitante e acessível para o dia a dia de quem a consome.",
@@ -28,6 +30,8 @@ const pt: Record<string, Partial<Project>> = {
       "A Endesa Portugal é líder no setor da energia, com um compromisso sólido com a inovação e a sustentabilidade.\n\nO meu objetivo? Dar vida a esse compromisso nas redes sociais (Instagram e Facebook).\n\nDesenvolvi e implementei uma estratégia que duplicou as impressões e o alcance (+100%) em apenas 8 meses, tanto no Facebook como no Instagram.\n\nO foco? Criar conteúdo que refletissem os valores visionários da Endesa, onde mostrava a energia de maneira entusiasmante, acessível e relevante no dia a dia dos consumidores.",
   },
   "kfc-portugal": {
+    metaDescription:
+      "Redes sociais meme-first para o KFC Portugal como Coronel Sanders: +40% de engagement no Instagram e mais 268 mil seguidores no TikTok.",
     summary:
       "A virar muitos frangos como Coronel Sanders nas redes sociais do KFC Portugal. 🍗",
     intro:
@@ -38,6 +42,8 @@ const pt: Record<string, Partial<Project>> = {
       "Porque a internet vive de memes e a KFC tinha muito para dizer.",
   },
   "padaria-alianca": {
+    metaDescription:
+      "Estratégia de conteúdo, fotografia e vídeo para a Padaria Aliança: pão acabado de sair do forno e visuais que falam por si.",
     summary: "Acabado de sair do forno, diretamente para o feed. 🥐",
     intro: "Pão fresco todos os dias. Conteúdo também.",
     description:
@@ -45,6 +51,8 @@ const pt: Record<string, Partial<Project>> = {
     reflection: "Sabor de sempre, com uma nova forma de se mostrar.",
   },
   munchie: {
+    metaDescription:
+      "Redes sociais e fotografia gastronómica para a Munchie, a primeira hamburgueria tradicional do Porto: conteúdo de dar água na boca.",
     summary:
       "Hambúrgueres artesanais e conteúdos deliciosos de dar água na boca. 🍔",
     intro: "Hambúrgueres artesanais encontram conteúdo feito à mão.",
@@ -53,6 +61,8 @@ const pt: Record<string, Partial<Project>> = {
     reflection: "Ainda tens fome? Ótimo. Esse era o plano.",
   },
   "feel-better": {
+    metaDescription:
+      "Conteúdo, copywriting e gestão de redes sociais para a Feel Better by Joana Pereira: depilação a laser transformada em marca de bem-estar.",
     summary: "Menos pelo, mais brilho nas redes sociais da Feel Better. 💫",
     intro: "Menos pelos, mais seguidores.",
     description:
@@ -60,6 +70,8 @@ const pt: Record<string, Partial<Project>> = {
     reflection: "Tão suave na pele como na estratégia.",
   },
   "lr-opticas": {
+    metaDescription:
+      "Estratégia e conteúdo para as redes sociais da L&R Ópticas, oito lojas no distrito do Porto: eyewear, dicas de saúde visual e mitos desfeitos.",
     summary:
       "Gestão de redes sociais com uma visão clara e precisa da L&R Ópticas. 👓",
     intro: "Porque uma boa visão começa com boa informação.",
@@ -69,6 +81,8 @@ const pt: Record<string, Partial<Project>> = {
     developedAt: "Projeto freelance",
   },
   "psicomorfose-psicologia": {
+    metaDescription:
+      "Identidade e redes sociais para a Psicomorfose, gabinete de psicologia clínica: uma voz serena sobre ansiedade, burnout e mudança real.",
     summary:
       "Uma linguagem mais acolhedora para a mente, nas redes sociais da Psicomorfose. 🍂",
     intro:
@@ -83,6 +97,8 @@ const pt: Record<string, Partial<Project>> = {
     developedAt: "Projeto freelance",
   },
   "authentic-classical-pilates": {
+    metaDescription:
+      "Redes sociais minimalistas e campanha para o Authentic Classical Pilates, no Porto e em Paredes, com o rigor do método Contrologia.",
     summary: "A dar vida às redes sociais do Authentic Classical Pilates. 🧘",
     intro: "Onde a autenticidade encontra o movimento.",
     description:
@@ -92,6 +108,8 @@ const pt: Record<string, Partial<Project>> = {
     reflection: "Pilates autêntico, conteúdo autêntico.",
   },
   cockburns: {
+    metaDescription:
+      "Gestão diária das redes sociais da Cockburn's: uma voz jovem e irreverente para o vinho do Porto, assente em fotografia real.",
     summary: "Da garrafa para as redes sociais, o melhor do vinho do Porto. 🍷",
     intro: "Uma abordagem ousada, fresca e jovem ao vinho do Porto.",
     description:

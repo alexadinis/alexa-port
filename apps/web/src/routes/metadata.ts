@@ -40,7 +40,10 @@ export const buildProjectMetadata = (
   const project = localizeProject(source, language);
   const path = `/projects/${project.slug}`;
   const alternates = languageAlternates(path, language);
-  const description = project.description ?? project.summary;
+  // The case study body is the page copy, not a snippet; only the
+  // hand-written metaDescription is length-controlled for the SERP.
+  const description =
+    project.metaDescription ?? project.description ?? project.summary;
   const image = absoluteUrl(project.detailImage ?? project.image);
 
   return {
