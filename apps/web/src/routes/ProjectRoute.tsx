@@ -222,7 +222,7 @@ export default function ProjectRoute({
                   <p className="whitespace-pre-line text-pretty text-[clamp(1.05rem,1.5vw,1.4rem)] font-normal leading-[1.55] tracking-[-0.015em]">
                     {(project.description ?? project.summary)
                       .split(
-                        /(My goal\?|The mission\?|The strategy\?|40% increase|engagement|growing 268K followers organically|duplicou as impressões e o alcance \(\+100%\) em apenas 8 meses)/g,
+                        /(My goal\?|The mission\?|The strategy\?|40% increase|aumento de 40% no engagement|apenas seis meses|marca com maior engagement no TikTok em Portugal|organicamente|268 mil seguidores em apenas 8 meses|engagement|growing 268K followers organically|duplicou as impressões e o alcance \(\+100%\) em apenas 8 meses)/g,
                       )
                       .map((part, index) =>
                         [
@@ -230,6 +230,11 @@ export default function ProjectRoute({
                           "The mission?",
                           "The strategy?",
                           "40% increase",
+                          "aumento de 40% no engagement",
+                          "apenas seis meses",
+                          "marca com maior engagement no TikTok em Portugal",
+                          "organicamente",
+                          "268 mil seguidores em apenas 8 meses",
                           "engagement",
                           "growing 268K followers organically",
                           "duplicou as impressões e o alcance (+100%) em apenas 8 meses",

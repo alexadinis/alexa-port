@@ -27,8 +27,8 @@ const pt: Record<string, Partial<Project>> = {
   },
   "kfc-portugal": {
     summary: "A virar muitos frangos como Coronel Sanders nas redes sociais do KFC Portugal. 🍗",
-    intro: "Quando frango frito encontra a cultura dos memes, o engagement acontece.",
-    description: "Durante 11 meses, vesti o lendário fato branco e dei ao Colonel Sanders uma voz digital em Portugal, no Instagram, Facebook, TikTok e X.\n\nA missão? Tornar a KFC na marca de fast food com mais engagement nas redes sociais. A estratégia? Uma abordagem centrada em memes, adaptada a cada plataforma e audiência.\n\nNo Instagram, isso traduziu-se num aumento de 40% no engagement em apenas seis meses. No TikTok, foi muito mais do que marcar presença. A KFC Portugal tornou-se a marca com maior engagement no TikTok em Portugal, conquistando organicamente 268 mil seguidores em apenas 8 meses.\n\nTudo isto enquanto criava conteúdo que fazia as pessoas rir, ficar com água na boca e carregar no botão seguir.",
+    intro: "Memes bem feitos e frango ainda melhor: a receita para o engagement.",
+    description: "Durante 11 meses, vesti o lendário fato branco e dei voz digital ao Coronel Sanders em Portugal no Instagram, Facebook, TikTok e X.\n\nA missão? Transformar a KFC na marca de fast food mais envolvente nas redes sociais. A estratégia? Uma abordagem meme-first, pensada à medida de cada plataforma e público.\n\nNo Instagram, foi conseguido um aumento de 40% no engagement em apenas seis meses.\n\nNo TikTok, mais do que aparecer, foi conquistado. A KFC Portugal tornou-se a marca com maior engagement no TikTok em Portugal, onde cresceu organicamente mais 268 mil seguidores em apenas 8 meses.\n\nTudo isto enquanto fritava conteúdo de fazer rir, salivar e interagir, sempre com aquele sabor a finger lickin’ good.",
     reflection: "Porque a internet vive de memes e a KFC tinha muito para dizer.",
   },
   "padaria-alianca": {
