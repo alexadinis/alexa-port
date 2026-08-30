@@ -1,6 +1,6 @@
 import { DEFAULT_LANGUAGE, LANGUAGES, localizeHref, type Language } from "./i18n";
 
-export const PRODUCTION_URL = "https://alexandrabarbosa.pt";
+export const PRODUCTION_URL = "https://www.alexandrabarbosa.pt";
 
 /**
  * Vercel exposes the deployment host but not a full URL, and previews need to
