@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import InstagramPosts from "../components/Project/InstagramPosts";
+import ProjectBannerVideo from "../components/Project/ProjectBannerVideo";
 import ProjectCredits from "../components/Project/ProjectCredits";
 import ProjectFeedTracker from "../components/Project/ProjectFeedTracker";
 import ProjectScrollProgress from "../components/Project/ProjectScrollProgress";
@@ -186,18 +187,11 @@ export default function ProjectRoute({
                 style={{ backgroundColor: project.accent }}
               >
                 {project.detailVideo ? (
-                  <video
-                    className="size-full object-cover"
-                    aria-label={`${project.title} project banner`}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="metadata"
+                  <ProjectBannerVideo
+                    src={project.detailVideo}
                     poster={project.detailImage}
-                  >
-                    <source src={project.detailVideo} type="video/mp4" />
-                  </video>
+                    title={project.title}
+                  />
                 ) : (
                   <Image
                     src={project.detailImage ?? project.image}

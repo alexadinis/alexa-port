@@ -9,6 +9,7 @@ import {
 } from "@phosphor-icons/react";
 import { useRef, useState } from "react";
 import BrandEyeMark from "../../icons/BrandEyeMark";
+import { useNearViewport } from "../../utils/useNearViewport";
 import { useLanguage } from "../Language/LanguageProvider";
 
 interface CampaignVideoPlayerProps {
@@ -28,6 +29,7 @@ export default function CampaignVideoPlayer({
   const { language } = useLanguage();
   const playerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isNearViewport = useNearViewport(playerRef);
   const [hasStarted, setHasStarted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -76,7 +78,7 @@ export default function CampaignVideoPlayer({
     <div ref={playerRef} className="campaign-video-player group relative aspect-video w-full overflow-hidden bg-black">
       <video
         ref={videoRef}
-        src={src}
+        src={isNearViewport ? src : undefined}
         className="size-full cursor-pointer object-cover"
         aria-label={title}
         playsInline
