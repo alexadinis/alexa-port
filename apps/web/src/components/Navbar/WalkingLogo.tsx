@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -54,7 +55,9 @@ export default function WalkingLogo({
     };
   }, []);
 
-  const animatePupil = () => {
+  // Every one of these reads and writes refs only, so an empty dependency
+  // list is honest: they never need to be rebuilt.
+  const animatePupil = useCallback(function step() {
     const current = pupilPositionRef.current;
     const target = pupilTargetRef.current;
     const next = {
@@ -70,46 +73,54 @@ export default function WalkingLogo({
       Math.abs(target.x - next.x) > 0.08 ||
       Math.abs(target.y - next.y) > 0.08
     ) {
-      pupilFrameRef.current = window.requestAnimationFrame(animatePupil);
+      pupilFrameRef.current = window.requestAnimationFrame(step);
     } else {
       pupilPositionRef.current = target;
       pupilRef.current?.setAttribute("cx", target.x.toString());
       pupilRef.current?.setAttribute("cy", target.y.toString());
       pupilFrameRef.current = null;
     }
-  };
+  }, []);
 
-  const movePupilTo = (target: typeof RESTING_PUPIL) => {
-    pupilTargetRef.current = target;
+  const movePupilTo = useCallback(
+    (target: typeof RESTING_PUPIL) => {
+      pupilTargetRef.current = target;
 
-    if (pupilFrameRef.current === null) {
-      pupilFrameRef.current = window.requestAnimationFrame(animatePupil);
-    }
-  };
+      if (pupilFrameRef.current === null) {
+        pupilFrameRef.current = window.requestAnimationFrame(animatePupil);
+      }
+    },
+    [animatePupil],
+  );
 
-  const followPointer = (
-    event: Pick<PointerEvent, "clientX" | "clientY" | "pointerType"> | ReactPointerEvent<HTMLDivElement>,
-  ) => {
-    if (event.pointerType === "touch") return;
+  const followPointer = useCallback(
+    (
+      event:
+        | Pick<PointerEvent, "clientX" | "clientY" | "pointerType">
+        | ReactPointerEvent<HTMLDivElement>,
+    ) => {
+      if (event.pointerType === "touch") return;
 
-    const mark = markRef.current;
-    if (!mark) return;
+      const mark = markRef.current;
+      if (!mark) return;
 
-    const bounds = mark.getBoundingClientRect();
-    const normalizedX = Math.max(
-      -1,
-      Math.min(1, ((event.clientX - bounds.left) / bounds.width - 0.5) * 2),
-    );
-    const normalizedY = Math.max(
-      -1,
-      Math.min(1, ((event.clientY - bounds.top) / bounds.height - 0.5) * 2),
-    );
+      const bounds = mark.getBoundingClientRect();
+      const normalizedX = Math.max(
+        -1,
+        Math.min(1, ((event.clientX - bounds.left) / bounds.width - 0.5) * 2),
+      );
+      const normalizedY = Math.max(
+        -1,
+        Math.min(1, ((event.clientY - bounds.top) / bounds.height - 0.5) * 2),
+      );
 
-    movePupilTo({
-      x: 582.21 + normalizedX * 84,
-      y: 396.87 + normalizedY * 20,
-    });
-  };
+      movePupilTo({
+        x: 582.21 + normalizedX * 84,
+        y: 396.87 + normalizedY * 20,
+      });
+    },
+    [movePupilTo],
+  );
 
   useEffect(() => {
     if (!trackingAreaId) return;
@@ -152,14 +163,16 @@ export default function WalkingLogo({
       trackingArea.removeEventListener("pointerdown", resetPupil);
       document.removeEventListener("selectionchange", handleSelectionChange);
     };
-  }, [trackingAreaId]);
+  }, [trackingAreaId, followPointer, movePupilTo]);
 
   return (
     <div
       ref={logoRef}
       className={`walking-logo ${isVisible ? "walking-logo--active" : ""} flex w-max items-center gap-2.5 ${className}`}
       onPointerMove={trackingAreaId ? undefined : followPointer}
-      onPointerLeave={trackingAreaId ? undefined : () => movePupilTo(RESTING_PUPIL)}
+      onPointerLeave={
+        trackingAreaId ? undefined : () => movePupilTo(RESTING_PUPIL)
+      }
     >
       <svg
         ref={markRef}
