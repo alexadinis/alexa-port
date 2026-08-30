@@ -95,9 +95,9 @@ const pt: Record<string, Partial<Project>> = {
   },
   cockburns: {
     summary: "Da garrafa para as redes sociais, o melhor do vinho do Porto. 🍷",
-    intro: "Marca vintage, feed fresco.",
+    intro: "Uma abordagem ousada, fresca e jovem ao vinho do Porto.",
     description:
-      "A Cockburn's não é apenas tradição: é a prova de que o vinho do Porto ainda pode entusiasmar uma nova geração.\n\nGeri a presença diária da marca no Instagram, Facebook e X, dando à Cockburn's uma voz jovem, fresca e ligeiramente irreverente, sem perder a herança do nome. O próprio perfil conta essa história: construído quase inteiramente com fotografia, desde produções profissionais a momentos reais captados por visitantes nas caves. Menos imagens excessivamente polidas, mais pessoas reais, experiências reais e a sensação de estar verdadeiramente lá.\n\nEsta abordagem manteve a marca próxima da sua comunidade e os resultados foram claros: um crescimento consistente e significativo em todas as plataformas, prova de que uma marca com séculos de história ainda pode sentir-se pessoal.",
+      "A Cockburn's não é apenas tradição: é a prova de que o vinho do Porto ainda pode entusiasmar uma nova geração.\n\nGeri a presença diária da marca no Instagram, Facebook e X, dando à Cockburn's uma voz jovem, fresca e ligeiramente irreverente, sem perder a herança do nome. O próprio perfil conta essa história: construído quase inteiramente com fotografia, desde produções profissionais a momentos reais captados por visitantes nas caves. Menos imagens excessivamente polidas, mais pessoas reais, experiências reais e a sensação de estar verdadeiramente lá.\n\nEsta abordagem manteve a marca próxima da sua comunidade e os resultados foram claros: um crescimento consistente e significativo em todas as plataformas, prova de que uma marca com séculos de história ainda pode sentir-se atual.",
     reflection: "Há coisas que melhoram com o tempo... tal como este feed.",
   },
 };
