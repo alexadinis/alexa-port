@@ -18,6 +18,11 @@
   --background-end-rgb: 16, 16, 16;
 }
 
+::selection {
+  background-color: var(--color-yellow);
+  color: var(--color-black);
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background-color: var(--color-black);
