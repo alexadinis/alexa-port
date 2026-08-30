@@ -55,7 +55,7 @@ const Contact = () => {
         </div>
 
         <footer className="grid gap-3 border-t border-white/30 py-3 text-xs sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
-          <p>© {new Date().getFullYear()} alexadinis</p>
+          <p>© {new Date().getFullYear()} alexandrabarbosa.pt</p>
 
           <nav
             aria-label="Social media"
@@ -78,7 +78,7 @@ const Contact = () => {
           </nav>
 
           <p className="sm:text-right">
-            {language === "pt" ? "Design e desenvolvimento por alexadinis" : "Designed & developed by alexadinis"}
+            {language === "pt" ? "Design e desenvolvimento por alexandrabarbosa.pt" : "Designed & developed by alexandrabarbosa.pt"}
           </p>
         </footer>
       </div>
