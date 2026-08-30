@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "./LanguageProvider";
-import { alternateLanguage, DEFAULT_LANGUAGE, localizeHref } from "../../lib/i18n";
+import {
+  alternateLanguage,
+  internalizeHref,
+  localizeHref,
+} from "../../lib/i18n";
 
 export default function LanguageToggle() {
   const { language } = useLanguage();
@@ -11,12 +15,9 @@ export default function LanguageToggle() {
   const isPortuguese = language === "pt";
   const target = alternateLanguage(language);
 
-  // Strip the current prefix to get the shared path, then re-prefix it, so the
-  // toggle lands on the same page rather than sending everyone to the homepage.
-  const basePath =
-    language === DEFAULT_LANGUAGE
-      ? pathname
-      : pathname.replace(new RegExp(`^/${language}`), "") || "/";
+  // Segments differ per language, so recover the internal path before
+  // localizing it, or the toggle lands on a URL that does not exist.
+  const basePath = internalizeHref(pathname, language);
 
   return (
     <Link
