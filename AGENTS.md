@@ -8,6 +8,7 @@ These instructions apply to every automated agent working anywhere in this repos
 - A request to edit, fix, build, test, commit, or "finish" work is not permission to push.
 - Never infer push permission from an earlier push approval or from a previously approved command prefix.
 - Before every push, state the exact remote and branch and obtain Alexandra's explicit confirmation.
+- After creating any local commit, always tell Alexandra that the commit exists and explicitly ask whether she wants it pushed. Do not push until she answers yes.
 - Never create or update a pull request, release, tag, GitHub issue, repository setting, branch protection rule, deployment, or remote without Alexandra's explicit instruction in the current conversation.
 - Never change, add, rename, or remove Git remotes without Alexandra's explicit instruction in the current conversation.
 
