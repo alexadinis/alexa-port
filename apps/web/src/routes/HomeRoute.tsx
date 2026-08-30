@@ -5,16 +5,15 @@ import {
   Planet,
   Seal,
 } from "@phosphor-icons/react/dist/ssr";
-import About from "../src/components/About/About";
-import Contact from "../src/components/Contact/Contact";
-import Hero from "../src/components/Hero/Hero";
-import SectionLineMarquees from "../src/components/SectionLineMarquees/SectionLineMarquees";
-import Work from "../src/components/Work/Work";
-import Mushroom from "../src/icons/Mushroom";
-import { getLanguage } from "../src/lib/getLanguage";
+import About from "../components/About/About";
+import Contact from "../components/Contact/Contact";
+import Hero from "../components/Hero/Hero";
+import SectionLineMarquees from "../components/SectionLineMarquees/SectionLineMarquees";
+import Work from "../components/Work/Work";
+import Mushroom from "../icons/Mushroom";
+import type { Language } from "../lib/i18n";
 
-export default async function Page() {
-  const language = await getLanguage();
+export default function HomeRoute({ language }: { language: Language }) {
   return (
     <main>
       <div

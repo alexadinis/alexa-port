@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import LanguageToggle from "../Language/LanguageToggle";
 import { useLanguage } from "../Language/LanguageProvider";
+import { localizeHref } from "../../lib/i18n";
 import WalkingLogo from "./WalkingLogo";
 
 interface NavLink {
@@ -56,7 +57,7 @@ const Navbar = ({ navLinks }: NavbarProps) => {
   return (
     <nav className={`main-navbar main-navbar--${language} fixed top-0 right-0 left-0 z-20 flex h-16 items-center justify-between px-4 transition-colors duration-300 sm:px-6 ${isWorkActive ? "bg-black text-white" : "bg-white text-black"}`}>
       <Link
-        href="/#home"
+        href={localizeHref("/#home", language)}
         aria-label={language === "pt" ? "Ir para a página inicial" : "Go to homepage"}
         className={`block w-max shrink-0 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 ${language === "pt" ? "focus-visible:outline-green" : "focus-visible:outline-blue"}`}
       >
@@ -73,7 +74,7 @@ const Navbar = ({ navLinks }: NavbarProps) => {
             return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={localizeHref(link.href, language)}
                 className={`nav-color-link py-3 focus-visible:outline-2 focus-visible:outline-offset-2 ${language === "pt" ? "focus-visible:outline-green" : "focus-visible:outline-blue"}`}
               >
                 <span>{label.toLowerCase()}</span>

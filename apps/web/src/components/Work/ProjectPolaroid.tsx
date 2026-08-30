@@ -12,6 +12,7 @@ import {
 import type { Project } from "../../data/projects";
 import BrandEyeMark from "../../icons/BrandEyeMark";
 import { useLanguage } from "../Language/LanguageProvider";
+import { localizeHref } from "../../lib/i18n";
 
 interface ProjectPolaroidProps {
   project: Project;
@@ -111,7 +112,7 @@ const ProjectPolaroid = ({
 
   return (
     <Link
-      href={`/projects/${project.slug}`}
+      href={localizeHref(`/projects/${project.slug}`, language)}
       onPointerEnter={handlePointerEnter}
       onPointerMove={handlePointerMove}
       onPointerLeave={() => setIsHovering(false)}

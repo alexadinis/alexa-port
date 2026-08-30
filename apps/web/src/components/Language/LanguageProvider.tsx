@@ -1,74 +1,37 @@
 "use client";
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
-import { useRouter } from "next/navigation";
+import { createContext, useContext, type ReactNode } from "react";
+import type { Language } from "../../lib/i18n";
 
-export type Language = "pt" | "en";
+export type { Language };
 
-interface LanguageContextValue {
-  language: Language;
-  setLanguage: (language: Language) => void;
-  toggleLanguage: () => void;
-}
-
-const LanguageContext = createContext<LanguageContextValue | null>(null);
-const LANGUAGE_STORAGE_KEY = "portfolio-language";
+/**
+ * The active language is decided by the route, not by client state, so each
+ * language has its own indexable URL. This provider only carries that value
+ * down to the components that render copy.
+ */
+const LanguageContext = createContext<Language | null>(null);
 
 export function LanguageProvider({
   children,
-  initialLanguage = "en",
+  language,
 }: {
   children: ReactNode;
-  initialLanguage?: Language;
+  language: Language;
 }) {
-  const router = useRouter();
-  const [language, setLanguageState] = useState<Language>(initialLanguage);
-
-  useEffect(() => {
-    document.documentElement.lang = language === "pt" ? "pt-PT" : "en";
-    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
-    document.cookie = `${LANGUAGE_STORAGE_KEY}=${language}; path=/; max-age=31536000; samesite=lax`;
-  }, [language]);
-
-  const setLanguage = useCallback(
-    (nextLanguage: Language) => {
-      setLanguageState(nextLanguage);
-      document.cookie = `${LANGUAGE_STORAGE_KEY}=${nextLanguage}; path=/; max-age=31536000; samesite=lax`;
-      router.refresh();
-    },
-    [router],
-  );
-
-  const value = useMemo(
-    () => ({
-      language,
-      setLanguage,
-      toggleLanguage: () => setLanguage(language === "pt" ? "en" : "pt"),
-    }),
-    [language, setLanguage],
-  );
-
   return (
-    <LanguageContext.Provider value={value}>
+    <LanguageContext.Provider value={language}>
       {children}
     </LanguageContext.Provider>
   );
 }
 
 export function useLanguage() {
-  const context = useContext(LanguageContext);
+  const language = useContext(LanguageContext);
 
-  if (!context) {
+  if (!language) {
     throw new Error("useLanguage must be used within LanguageProvider");
   }
 
-  return context;
+  return { language };
 }

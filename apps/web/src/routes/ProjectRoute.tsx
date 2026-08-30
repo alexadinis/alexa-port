@@ -6,27 +6,22 @@ import {
   Planet,
   Seal,
 } from "@phosphor-icons/react/dist/ssr";
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import InstagramPosts from "../../../src/components/Project/InstagramPosts";
-import ProjectCredits from "../../../src/components/Project/ProjectCredits";
-import ProjectFeedTracker from "../../../src/components/Project/ProjectFeedTracker";
-import ProjectScrollProgress from "../../../src/components/Project/ProjectScrollProgress";
-import ProjectVisualStory from "../../../src/components/Project/ProjectVisualStory";
-import RelatedProjects from "../../../src/components/Project/RelatedProjects";
-import SectionLineMarquees from "../../../src/components/SectionLineMarquees/SectionLineMarquees";
-import VideoReels from "../../../src/components/Project/VideoReels";
-import { getProject, PROJECTS } from "../../../src/data/projects";
-import { localizeProject } from "../../../src/data/projectTranslations";
-import { getLanguage } from "../../../src/lib/getLanguage";
-import BrandEyeMark from "../../../src/icons/BrandEyeMark";
-import Mushroom from "../../../src/icons/Mushroom";
-
-interface ProjectPageProps {
-  params: Promise<{ slug: string }>;
-}
+import InstagramPosts from "../components/Project/InstagramPosts";
+import ProjectCredits from "../components/Project/ProjectCredits";
+import ProjectFeedTracker from "../components/Project/ProjectFeedTracker";
+import ProjectScrollProgress from "../components/Project/ProjectScrollProgress";
+import ProjectVisualStory from "../components/Project/ProjectVisualStory";
+import RelatedProjects from "../components/Project/RelatedProjects";
+import SectionLineMarquees from "../components/SectionLineMarquees/SectionLineMarquees";
+import VideoReels from "../components/Project/VideoReels";
+import { getProject, PROJECTS } from "../data/projects";
+import { localizeHref, type Language } from "../lib/i18n";
+import { localizeProject } from "../data/projectTranslations";
+import BrandEyeMark from "../icons/BrandEyeMark";
+import Mushroom from "../icons/Mushroom";
 
 const getRelatedProjects = (projectIndex: number) => {
   const currentProject = PROJECTS[projectIndex]!;
@@ -65,26 +60,13 @@ const FEED_SEPARATORS = [
   },
 ];
 
-export const generateStaticParams = () =>
-  PROJECTS.map((project) => ({ slug: project.slug }));
-
-export const generateMetadata = async ({
-  params,
-}: ProjectPageProps): Promise<Metadata> => {
-  const { slug } = await params;
-  const project = getProject(slug);
-
-  if (!project) return {};
-
-  return {
-    title: `${project.title} | Alexandra Barbosa`,
-    description: project.summary,
-  };
-};
-
-export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { slug } = await params;
-  const language = await getLanguage();
+export default function ProjectRoute({
+  language,
+  slug,
+}: {
+  language: Language;
+  slug: string;
+}) {
   const sourceProject = getProject(slug);
 
   if (!sourceProject) notFound();
@@ -137,7 +119,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               className="mx-auto w-full max-w-[1600px] px-6 pt-24 pb-24 sm:px-10 md:px-16 md:pb-32 lg:px-24"
             >
               <Link
-                href="/#work"
+                href={localizeHref("/#work", language)}
                 className="project-back-link group mb-16 inline-flex items-center gap-2 text-sm text-white/75 transition-colors hover:text-white md:mb-24"
               >
                 <span

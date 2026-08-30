@@ -1,15 +1,27 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "./LanguageProvider";
+import { alternateLanguage, DEFAULT_LANGUAGE, localizeHref } from "../../lib/i18n";
 
 export default function LanguageToggle() {
-  const { language, toggleLanguage } = useLanguage();
+  const { language } = useLanguage();
+  const pathname = usePathname();
   const isPortuguese = language === "pt";
+  const target = alternateLanguage(language);
+
+  // Strip the current prefix to get the shared path, then re-prefix it, so the
+  // toggle lands on the same page rather than sending everyone to the homepage.
+  const basePath =
+    language === DEFAULT_LANGUAGE
+      ? pathname
+      : pathname.replace(new RegExp(`^/${language}`), "") || "/";
 
   return (
-    <button
-      type="button"
-      onClick={toggleLanguage}
+    <Link
+      href={localizeHref(basePath, target)}
+      hrefLang={target === "pt" ? "pt-PT" : "en"}
       aria-label={`Switch website language to ${isPortuguese ? "English" : "Português"}`}
       title={`Switch to ${isPortuguese ? "English" : "Português"}`}
       className={`relative flex h-8 w-[3.75rem] shrink-0 items-center rounded-full p-1 text-[0.65rem] font-semibold uppercase tracking-[0.04em] text-white transition-colors duration-300 before:absolute before:-inset-1.5 before:content-[''] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow ${
@@ -29,6 +41,6 @@ export default function LanguageToggle() {
       >
         {isPortuguese ? "PT" : "EN"}
       </span>
-    </button>
+    </Link>
   );
 }
