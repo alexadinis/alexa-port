@@ -346,6 +346,16 @@ export const PROJECTS: Project[] = [
         label: "Agency",
         value: "legendary.pt",
       },
+      {
+        label: "Made the static visuals look good",
+        value: "Michael Altomani",
+        links: [
+          {
+            text: "Michael Altomani",
+            url: "https://www.behance.net/altomani",
+          },
+        ],
+      },
       { label: "Year", value: "2024 / 2025" },
     ],
     description:
