@@ -240,7 +240,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <p className="whitespace-pre-line text-pretty text-[clamp(1.05rem,1.5vw,1.4rem)] font-normal leading-[1.55] tracking-[-0.015em]">
                     {(project.description ?? project.summary)
                       .split(
-                        /(My goal\?|The mission\?|The strategy\?|40% increase|engagement|growing 268K followers organically)/g,
+                        /(My goal\?|The mission\?|The strategy\?|40% increase|engagement|growing 268K followers organically|duplicou as impressões e o alcance \(\+100%\) em apenas 8 meses)/g,
                       )
                       .map((part, index) =>
                         [
@@ -250,6 +250,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                           "40% increase",
                           "engagement",
                           "growing 268K followers organically",
+                          "duplicou as impressões e o alcance (+100%) em apenas 8 meses",
                         ].includes(part) ? (
                           <strong
                             key={`${part}-${index}`}

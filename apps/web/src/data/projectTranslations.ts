@@ -22,8 +22,8 @@ const servicePt: Record<string, string> = {
 const pt: Record<string, Partial<Project>> = {
   "endesa-portugal": {
     summary: "A criatividade que dá energia às redes sociais da Endesa. ⚡",
-    intro: "Criação de conteúdo alinhado com os valores inovadores da Endesa, tornando a energia mais interessante, acessível e relevante no dia a dia.",
-    description: "A Endesa Portugal é uma referência no setor energético, comprometida com a inovação e a sustentabilidade. O meu objetivo? Dar vida a esse compromisso nas redes sociais. Ao longo de 11 meses, desenvolvi e implementei uma estratégia que duplicou as impressões e o alcance (+100%) no Facebook e Instagram.",
+    intro: "A criar conteúdo que reflete os valores da Endesa, a tornar a energia excitante e acessível para o dia a dia de quem a consome.",
+    description: "A Endesa Portugal é líder no setor da energia, com um compromisso sólido com a inovação e a sustentabilidade.\n\nO meu objetivo? Dar vida a esse compromisso nas redes sociais (Instagram e Facebook).\n\nDesenvolvi e implementei uma estratégia que duplicou as impressões e o alcance (+100%) em apenas 8 meses, tanto no Facebook como no Instagram.\n\nO foco? Criar conteúdo que refletissem os valores visionários da Endesa, onde mostrava a energia de maneira entusiasmante, acessível e relevante no dia a dia dos consumidores.",
   },
   "kfc-portugal": {
     summary: "A virar muitos frangos como Coronel Sanders nas redes sociais do KFC Portugal. 🍗",
