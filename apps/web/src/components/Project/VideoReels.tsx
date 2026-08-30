@@ -12,6 +12,7 @@ import {
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import { type CSSProperties, useEffect, useRef, useState } from "react";
+import { useNearViewport } from "../../utils/useNearViewport";
 
 export interface Reel {
   src: string;
@@ -55,14 +56,18 @@ interface VideoReelsIdentity {
 }
 
 function VideoReel({ reel, index, isActive, identity, onPlay, onPause, onEnded }: VideoReelProps) {
+  const articleRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isNearViewport = useNearViewport(articleRef);
   const [muted, setMuted] = useState(true);
   const [volume, setVolume] = useState(0.7);
   const [captionExpanded, setCaptionExpanded] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    // Before the reel is near the viewport it has no source, so there is
+    // nothing to play or rewind yet.
+    if (!video || !isNearViewport) return;
 
     if (isActive) {
       void video.play().catch(() => undefined);
@@ -70,7 +75,7 @@ function VideoReel({ reel, index, isActive, identity, onPlay, onPause, onEnded }
       video.pause();
       video.currentTime = 0;
     }
-  }, [isActive]);
+  }, [isActive, isNearViewport]);
 
   const toggleSound = () => {
     const nextMuted = !muted;
@@ -91,7 +96,10 @@ function VideoReel({ reel, index, isActive, identity, onPlay, onPause, onEnded }
   };
 
   return (
-    <article className="min-w-[82vw] snap-center overflow-hidden rounded-2xl border border-white/10 bg-[#181818] sm:min-w-[22rem] lg:min-w-0">
+    <article
+      ref={articleRef}
+      className="min-w-[82vw] snap-center overflow-hidden rounded-2xl border border-white/10 bg-[#181818] sm:min-w-[22rem] lg:min-w-0"
+    >
       <header className="flex items-center gap-3 px-4 py-3">
         <div
           className="size-9 overflow-hidden rounded-full bg-white ring-2 ring-offset-2 ring-offset-[#181818]"
@@ -115,7 +123,7 @@ function VideoReel({ reel, index, isActive, identity, onPlay, onPause, onEnded }
       <div className="relative aspect-[9/16] overflow-hidden bg-black">
         <video
           ref={videoRef}
-          src={reel.src}
+          src={isNearViewport ? reel.src : undefined}
           aria-label={`${identity.imageAltPrefix} reel ${index + 1}`}
           muted={muted}
           onEnded={onEnded}

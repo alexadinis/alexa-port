@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useNearViewport } from "../../utils/useNearViewport";
 
 interface CrossDissolveVideoProps {
   src: string;
@@ -14,10 +15,12 @@ export default function CrossDissolveVideo({
   poster,
   alt,
 }: CrossDissolveVideoProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isNearViewport = useNearViewport(containerRef);
   const [isDissolving, setIsDissolving] = useState(false);
 
   return (
-    <div className="relative size-full overflow-hidden">
+    <div ref={containerRef} className="relative size-full overflow-hidden">
       <Image
         src={poster}
         alt=""
@@ -38,6 +41,7 @@ export default function CrossDissolveVideo({
         playsInline
         preload="metadata"
         poster={poster}
+        src={isNearViewport ? src : undefined}
         onTimeUpdate={(event) => {
           const video = event.currentTarget;
           const shouldDissolve =
@@ -45,9 +49,7 @@ export default function CrossDissolveVideo({
             video.duration - video.currentTime <= 0.7;
           setIsDissolving(shouldDissolve);
         }}
-      >
-        <source src={src} type="video/mp4" />
-      </video>
+      />
     </div>
   );
 }
