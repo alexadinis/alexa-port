@@ -36,14 +36,14 @@ export const SITE_COPY: Record<
     title: "Alexandra Barbosa — Social media e design",
     tagline: "Gestão de redes sociais, conteúdo e design",
     description:
-      "Portefólio da Alexandra Barbosa, freelancer de redes sociais e design no Porto. Estratégia, conteúdo e community management para marcas como a Endesa, KFC e Padaria Aliança.",
+      "Portefólio da Alexandra Barbosa, freelancer de redes sociais e design no Porto. Conteúdo, estratégia e comunidade para a Endesa, o KFC e a Padaria Aliança.",
     jobTitle: "Gestora de redes sociais e designer",
   },
   en: {
     title: "Alexandra Barbosa — Social media & design",
     tagline: "Social media management, content and design",
     description:
-      "Portfolio of Alexandra Barbosa, a freelance social media and design specialist based in Porto, Portugal. Strategy, content and community management for brands such as Endesa, KFC and Padaria Aliança.",
+      "Portfolio of Alexandra Barbosa, freelance social media manager and designer in Porto. Content, strategy and community for Endesa, KFC and Padaria Aliança.",
     jobTitle: "Social media manager and designer",
   },
 };
