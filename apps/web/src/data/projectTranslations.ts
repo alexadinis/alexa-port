@@ -55,11 +55,10 @@ const pt: Record<string, Partial<Project>> = {
   },
   "feel-better": {
     summary: "Menos pelo, mais brilho nas redes sociais da Feel Better. 💫",
-    intro: "Uma história de transformação, literalmente.",
+    intro: "Menos pelos, mais seguidores.",
     description:
-      "A Feel Better by Joana Pereira começou com uma promessa simples: menos pelo, mais confiança. Mas, algures entre os lasers e o número de seguidores, tornou-se algo maior: uma marca de bem-estar da qual as pessoas queriam realmente fazer parte.\n\nConstruí tudo de raiz: conteúdo (vídeo, fotografia e design gráfico), copywriting e gestão de redes sociais, tornando um tema clínico mais humano, útil e impossível de ignorar.\n\nPorque, sejamos honestos, ninguém acorda entusiasmado com sessões de laser. O meu trabalho foi mudar isso, uma legenda, um Reel e uma transformação de cada vez.",
-    reflection:
-      "Resultados suaves, uma estratégia de conteúdo ainda mais fluida.",
+      "A Feel Better by Joana Pereira começou com uma promessa simples: menos pelos, mais confiança. Mas algures entre os lasers e o número de seguidores, tornou-se em algo maior: uma marca de bem-estar, que as pessoas queriam mesmo seguir.\n\nConstruí tudo do zero: conteúdo (vídeo, fotografia, design gráfico), copywriting e gestão de redes sociais, tudo junto, tornando um tema clínico em algo humano, útil e impossível de ignorar.\n\nPorque sejamos honestos, nem todos acordamos entusiasmados com uma sessão de depilação a laser. O meu trabalho foi mudar isso, tornar a depilação a laser algo acessível, informativo e até divertido. Sempre com uma comunicação clara, apelativa e alinhada com as necessidades da audiência.",
+    reflection: "Tão suave na pele como na estratégia.",
   },
   "lr-opticas": {
     summary:
