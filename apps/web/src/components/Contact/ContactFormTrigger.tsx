@@ -31,7 +31,7 @@ const ContactFormTrigger = () => {
         type="button"
         aria-haspopup="dialog"
         onClick={() => dialogRef.current?.showModal()}
-        className="group relative flex h-36 w-36 shrink-0 items-center justify-center text-white transition-transform duration-500 ease-out hover:rotate-3 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink motion-reduce:transform-none md:h-48 md:w-48"
+        className="group relative flex h-36 w-36 shrink-0 cursor-pointer items-center justify-center text-white transition-transform duration-500 ease-out hover:rotate-3 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink motion-reduce:transform-none md:h-48 md:w-48"
       >
         <ContactBurst
           fill="none"

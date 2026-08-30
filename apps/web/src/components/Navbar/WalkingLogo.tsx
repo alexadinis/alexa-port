@@ -4,7 +4,7 @@ import {
   useEffect,
   useRef,
   useState,
-  type PointerEvent,
+  type PointerEvent as ReactPointerEvent,
 } from "react";
 
 interface WalkingLogoProps {
@@ -12,6 +12,7 @@ interface WalkingLogoProps {
   className?: string;
   markClassName?: string;
   inverted?: boolean;
+  trackingAreaId?: string;
 }
 
 const RESTING_PUPIL = { x: 582.21, y: 358.75 };
@@ -21,6 +22,7 @@ export default function WalkingLogo({
   className = "",
   markClassName = "",
   inverted = false,
+  trackingAreaId,
 }: WalkingLogoProps) {
   const logoRef = useRef<HTMLDivElement>(null);
   const markRef = useRef<SVGSVGElement>(null);
@@ -85,7 +87,9 @@ export default function WalkingLogo({
     }
   };
 
-  const followPointer = (event: PointerEvent<HTMLDivElement>) => {
+  const followPointer = (
+    event: Pick<PointerEvent, "clientX" | "clientY" | "pointerType"> | ReactPointerEvent<HTMLDivElement>,
+  ) => {
     if (event.pointerType === "touch") return;
 
     const mark = markRef.current;
@@ -107,12 +111,55 @@ export default function WalkingLogo({
     });
   };
 
+  useEffect(() => {
+    if (!trackingAreaId) return;
+
+    const trackingArea = document.getElementById(trackingAreaId);
+    if (!trackingArea) return;
+
+    const resetPupil = () => movePupilTo(RESTING_PUPIL);
+    const handlePointerMove = (event: PointerEvent) => {
+      const selection = window.getSelection();
+      if (selection && !selection.isCollapsed) {
+        resetPupil();
+        return;
+      }
+
+      followPointer(event);
+    };
+    const handleSelectionChange = () => {
+      const selection = window.getSelection();
+      const anchorNode = selection?.anchorNode;
+
+      if (
+        selection &&
+        !selection.isCollapsed &&
+        anchorNode &&
+        trackingArea.contains(anchorNode)
+      ) {
+        resetPupil();
+      }
+    };
+
+    trackingArea.addEventListener("pointermove", handlePointerMove);
+    trackingArea.addEventListener("pointerleave", resetPupil);
+    trackingArea.addEventListener("pointerdown", resetPupil);
+    document.addEventListener("selectionchange", handleSelectionChange);
+
+    return () => {
+      trackingArea.removeEventListener("pointermove", handlePointerMove);
+      trackingArea.removeEventListener("pointerleave", resetPupil);
+      trackingArea.removeEventListener("pointerdown", resetPupil);
+      document.removeEventListener("selectionchange", handleSelectionChange);
+    };
+  }, [trackingAreaId]);
+
   return (
     <div
       ref={logoRef}
       className={`walking-logo ${isVisible ? "walking-logo--active" : ""} flex w-max items-center gap-2.5 ${className}`}
-      onPointerMove={followPointer}
-      onPointerLeave={() => movePupilTo(RESTING_PUPIL)}
+      onPointerMove={trackingAreaId ? undefined : followPointer}
+      onPointerLeave={trackingAreaId ? undefined : () => movePupilTo(RESTING_PUPIL)}
     >
       <svg
         ref={markRef}
