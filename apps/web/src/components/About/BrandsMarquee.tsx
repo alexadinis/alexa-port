@@ -9,35 +9,73 @@ import {
   useState,
 } from "react";
 import LogoMark from "../../icons/LogoMark";
+import { useLanguage } from "../Language/LanguageProvider";
 
 const paytoneOne = Paytone_One({ subsets: ["latin"], weight: ["400"] });
 
 const BRANDS = [
-  "KFC Portugal",
-  "Endesa PT",
-  "Cockburn's",
-  "Penafiel Racing Fest",
-  "Funerária Santa Marta",
-  "L&R Ópticas",
-  "Psicomorfose",
-  "TorreShopping",
-  "Munchie",
+  { name: "KFC Portugal", href: "https://www.kfc.pt/" },
+  { name: "Endesa PT", href: "https://www.endesa.pt/" },
+  { name: "Cockburn's", href: "https://www.cockburns.com/" },
+  { name: "L&R Ópticas", href: "https://www.instagram.com/lropticas/" },
+  {
+    name: "PsicoMorfose",
+    href: "https://www.instagram.com/psicomorfose.pt/",
+  },
+  { name: "TorreShopping", href: "https://torreshopping.pt/" },
+  {
+    name: "Penafiel Racing Fest",
+    href: "https://www.instagram.com/penafielracingfest/",
+  },
+  {
+    name: "Authentic Classic Pilates",
+    href: "https://authenticclassicalpilates.pt/",
+  },
+  {
+    name: "Funerária Santa Marta",
+    href: "https://www.funerariasantamarta.pt/",
+  },
+  { name: "Munchie", href: "https://www.instagram.com/munchiebk/" },
+  {
+    name: "Alvorada cakes",
+    href: "https://www.instagram.com/alvoradacakes/",
+  },
+  {
+    name: "Food Corner",
+    href: "https://www.instagram.com/foodcorner_porto/",
+  },
+  { name: "Maza", href: "https://www.instagram.com/maza.pasta.bar/" },
+  {
+    name: "Forneria Invicta",
+    href: "https://www.instagram.com/forneriainvicta/",
+  },
+  {
+    name: "Samarras Peixoto",
+    href: "https://www.instagram.com/samarras_peixoto/",
+  },
 ];
 
 const BrandRun = ({ copyIndex }: { copyIndex: number }) => (
   <span
     className="brand-run flex shrink-0 items-center whitespace-nowrap px-5"
-    aria-hidden="true"
+    aria-hidden={copyIndex !== 1}
   >
-    {BRANDS.map((brand, brandIndex) => (
+    {BRANDS.map(({ name, href }, brandIndex) => (
       <span
-        key={`${copyIndex}-${brand}`}
+        key={`${copyIndex}-${name}`}
         className="brand-item inline-flex shrink-0 items-center"
       >
-        <span className="brand-name inline-flex shrink-0">
-          {Array.from(brand).map((character, characterIndex) => (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          draggable={false}
+          tabIndex={copyIndex === 1 ? undefined : -1}
+          className="brand-name inline-flex shrink-0 text-inherit no-underline"
+        >
+          {Array.from(name).map((character, characterIndex) => (
             <span
-              key={`${brand}-${characterIndex}`}
+              key={`${name}-${characterIndex}`}
               className="brand-letter-frame"
             >
               <span
@@ -50,13 +88,13 @@ const BrandRun = ({ copyIndex }: { copyIndex: number }) => (
               </span>
             </span>
           ))}
-        </span>
+        </a>
         <span className="brand-letter-frame mx-5 md:mx-8" aria-hidden="true">
           <span
             className="brand-letter flex items-center"
             style={{ animationDelay: `${brandIndex * 65 + 240}ms` }}
           >
-            <LogoMark className="h-4 w-4 shrink-0 text-[#fff] md:h-5 md:w-5" />
+            <LogoMark className="h-4 w-4 shrink-0 text-white md:h-5 md:w-5" />
           </span>
         </span>
       </span>
@@ -65,6 +103,7 @@ const BrandRun = ({ copyIndex }: { copyIndex: number }) => (
 );
 
 const BrandsMarquee = () => {
+  const { language } = useLanguage();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLDivElement>(null);
   const magnificationFrameRef = useRef<number | null>(null);
@@ -308,9 +347,7 @@ const BrandsMarquee = () => {
         const distance = Math.abs(magnificationX - center);
         const proximity = Math.max(0, 1 - distance / influenceRadius);
         const easedProximity =
-          proximity === 0
-            ? 0
-            : (1 - Math.cos(proximity * Math.PI)) / 2;
+          proximity === 0 ? 0 : (1 - Math.cos(proximity * Math.PI)) / 2;
         const scale = 1 + (maxScale - 1) * easedProximity;
         const breathingRoom = (width * (scale - 1)) / 2 + proximity * 4;
 
@@ -327,6 +364,10 @@ const BrandsMarquee = () => {
     resetMagnification();
 
     if (event.pointerType === "touch" || event.button !== 0) return;
+
+    const eventTarget = event.target;
+
+    if (eventTarget instanceof Element && eventTarget.closest("a")) return;
 
     const rail = railRef.current;
 
@@ -376,13 +417,13 @@ const BrandsMarquee = () => {
   };
 
   return (
-    <div className="pb-24 md:pb-32">
+    <div className="pb-8 md:pb-10">
       <div className="mx-auto mb-7 w-full max-w-[1600px] px-6 sm:px-10 md:px-16 lg:px-24">
         <h3
           id="brands-heading"
           className="text-base font-medium text-white md:text-lg"
         >
-          brands I have worked with
+          {language === "pt" ? "marcas que já trabalhei" : "brands I have worked with"}
         </h3>
       </div>
 
@@ -390,15 +431,14 @@ const BrandsMarquee = () => {
         ref={wrapperRef}
         role="region"
         aria-labelledby="brands-heading"
-        className={`brands-marquee w-full overflow-hidden border-y border-[#fff] bg-transparent py-4 text-[#fff] md:py-5 ${
+        className={`brands-marquee w-full overflow-hidden border-y border-white bg-transparent py-4 text-white md:py-5 ${
           motionReady ? "brand-ribbon--motion-ready" : ""
         } ${isVisible ? "brand-ribbon--visible" : ""}`}
       >
-        <span className="sr-only">{BRANDS.join(", ")}</span>
         <div
           ref={railRef}
           tabIndex={0}
-          aria-label="Drag or use the arrow keys to explore the brands"
+          aria-label={language === "pt" ? "Arrasta ou usa as setas para explorar as marcas" : "Drag or use the arrow keys to explore the brands"}
           onPointerMove={handlePointerMove}
           onPointerDown={handlePointerDown}
           onPointerUp={finishDragging}

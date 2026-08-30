@@ -1,7 +1,11 @@
+"use client";
+
 import { Paytone_One } from "next/font/google";
 import Image from "next/image";
 import BrandsMarquee from "./BrandsMarquee";
+import FocusServices from "./FocusServices";
 import StoryTypewriter from "./StoryTypewriter";
+import { useLanguage } from "../Language/LanguageProvider";
 
 const paytoneOne = Paytone_One({ subsets: ["latin"], weight: ["400"] });
 
@@ -13,6 +17,13 @@ const ABOUT_DETAILS = [
 ];
 
 const About = () => {
+  const { language } = useLanguage();
+  const details = language === "pt" ? [
+    { label: "Nome", value: "Alexandra Barbosa" },
+    { label: "Foco", value: "Redes sociais e design" },
+    { label: "Estado", value: "Freelance" },
+    { label: "Localização", value: "Porto, Portugal" },
+  ] : ABOUT_DETAILS;
   return (
     <section
       id="about"
@@ -22,11 +33,11 @@ const About = () => {
         <h2
           className={`${paytoneOne.className} max-w-max text-[clamp(3.5rem,8vw,6rem)] leading-none tracking-[-0.03em]`}
         >
-          About me.
+          {language === "pt" ? "Sobre mim." : "About me."}
         </h2>
 
         <dl className="grid grid-cols-1 border-y border-white/25 sm:grid-cols-2 lg:grid-cols-4">
-          {ABOUT_DETAILS.map((detail) => (
+          {details.map((detail) => (
             <div
               key={detail.label}
               className="flex flex-col gap-2 border-white/25 px-6 py-5 sm:[&:nth-child(2)]:border-l sm:[&:nth-child(n+3)]:border-t lg:border-l lg:border-t-0 lg:first:border-l-0"
@@ -45,7 +56,7 @@ const About = () => {
           <div className="relative aspect-[4/5] w-full max-w-[340px] overflow-hidden md:aspect-auto md:h-full md:max-w-none">
             <Image
               src="/alexandra-barbosa.jpg"
-              alt="Alexandra Barbosa in profile"
+              alt={language === "pt" ? "Alexandra Barbosa de perfil" : "Alexandra Barbosa in profile"}
               fill
               sizes="(max-width: 767px) 340px, 40vw"
               className="object-cover object-[50%_48%]"
@@ -55,10 +66,7 @@ const About = () => {
 
           <div className="flex min-w-0 flex-col items-start gap-8">
             <p className="max-w-[24ch] text-pretty text-[clamp(1.8rem,3.4vw,4rem)] font-medium leading-[1.08] tracking-[-0.035em]">
-              Fluent in memes, dream about design and live to{" "}
-              <StoryTypewriter /> great stories. I create authentic content,
-              craft effective strategies, and give brands a unique voice in the
-              digital world.
+              {language === "pt" ? <>Fluente em memes, sonho com design e vivo para <StoryTypewriter /> grandes histórias. Crio conteúdo autêntico, estratégias eficazes e dou às marcas uma voz única no mundo digital.</> : <>Fluent in memes, dream about design and live to <StoryTypewriter /> great stories. I create authentic content, craft effective strategies and give brands a unique voice in the digital world.</>}
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
@@ -67,7 +75,7 @@ const About = () => {
                 download
                 className="about-action-button about-action-button--red inline-flex items-center justify-center rounded-full border-2 px-6 py-4 text-base font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red"
               >
-                download CV
+                {language === "pt" ? "descarregar CV" : "download CV"}
               </a>
               <a
                 href="https://www.behance.net/alexadinis"
@@ -85,13 +93,21 @@ const About = () => {
               >
                 linkedin
               </a>
+              <a
+                href="https://www.instagram.com/alexandrabarbosa.pt/"
+                target="_blank"
+                rel="noreferrer"
+                className="about-action-button about-action-button--pink inline-flex items-center justify-center rounded-full border-2 px-6 py-4 text-base font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink"
+              >
+                instagram
+              </a>
             </div>
           </div>
         </div>
-
       </div>
 
       <BrandsMarquee />
+      <FocusServices />
     </section>
   );
 };

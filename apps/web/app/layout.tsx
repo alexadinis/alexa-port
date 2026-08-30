@@ -1,9 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Logo from "../src/icons/Logo";
-
 import Navbar from "../src/components/Navbar/Navbar";
+import { LanguageProvider } from "../src/components/Language/LanguageProvider";
+import { getLanguage } from "../src/lib/getLanguage";
 
 const NAV_LINKS = [
   {
@@ -19,7 +19,7 @@ const NAV_LINKS = [
     href: "/#work",
   },
   {
-    label: "Contact",
+    label: "Get in touch",
     href: "/#contact",
   },
 ];
@@ -34,16 +34,20 @@ export const metadata: Metadata = {
   description: "Alexa Portfolio",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const language = await getLanguage();
+
   return (
-    <html lang="en">
+    <html lang={language === "pt" ? "pt-PT" : "en"}>
       <body className={poppins.className}>
-        <Navbar navLinks={NAV_LINKS} logo={<Logo />} />
-        {children}
+        <LanguageProvider initialLanguage={language}>
+          <Navbar navLinks={NAV_LINKS} />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -3,7 +3,7 @@ import type { VariantProps } from "tailwind-variants";
 import { tv } from "tailwind-variants";
 
 const navButtonVariants = tv({
-  base: "absolute top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white text-black opacity-0 transition-all duration-300 hover:shadow-[0_0_64px_rgba(3,7,18,1)] group-hover:opacity-50 sm:flex",
+  base: "absolute top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white text-black opacity-0 transition-all duration-300 hover:shadow-[0_0_64px_rgba(16,16,16,1)] group-hover:opacity-50 sm:flex",
   variants: {
     direction: {
       prev: "left-4",

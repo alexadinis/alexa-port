@@ -22,8 +22,8 @@ const WORKS = [
     title: "Cockburn's",
     description:
       "From the bottle to the digital world, bringing the best of Port wine to social media. 🍷",
-    image: "/placeholder.jpg",
-    hexColor: "#ebab07",
+    image: "/cockburns/home-showcase.webp",
+    hexColor: "#f4c755",
   },
   {
     title: "Munchie",
@@ -43,7 +43,7 @@ const WORKS = [
     title: "Funerária Santa Marta",
     description: "A creative touch to give 'life' to Funerária Santa Marta. 🕊️",
     image: "/placeholder.jpg",
-    hexColor: "#6607eb",
+    hexColor: "#3476ee",
   },
   {
     title: "Penafiel Racing Fest",
@@ -59,9 +59,10 @@ const WORKS = [
     hexColor: "#44985a",
   },
   {
-    title: "Dona Glória",
-    description: "The sweet art of digital presence with Dona Glória. 🍰",
-    image: "/dona-gloria.webp",
+    title: "Authentic Classical Pilates",
+    description:
+      "Breathing life into Authentic Classical Pilates' social media. 🧘",
+    image: "/authentic-classical-pilates/home-showcase.webp",
     hexColor: "#e84e3c",
   },
 ];

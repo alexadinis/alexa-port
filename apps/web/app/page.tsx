@@ -1,4 +1,5 @@
 import {
+  Atom,
   FireSimple,
   Lightning,
   Planet,
@@ -10,15 +11,25 @@ import Hero from "../src/components/Hero/Hero";
 import SectionLineMarquees from "../src/components/SectionLineMarquees/SectionLineMarquees";
 import Work from "../src/components/Work/Work";
 import Mushroom from "../src/icons/Mushroom";
+import { getLanguage } from "../src/lib/getLanguage";
 
-export default function Page() {
+export default async function Page() {
+  const language = await getLanguage();
   return (
     <main>
-      <div className="relative flex min-h-dvh flex-col items-center justify-center p-4 pt-20 md:p-16 md:pt-28">
+      <div
+        id="home"
+        className="relative flex min-h-dvh scroll-mt-20 flex-col items-center justify-center p-4 pt-20 md:p-16 md:pt-28"
+      >
         <Hero
           title={
             <>
-              Hello, <br /> I&apos;m Alexa.
+              {language === "pt" ? "Olá," : "Hello,"} <br />
+              {language === "pt" ? (
+                <>sou a <span className="text-yellow">Alexa</span>.</>
+              ) : (
+                <>I&apos;m <span className="text-yellow">Alexa</span>.</>
+              )}
             </>
           }
         />
@@ -37,6 +48,7 @@ export default function Page() {
 
       <div className="relative -mb-12 -mt-12 z-10">
         <SectionLineMarquees
+          lineColors={["bg-red", "bg-pink"]}
           icons={[
             <Lightning key="1" className="mr-2 h-16 w-16 text-black" />,
             <Planet key="2" className="mr-2 h-16 w-16 text-black" />,
@@ -48,8 +60,9 @@ export default function Page() {
 
       <div className="relative -mb-12 -mt-12 z-10">
         <SectionLineMarquees
+          lineColors={["bg-red", "bg-yellow"]}
           icons={[
-            <Seal key="1" className="mr-2 h-16 w-16 text-black" />,
+            <Atom key="1" className="mr-2 h-16 w-16 text-black" />,
             <Mushroom key="2" className="mr-2 h-16 w-16 text-black" />,
           ]}
         />

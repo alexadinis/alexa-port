@@ -3,23 +3,19 @@
 @config '../tailwind.config.ts';
 
 @theme {
-  --color-black: #000;
+  --color-black: #101010;
   --color-white: #ececec;
   --color-blue: #3476ee;
   --color-red: #e84e3c;
   --color-green: #44985a;
   --color-yellow: #f4c755;
-  --color-orange: #ebab07;
-  --color-purple: #6607eb;
   --color-pink: #f2cddd;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root {
+  --foreground-rgb: 236, 236, 236;
+  --background-start-rgb: 16, 16, 16;
+  --background-end-rgb: 16, 16, 16;
 }
 
 body {
@@ -29,6 +25,21 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes related-project-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.related-project-card {
+  animation: related-project-card-in 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes logo-mark-spin {
@@ -63,6 +74,244 @@ html {
 .hero-talk-button:focus-visible .hero-talk-arrow {
   opacity: 1;
   transform: translate3d(0.125rem, 0, 0);
+}
+
+@keyframes hero-detail-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.hero-detail-motion {
+  animation: logo-mark-spin 12s linear infinite;
+}
+
+.hero-detail-shape {
+  transform-origin: center;
+  animation: hero-detail-pulse 8s ease-in-out infinite;
+}
+
+.hero-detail-fill {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-detail-motion:hover .hero-detail-fill {
+  clip-path: inset(0 0 0 0);
+}
+
+.nav-color-link {
+  position: relative;
+  display: inline-block;
+  color: var(--color-white);
+}
+
+.main-navbar .nav-color-link {
+  color: currentColor;
+}
+
+.main-navbar .nav-color-link-accent {
+  padding-block: 0.75rem;
+}
+
+.main-navbar--en .nav-color-link-accent {
+  color: var(--color-blue);
+}
+
+.main-navbar--pt .nav-color-link-accent {
+  color: var(--color-green);
+}
+
+.walking-logo-left-leg,
+.walking-logo-right-leg,
+.walking-logo-body {
+  transform-box: view-box;
+  will-change: transform;
+}
+
+.walking-logo-left-leg,
+.walking-logo-right-leg {
+  transform-origin: 50% 56%;
+}
+
+.walking-logo-body {
+  transform-origin: center;
+}
+
+.walking-logo--active .walking-logo-left-leg {
+  animation: walking-logo-left-leg 680ms ease-in-out infinite alternate;
+}
+
+.walking-logo--active .walking-logo-right-leg {
+  animation: walking-logo-right-leg 680ms ease-in-out infinite alternate;
+}
+
+.walking-logo-character {
+  overflow: visible;
+}
+
+@keyframes walking-logo-left-leg {
+  from { transform: rotate(-9deg) translateX(-6px); }
+  to { transform: rotate(10deg) translateX(6px); }
+}
+
+@keyframes walking-logo-right-leg {
+  from { transform: rotate(9deg) translateX(6px); }
+  to { transform: rotate(-10deg) translateX(-6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .walking-logo--active .walking-logo-left-leg {
+    animation-duration: 1600ms;
+    animation-name: walking-logo-left-leg-reduced;
+  }
+
+  .walking-logo--active .walking-logo-right-leg {
+    animation-duration: 1600ms;
+    animation-name: walking-logo-right-leg-reduced;
+  }
+}
+
+@keyframes walking-logo-left-leg-reduced {
+  from { transform: rotate(-2deg); }
+  to { transform: rotate(2deg); }
+}
+
+@keyframes walking-logo-right-leg-reduced {
+  from { transform: rotate(2deg); }
+  to { transform: rotate(-2deg); }
+}
+
+.nav-color-link-accent {
+  position: absolute;
+  inset: 0;
+  padding-block: 0.5rem;
+  color: var(--color-yellow);
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+  transition: clip-path 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-color-link:hover .nav-color-link-accent,
+.nav-color-link:focus-visible .nav-color-link-accent {
+  clip-path: inset(0 0 0 0);
+}
+
+.footer-color-link .nav-color-link-accent {
+  padding-block: 0.25rem;
+}
+
+.project-polaroid-title {
+  transition: color 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-polaroid {
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.project-polaroid:hover,
+.project-polaroid:focus-visible {
+  box-shadow: 0 0.7rem 0 var(--project-accent);
+  transform: translate3d(0, -0.7rem, 0);
+}
+
+.project-polaroid:hover .project-polaroid-title,
+.project-polaroid:focus-visible .project-polaroid-title {
+  color: var(--project-accent);
+}
+
+.project-quick-peek {
+  will-change: transform, opacity;
+}
+
+.project-back-arrow,
+.project-back-mark {
+  transition:
+    opacity 240ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-back-mark {
+  opacity: 0;
+  transform: rotate(-45deg) scale(0.55);
+}
+
+.project-back-link:hover .project-back-arrow,
+.project-back-link:focus-visible .project-back-arrow {
+  opacity: 0;
+  transform: rotate(45deg) scale(0.55);
+}
+
+.project-back-link:hover .project-back-mark,
+.project-back-link:focus-visible .project-back-mark {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+.project-service-chip {
+  border: 1px solid currentColor;
+  border-radius: 9999px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.project-service-chip--1 {
+  color: var(--color-yellow);
+}
+
+.project-service-chip--2 {
+  color: var(--color-pink);
+}
+
+.project-service-chip--3 {
+  color: var(--color-green);
+}
+
+.project-service-chip--4 {
+  color: var(--color-blue);
+}
+
+.project-service-chip--5 {
+  color: var(--color-red);
+}
+
+@keyframes contact-rainbow-flow {
+  to {
+    background-position: -100% 50%;
+  }
+}
+
+.contact-rainbow-text {
+  display: inline-block;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-green) 0%,
+    var(--color-yellow) 12.5%,
+    var(--color-red) 25%,
+    var(--color-pink) 37.5%,
+    var(--color-green) 50%,
+    var(--color-yellow) 62.5%,
+    var(--color-red) 75%,
+    var(--color-pink) 87.5%,
+    var(--color-green) 100%
+  );
+  background-position: 0 50%;
+  background-size: 200% 100%;
+  color: transparent;
+  font-weight: 600;
+  animation: contact-rainbow-flow 4.5s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .about-action-button {
@@ -113,6 +362,214 @@ html {
 
 .about-action-button--blue {
   --about-button-accent: #3476ee;
+}
+
+.about-action-button--pink {
+  --about-button-accent: var(--color-pink);
+}
+
+.about-action-button--pink:hover,
+.about-action-button--pink:focus-visible {
+  color: var(--color-black);
+}
+
+.focus-card {
+  --focus-logo-outer: var(--color-white);
+  --focus-logo-eye: var(--color-black);
+  --focus-logo-pupil: var(--color-white);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--color-white);
+  transition: color 480ms ease;
+}
+
+.focus-card::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--focus-card-accent);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 650ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.focus-card--green {
+  --focus-card-accent: #44985a;
+  --focus-card-foreground: var(--color-black);
+}
+
+.focus-card--yellow {
+  --focus-card-accent: #f4c755;
+  --focus-card-foreground: var(--color-black);
+}
+
+.focus-card:hover,
+.focus-card:has(.focus-service-trigger:focus-visible) {
+  --focus-logo-outer: var(--color-black);
+  --focus-logo-eye: var(--color-white);
+  --focus-logo-pupil: var(--color-black);
+  color: var(--focus-card-foreground);
+}
+
+.focus-card:hover::before,
+.focus-card:has(.focus-service-trigger:focus-visible)::before {
+  transform: scaleX(1);
+}
+
+.focus-service-trigger > span:first-child {
+  transition:
+    opacity 300ms ease,
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.focus-service-trigger:hover > span:first-child {
+  opacity: 0.7;
+  transform: translate3d(0.25rem, 0, 0);
+}
+
+@keyframes focus-service-note-reveal {
+  from {
+    filter: blur(0.2rem);
+    opacity: 0;
+    transform: translate3d(-0.35rem, 0, 0);
+  }
+
+  to {
+    filter: blur(0);
+    opacity: 0.7;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.focus-service-title-note {
+  animation: focus-service-note-reveal 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.focus-winky {
+  display: inline-grid;
+  width: 1.4em;
+  place-items: center start;
+  vertical-align: baseline;
+}
+
+.focus-winky-face {
+  grid-area: 1 / 1;
+  display: inline-block;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.focus-winky-face--wink {
+  animation: focus-winky-wink 3.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.focus-winky-face--smile {
+  animation: focus-winky-smile 3.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes focus-winky-wink {
+  0%,
+  38%,
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50%,
+  88% {
+    opacity: 0;
+    transform: translate3d(0, 0.3em, 0) rotate(12deg);
+  }
+}
+
+@keyframes focus-winky-smile {
+  0%,
+  38%,
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -0.3em, 0) rotate(-12deg);
+  }
+
+  50%,
+  88% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+.focus-service-plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  opacity: 1;
+  transform: translate3d(-50%, -50%, 0) rotate(0deg) scale(1);
+  transition:
+    opacity 260ms ease,
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.focus-service-plus::before,
+.focus-service-plus::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: currentColor;
+  border-radius: 999px;
+  content: "";
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.focus-service-plus::before {
+  width: 100%;
+  height: 2.5px;
+}
+
+.focus-service-plus::after {
+  width: 2.5px;
+  height: 100%;
+}
+
+.focus-service-flower {
+  opacity: 0;
+  transform: rotate(-35deg) scale(0.65);
+  transition:
+    opacity 240ms ease 60ms,
+    transform 440ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-eye-mark-outer,
+.brand-eye-mark-eye,
+.brand-eye-mark-pupil {
+  transition: fill 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.focus-service-trigger[aria-expanded="true"] .focus-service-plus {
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) rotate(90deg) scale(0.25);
+}
+
+.focus-service-trigger[aria-expanded="true"] .focus-service-flower {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.focus-service-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 300ms ease;
+}
+
+.focus-service-panel--open {
+  grid-template-rows: 1fr;
+  opacity: 1;
 }
 
 @keyframes brand-letter-rise {
@@ -173,11 +630,52 @@ html {
     animation: none;
   }
 
+  .hero-detail-motion,
+  .hero-detail-shape,
+  .contact-rainbow-text {
+    animation: none;
+  }
+
   .hero-talk-button,
   .hero-talk-arrow,
   .about-action-button,
-  .about-action-button::before {
+  .about-action-button::before,
+  .focus-card,
+  .focus-card::before,
+  .focus-service-trigger > span:first-child,
+  .focus-service-plus,
+  .focus-service-flower,
+  .focus-service-title-note,
+  .focus-winky-face,
+  .focus-service-panel {
     transition-duration: 0.01ms;
+  }
+
+  .hero-detail-fill,
+  .nav-color-link-accent,
+  .project-polaroid,
+  .project-polaroid-title,
+  .project-quick-peek {
+    transition-duration: 0.01ms;
+  }
+
+  .project-polaroid:hover,
+  .project-polaroid:focus-visible {
+    box-shadow: none;
+    transform: none;
+  }
+
+  .related-project-card {
+    animation: none;
+  }
+
+  .focus-service-title-note,
+  .focus-winky-face {
+    animation: none;
+  }
+
+  .focus-winky-face--smile {
+    display: none;
   }
 
   .brand-letter {
@@ -190,5 +688,4 @@ html {
     transition: none;
     transform: none !important;
   }
-
 }

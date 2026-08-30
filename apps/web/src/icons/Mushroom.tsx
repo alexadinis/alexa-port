@@ -16,7 +16,7 @@ const Mushroom = (props: SVGProps<SVGSVGElement>) => (
       strokeLinejoin="round"
     />
     <path
-      d="M104 136v43c0 20-8 29-16 37h80c-8-8-16-17-16-37v-43"
+      d="M104 136v48c0 24-12 36-24 44 14 8 30 12 48 12s34-4 48-12c-12-8-24-20-24-44v-48"
       stroke="currentColor"
       strokeWidth="16"
       strokeLinecap="round"

@@ -21,7 +21,7 @@ const ExperienceCard = ({ experience, className }: ExperienceCardProps) => {
     <div
       className={cn(
         "flex flex-col rounded-[24px] overflow-hidden h-full",
-        "shadow-[0_4px_24px_rgba(0,0,0,0.08)]",
+        "shadow-[0_4px_24px_rgba(16,16,16,0.08)]",
         "border border-black/5",
         className
       )}

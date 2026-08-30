@@ -4,23 +4,25 @@ import DetailMarquee from "../DetailMarquee/DetailMarquee";
 interface SectionLineMarqueesProps {
   icons: React.ReactNode[];
   className?: string;
+  lineColors?: [string, string];
 }
 
 const SectionLineMarquees = ({
   icons,
   className,
+  lineColors = ["bg-blue", "bg-green"],
 }: SectionLineMarqueesProps) => {
   return (
     <div className={cn(className, `relative z-10 flex flex-col `)}>
       <DetailMarquee
         Icon={icons[0]}
-        className={`absolute top-20 w-[200%] left-0 bg-[#3476ee]`}
+        className={`absolute top-20 left-0 w-[200%] ${lineColors[0]}`}
         isRotate={true}
         speed={90}
       />
       <DetailMarquee
         Icon={icons[1]}
-        className={`absolute bottom-0 w-[200%] left-0 bg-[#44985a]`}
+        className={`absolute bottom-0 left-0 w-[200%] ${lineColors[1]}`}
         isRotate={false}
         speed={10}
         direction="right"

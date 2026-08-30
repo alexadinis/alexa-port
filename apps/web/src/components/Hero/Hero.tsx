@@ -1,7 +1,7 @@
 import { Paytone_One } from "next/font/google";
 import Footer from "./Footer";
-import Detail from "../../icons/Detail";
 import Description from "./Description";
+import WalkingLogo from "../Navbar/WalkingLogo";
 
 interface HeroProps {
   title: string | React.ReactNode;
@@ -11,10 +11,10 @@ const paytoneOne = Paytone_One({ subsets: ["latin"], weight: ["400"] });
 
 const Hero = ({ title }: HeroProps) => {
   return (
-    <div className="flex flex-col items-center md:items-start bg-white p-8 md:p-32 rounded-[64px] relative md:mt-14">
-      <div className="flex flex-col gap-6 items-center md:items-start">
+    <div className="relative grid w-full max-w-[1400px] items-center gap-10 overflow-hidden rounded-[64px] bg-white p-8 text-black md:mt-14 md:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.85fr)] md:gap-8 md:p-16 lg:gap-12 lg:p-20 xl:p-24">
+      <div className="relative z-10 flex min-w-0 flex-col items-center gap-6 md:items-start">
         <h1
-          className={`${paytoneOne.className} text-black text-[48px] md:text-[86px] text-center md:text-left leading-none`}
+          className={`${paytoneOne.className} text-center text-[clamp(3rem,7vw,5.75rem)] leading-[0.94] tracking-[-0.035em] text-black md:text-left`}
         >
           {typeof title === "string" ? (
             <span dangerouslySetInnerHTML={{ __html: title }} />
@@ -25,7 +25,16 @@ const Hero = ({ title }: HeroProps) => {
         <Description />
         <Footer />
       </div>
-      <Detail className="absolute top-8 right-8 animate-spin-slow animate-pulse-scale hidden md:block" />
+      <div
+        className="relative z-0 mx-auto flex aspect-square w-[min(72vw,260px)] items-center justify-center md:mx-0 md:w-full md:max-w-[430px] md:justify-self-end"
+        aria-hidden="true"
+      >
+        <WalkingLogo
+          showName={false}
+          className="size-full items-center justify-center"
+          markClassName="size-full"
+        />
+      </div>
     </div>
   );
 };
