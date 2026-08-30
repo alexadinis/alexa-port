@@ -9,6 +9,7 @@ import {
   Heart,
   PaperPlaneTilt,
 } from "@phosphor-icons/react";
+import Image from "next/image";
 import { type CSSProperties, useState } from "react";
 
 export interface PostSlide {
@@ -86,9 +87,11 @@ function InstagramPost({
           className="size-9 overflow-hidden rounded-full bg-white ring-2 ring-offset-2 ring-offset-[#181818]"
           style={{ "--tw-ring-color": identity.ringColor } as CSSProperties}
         >
-          <img
+          <Image
             src={identity.profileImage}
             alt={`${identity.imageAltPrefix} profile logo`}
+            width={36}
+            height={36}
             className="size-full object-cover"
           />
         </div>
@@ -114,10 +117,12 @@ function InstagramPost({
               className={`relative size-full min-w-full shrink-0 bg-gradient-to-br ${item.colors ?? "from-white to-white"}`}
             >
               {item.image ? (
-                <img
+                <Image
                   src={item.image}
                   alt={`${identity.imageAltPrefix} carousel image ${index + 1}`}
-                  className="size-full object-cover"
+                  fill
+                  sizes="(min-width: 1024px) 22rem, 82vw"
+                  className="object-cover"
                 />
               ) : (
                 <div className="flex h-full flex-col justify-between p-7">
