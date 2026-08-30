@@ -4,6 +4,7 @@ import Image from "next/image";
 import type { Project } from "../../data/projects";
 import { useLanguage } from "../Language/LanguageProvider";
 import CrossDissolveVideo from "./CrossDissolveVideo";
+import CampaignVideoPlayer from "./CampaignVideoPlayer";
 import VideoReels, { type Reel } from "./VideoReels";
 import {
   InstagramPostsGallery,
@@ -299,20 +300,11 @@ export default function ProjectVisualStory({ project }: { project: Project }) {
   if (project.slug === "authentic-classical-pilates") {
     return (
       <>
-        <div className="relative aspect-video w-full overflow-hidden bg-black">
-          <video
-            className="size-full object-cover"
-            aria-label="Authentic Classical Pilates campaign film"
-            controls
-            playsInline
-            preload="metadata"
-          >
-            <source
-              src="/authentic-classical-pilates/campaign-film.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
+        <CampaignVideoPlayer
+          src="/authentic-classical-pilates/campaign-film.mp4"
+          poster="/authentic-classical-pilates/campaign-poster.png"
+          title="Authentic Classical Pilates campaign film"
+        />
 
         <section aria-label={language === "pt" ? "Sobre a campanha de vídeo" : "About the video campaign"} className="py-16 md:py-24">
           <div className="max-w-[46rem] md:ml-auto md:w-[65%]">

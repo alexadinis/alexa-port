@@ -265,6 +265,16 @@ html {
   transform: rotate(0) scale(1);
 }
 
+.campaign-video-player:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  aspect-ratio: auto;
+}
+
+.campaign-video-player:fullscreen video {
+  object-fit: contain;
+}
+
 .project-service-chip {
   border: 1px solid currentColor;
   border-radius: 9999px;
