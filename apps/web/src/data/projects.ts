@@ -206,7 +206,7 @@ export const PROJECTS: Project[] = [
     year: "2022/2026",
     description:
       "L&R Ópticas has eight stores across the Porto district, dedicated to helping people see the world with clearer, healthier vision. My mission was to bring that same clarity to their social media.\n\nI handled the strategy, content creation, and copywriting across their channels, from product content for eyewear brands like Prada, Ray-Ban, Versace, Dolce & Gabbana, and Persol, to educational posts sharing tips and debunking common myths about eye health.\n\nThe result: a social presence that feels as trustworthy as it is easy to follow, combining brand credibility with genuine, everyday usefulness.",
-    reflection: "Turning eye care into everyday conversation.",
+    reflection: "Sharp vision. Sharp strategy.",
     image: "/l-r.webp",
     thumbnail: "/lr-opticas/home-showcase.jpg",
     relatedThumbnail: "/lr-opticas/related-work.jpg",
@@ -226,7 +226,8 @@ export const PROJECTS: Project[] = [
     title: "PsicoMorfose - Psicologia",
     summary:
       "A warmer language for the mind, on Psicomorfose's social media. 🍂",
-    intro: "Bringing therapy talk out of the office and into the digital world.",
+    intro:
+      "Bringing therapy talk out of the office and into the digital world.",
     client: "Psicomorfose",
     creditClient: "psicomorfose.pt",
     clientUrl: "https://www.instagram.com/psicomorfose.pt/",
@@ -236,7 +237,7 @@ export const PROJECTS: Project[] = [
     description:
       "Some things need to be felt before they're explained. Psicomorfose exists for that in-between space.\n\nIt's a clinical psychology practice built around one idea: change doesn't come from outside in, it comes from inside out. My role was to translate that into a brand and a social media presence that actually feels like it.\n\nI built the identity from the ground up, a palette that moves from safety to insight to growth, a brain-inspired pattern running quietly through it all, and a content strategy that speaks to real, specific struggles: anxiety, burnout, the weight of not knowing what you want, relationships that ask too much.\n\nThe result: a brand that looks calm, feels human, and speaks directly to the people who need it most.",
     brandingText:
-      "Every color here means something. Sand for safety. Mustard for the moment things click. Rust for the deeper work that comes after.\n\nI built Psicomorfose's identity around this emotional arc, from grounding, to awareness, to real change, tied together by a subtle brain-shaped pattern that never says \"therapy\" out loud, but you feel it anyway.\n\nSteady where it needs to be. Alive where it counts.",
+      'Every color here means something. Sand for safety. Mustard for the moment things click. Rust for the deeper work that comes after.\n\nI built Psicomorfose\'s identity around this emotional arc, from grounding, to awareness, to real change, tied together by a subtle brain-shaped pattern that never says "therapy" out loud, but you feel it anyway.\n\nSteady where it needs to be. Alive where it counts.',
     socialMediaText:
       "People don't scroll looking for therapy… they scroll looking to feel understood.\n\nThat's where the content strategy started: naming what's hard to say out loud, anxiety, exhaustion, being stuck on autopilot, before ever mentioning a session. Carousels that explain, Reels that hit close, Stories that ask the questions people usually keep to themselves. Not selling psychology. Making space for it.",
     reflection: "From reflection to transformation, from the inside out.",
@@ -360,8 +361,7 @@ export const PROJECTS: Project[] = [
     ],
     description:
       "Cockburn's isn't just tradition, it's proof that Port wine can still feel exciting to a new generation.\n\nI managed the brand's day-to-day presence across Instagram, Facebook, and X, giving Cockburn's a voice that felt young, fresh, and a little irreverent, without losing the heritage behind the name. The profile itself tells that story: built almost entirely on photography, from professional shoots to real moments captured by visitors passing through the cellars, over graphic design. It's less about polished visuals, more about real people, real experiences, and the feeling of actually being there.\n\nThat approach kept the brand close to its community, and it showed: steady, meaningful growth across all platforms, proof that a centuries-old name can still feel personal.",
-    reflection:
-      "Some things get better with time... just like this feed.",
+    reflection: "Some things get better with time... just like this feed.",
     image: "/cockburns/home-showcase.webp",
     thumbnail: "/cockburns/home-showcase.webp",
     relatedThumbnail: "/cockburns/related-work.webp",

@@ -6,10 +6,7 @@ import { useLanguage } from "../Language/LanguageProvider";
 import CrossDissolveVideo from "./CrossDissolveVideo";
 import CampaignVideoPlayer from "./CampaignVideoPlayer";
 import VideoReels, { type Reel } from "./VideoReels";
-import {
-  InstagramPostsGallery,
-  type Post,
-} from "./InstagramPosts";
+import { InstagramPostsGallery, type Post } from "./InstagramPosts";
 
 const FEEL_BETTER_POSTS: Post[] = [
   {
@@ -201,7 +198,6 @@ export default function ProjectVisualStory({ project }: { project: Project }) {
             className="object-contain"
           />
         </div>
-
       </>
     );
   }
@@ -306,10 +302,19 @@ export default function ProjectVisualStory({ project }: { project: Project }) {
           title="Authentic Classical Pilates campaign film"
         />
 
-        <section aria-label={language === "pt" ? "Sobre a campanha de vídeo" : "About the video campaign"} className="py-16 md:py-24">
+        <section
+          aria-label={
+            language === "pt"
+              ? "Sobre a campanha de vídeo"
+              : "About the video campaign"
+          }
+          className="py-16 md:py-24"
+        >
           <div className="max-w-[46rem] md:ml-auto md:w-[65%]">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-pink">
-              {language === "pt" ? "Sobre a campanha de vídeo" : "About the video campaign"}
+              {language === "pt"
+                ? "Sobre a campanha de vídeo"
+                : "About the video campaign"}
             </p>
             <p className="whitespace-pre-line text-pretty text-[clamp(1.05rem,1.5vw,1.4rem)] font-normal leading-[1.55] tracking-[-0.015em]">
               {project.videoCampaignText}
@@ -493,7 +498,10 @@ export default function ProjectVisualStory({ project }: { project: Project }) {
           />
         </div>
 
-        <section aria-label="Psicomorfose final reflection" className="py-16 md:py-24">
+        <section
+          aria-label="Psicomorfose final reflection"
+          className="py-16 md:py-24"
+        >
           <p className="max-w-[46rem] text-pretty text-[clamp(1.05rem,1.5vw,1.4rem)] leading-[1.55] tracking-[-0.015em] md:ml-auto md:w-[65%]">
             {project.reflection}
           </p>
@@ -581,6 +589,14 @@ export default function ProjectVisualStory({ project }: { project: Project }) {
                 />
               </div>
             ))}
+          </div>
+        </section>
+
+        <section aria-label="Project reflection" className="pb-16 md:pb-24">
+          <div className="max-w-[46rem] md:ml-auto md:w-[65%]">
+            <p className="text-pretty text-[clamp(1.05rem,1.5vw,1.4rem)] leading-[1.55] tracking-[-0.015em]">
+              {project.reflection}
+            </p>
           </div>
         </section>
 

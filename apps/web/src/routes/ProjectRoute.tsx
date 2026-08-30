@@ -73,9 +73,11 @@ export default function ProjectRoute({
   const project = localizeProject(sourceProject, language);
 
   const currentIndex = PROJECTS.findIndex((item) => item.slug === project.slug);
-  const feedProjects = Array.from(
-    { length: PROJECTS.length },
-    (_, index) => localizeProject(PROJECTS[(currentIndex + index) % PROJECTS.length]!, language),
+  const feedProjects = Array.from({ length: PROJECTS.length }, (_, index) =>
+    localizeProject(
+      PROJECTS[(currentIndex + index) % PROJECTS.length]!,
+      language,
+    ),
   );
 
   return (
@@ -86,7 +88,9 @@ export default function ProjectRoute({
         const projectIndex = PROJECTS.findIndex(
           (item) => item.slug === project.slug,
         );
-        const relatedProjects = getRelatedProjects(projectIndex).map((item) => localizeProject(item, language));
+        const relatedProjects = getRelatedProjects(projectIndex).map((item) =>
+          localizeProject(item, language),
+        );
         const separator =
           FEED_SEPARATORS[
             (feedIndex + FEED_SEPARATORS.length - 1) % FEED_SEPARATORS.length
@@ -152,7 +156,8 @@ export default function ProjectRoute({
                   </dl>
                   {project.developedAt && (
                     <p className="-mt-5 text-right text-xs text-white/50">
-                      {project.developedAt === "Freelance project"
+                      {project.developedAt === "Freelance project" ||
+                      project.developedAt === "Projeto freelance"
                         ? project.developedAt
                         : `${language === "pt" ? "Desenvolvido na" : "Developed in"} ${project.developedAt}`}
                     </p>
@@ -212,12 +217,16 @@ export default function ProjectRoute({
               </div>
 
               <section
-                aria-label={language === "pt" ? "Sobre o projeto" : "About the project"}
+                aria-label={
+                  language === "pt" ? "Sobre o projeto" : "About the project"
+                }
                 className="py-16 md:py-24"
               >
                 <div className="max-w-[46rem] md:ml-auto md:w-[65%]">
                   <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-pink">
-                    {language === "pt" ? "Sobre o projeto" : "About the project"}
+                    {language === "pt"
+                      ? "Sobre o projeto"
+                      : "About the project"}
                   </p>
                   <p className="whitespace-pre-line text-pretty text-[clamp(1.05rem,1.5vw,1.4rem)] font-normal leading-[1.55] tracking-[-0.015em]">
                     {(project.description ?? project.summary)
@@ -267,11 +276,17 @@ export default function ProjectRoute({
                   </div>
                   <div className="py-16 md:py-24">
                     <p className="max-w-[46rem] text-pretty text-[clamp(1.05rem,1.5vw,1.4rem)] font-normal leading-[1.55] tracking-[-0.015em] md:ml-auto md:w-[65%]">
-                      {language === "pt" ? "Para além do conteúdo estático, " : "Beyond static content, "}
+                      {language === "pt"
+                        ? "Para além do conteúdo estático, "
+                        : "Beyond static content, "}
                       <strong className="font-bold">
-                        {language === "pt" ? "o vídeo tornou-se uma parte essencial da estratégia" : "video became a key part of the strategy"}
+                        {language === "pt"
+                          ? "o vídeo tornou-se uma parte essencial da estratégia"
+                          : "video became a key part of the strategy"}
                       </strong>
-                      {language === "pt" ? ". Pensado para tornar a sustentabilidade e a inovação fáceis de ver e de recordar." : ". Designed to make sustainability and inovation easy to watch and easy to remember."}
+                      {language === "pt"
+                        ? ". Pensado para tornar a sustentabilidade e a inovação fáceis de ver e de recordar."
+                        : ". Designed to make sustainability and inovation easy to watch and easy to remember."}
                     </p>
                   </div>
                   <VideoReels />
@@ -281,7 +296,9 @@ export default function ProjectRoute({
                   >
                     <div className="max-w-[46rem] md:ml-auto md:w-[65%]">
                       <p className="text-pretty text-[clamp(1.05rem,1.5vw,1.4rem)] font-normal leading-[1.55] tracking-[-0.015em]">
-                        {language === "pt" ? "A energia não é o tema mais entusiasmante do feed, por isso o meu trabalho foi mudar isso." : "Energy isn't the most exciting topic to scroll past, so my job was to change that."}
+                        {language === "pt"
+                          ? "A energia não é o tema mais entusiasmante do feed, por isso o meu trabalho foi mudar isso."
+                          : "Energy isn't the most exciting topic to scroll past, so my job was to change that."}
                       </p>
                     </div>
                   </section>
