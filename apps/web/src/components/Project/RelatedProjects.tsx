@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "../../data/projects";
 import { useLanguage } from "../Language/LanguageProvider";
+import { localizeHref } from "../../lib/i18n";
 
 interface RelatedProjectsProps {
   projects: Project[];
@@ -26,7 +27,7 @@ export default function RelatedProjects({ projects }: RelatedProjectsProps) {
           </h2>
         </div>
         <Link
-          href="/#work"
+          href={localizeHref("/#work", language)}
           className="text-sm text-white/60 underline decoration-white/25 underline-offset-4 transition-colors hover:text-blue hover:decoration-blue focus-visible:text-blue focus-visible:outline-none"
         >
           {language === "pt" ? "Ver todos os projetos" : "View all work"}
@@ -37,7 +38,7 @@ export default function RelatedProjects({ projects }: RelatedProjectsProps) {
         {projects.slice(0, 3).map((project, index) => (
           <Link
             key={project.slug}
-            href={`/projects/${project.slug}`}
+            href={localizeHref(`/projects/${project.slug}`, language)}
             className="related-project-card group min-w-0 focus-visible:outline-none"
             style={{ animationDelay: `${index * 90}ms` }}
           >
