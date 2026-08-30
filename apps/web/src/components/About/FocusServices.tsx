@@ -229,7 +229,7 @@ const FocusServices = () => {
                       className={`focus-service-panel ${isOpen ? "focus-service-panel--open" : ""}`}
                     >
                       <div className="overflow-hidden">
-                        <div className="max-w-[62ch] space-y-3 pb-6 pr-6 text-[0.95rem] leading-[1.65] opacity-75 sm:pr-10">
+                        <div className="max-w-none space-y-3 pb-6 pr-14 text-[0.95rem] leading-[1.65] opacity-75 sm:pr-16">
                           {service.description.map((paragraph, index) => (
                             <p key={paragraph}>
                               {translate(paragraph)}
