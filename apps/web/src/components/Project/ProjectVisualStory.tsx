@@ -83,17 +83,17 @@ const PSICOMORFOSE_POSTS: Post[] = [
 
 const PSICOMORFOSE_REELS: Reel[] = [
   {
-    src: "/psicomorfose/social/reel-pensamento.m4v",
+    src: "/psicomorfose/social/reel-pensamento.mp4",
     caption:
       "⚠️ Produtividade não é identidade!\n\n👉 Para muitos de nós, o corpo descansa mas a mente vive em guerra constante.\nIsto chama-se crença limitante, a ideia de que o nosso lugar no mundo depende de quanto fazes, produzes ou és útil.\nO descanso não precisa de ser ganho, nem é uma recompensa. SIMPLESMENTE O MERECES!\n\nSe te identificas, guarda este vídeo para quando a culpa aparecer. 💛",
   },
   {
-    src: "/psicomorfose/social/reel-humanos.m4v",
+    src: "/psicomorfose/social/reel-humanos.mp4",
     caption:
       "O psicólogo não é para malucos... é para humanos. 💛\nCuidar da tua mente é o ato mais bondoso e protetor que podes fazer por ti.",
   },
   {
-    src: "/psicomorfose/social/reel-terapia.m4v",
+    src: "/psicomorfose/social/reel-terapia.mp4",
     caption:
       "A terapia raramente dá sinais óbvios, simplesmente percebes um dia que já mudaste ✨",
   },
