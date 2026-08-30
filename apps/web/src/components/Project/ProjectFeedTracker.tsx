@@ -1,8 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
+import { localizeHref, type Language } from "../../lib/i18n";
 
-export default function ProjectFeedTracker() {
+export default function ProjectFeedTracker({
+  language,
+}: {
+  language: Language;
+}) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -13,7 +18,11 @@ export default function ProjectFeedTracker() {
           .projectSlug;
 
         if (!slug || window.location.pathname.endsWith(`/${slug}`)) return;
-        window.history.replaceState(null, "", `/projects/${slug}`);
+        window.history.replaceState(
+          null,
+          "",
+          localizeHref(`/projects/${slug}`, language),
+        );
       },
       { rootMargin: "-18% 0px -62%", threshold: [0, 0.1, 0.25] },
     );
@@ -41,7 +50,7 @@ export default function ProjectFeedTracker() {
       mutationObserver.disconnect();
       observer.disconnect();
     };
-  }, []);
+  }, [language]);
 
   return null;
 }
