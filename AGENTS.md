@@ -13,3 +13,22 @@ These instructions apply to every automated agent working anywhere in this repos
 - Never change, add, rename, or remove Git remotes without Alexandra's explicit instruction in the current conversation.
 
 Agents may inspect repository state, edit files, run local checks, and prepare local commits when those actions are within the user's request. By default, all completed work must remain local and be handed back with a clear note that it has not been pushed.
+
+## Local verification
+
+- Never skip a verification hook. Do not pass `--no-verify` or `-n` to
+  `git commit`, do not set `HUSKY=0`, and do not disable, edit, or delete the
+  hooks in `.husky/` to get a command to pass.
+- A failing hook is a real failure. Fix what it reports, then run the command
+  again unchanged. Skipping the check does not remove the failure, it moves it
+  to CI or to production.
+- If the check itself is wrong, fix the check and say so. Never route around it.
+- The same applies to the checks in `.github/workflows/`: never disable a job,
+  add `continue-on-error`, or narrow what it runs so a red build turns green.
+- Do not add `ignoreBuildErrors` or `ignoreDuringBuilds` to `next.config.ts`.
+  Both hide real failures from the deploy.
+
+A `PreToolUse` hook in `.claude/settings.json` blocks the bypass flags for
+agents running in Claude Code. It is a backstop for one tool, not the rule —
+the rule is the paragraph above, and it binds every agent.
+
