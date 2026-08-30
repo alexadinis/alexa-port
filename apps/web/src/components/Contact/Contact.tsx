@@ -44,10 +44,10 @@ const Contact = () => {
                 {language === "pt" ? "Fala comigo." : "Get in touch."}
               </h2>
               <a
-                href="mailto:alexandra.dn.barbosa@gmail.com"
+                href="mailto:hello@alexandrabarbosa.pt"
                 className="max-w-max text-[clamp(1rem,1.8vw,1.75rem)] font-semibold leading-tight tracking-[-0.02em] [overflow-wrap:anywhere] decoration-2 underline-offset-[0.16em] hover:underline"
               >
-                alexandra.dn.barbosa@gmail.com
+                hello@alexandrabarbosa.pt
               </a>
             </div>
             <ContactFormTrigger />

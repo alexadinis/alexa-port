@@ -11,7 +11,7 @@ export default function Footer() {
       size="lg"
       className="hero-talk-button group/button mt-3 flex w-max max-w-none items-center gap-2 overflow-hidden whitespace-nowrap border-red text-red hover:bg-red hover:text-white"
       onClick={() => {
-        window.location.href = "mailto:alexandra.dn.barbosa@gmail.com";
+        window.location.href = "mailto:hello@alexandrabarbosa.pt";
       }}
     >
       {language === "pt" ? "vamos falar?" : "let's talk"}

@@ -22,7 +22,7 @@ const ContactFormTrigger = () => {
     );
 
     dialogRef.current?.close();
-    window.location.href = `mailto:alexandra.dn.barbosa@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hello@alexandrabarbosa.pt?subject=${subject}&body=${body}`;
   };
 
   return (
