@@ -1,0 +1,3 @@
+# Same gates CI runs, so a red build is caught before it reaches a PR.
+# Bypass with `git push --no-verify` when you need to share work in progress.
+pnpm lint && pnpm check-types
