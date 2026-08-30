@@ -33,6 +33,11 @@ export interface Project {
   focus: string;
   services: string[];
   accent: string;
+  /**
+   * When this case study's copy last changed, for sitemap `lastmod`. Bump it
+   * when the copy changes, not when the file happens to be touched.
+   */
+  updatedAt: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -65,6 +70,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#f4c755",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "kfc-portugal",
@@ -101,6 +107,7 @@ export const PROJECTS: Project[] = [
       "Content Ideation",
     ],
     accent: "#e84e3c",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "padaria-alianca",
@@ -133,6 +140,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#3476ee",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "munchie",
@@ -167,6 +175,7 @@ export const PROJECTS: Project[] = [
       "Photography",
     ],
     accent: "#44985a",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "feel-better",
@@ -193,6 +202,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#f2cddd",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "lr-opticas",
@@ -220,6 +230,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#e84e3c",
+    updatedAt: "2026-08-30T15:29:14+01:00",
   },
   {
     slug: "psicomorfose-psicologia",
@@ -259,6 +270,7 @@ export const PROJECTS: Project[] = [
       "Paid Media",
     ],
     accent: "#f4c755",
+    updatedAt: "2026-08-30T15:29:14+01:00",
   },
   {
     slug: "authentic-classical-pilates",
@@ -331,6 +343,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#3476ee",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "cockburns",
@@ -382,6 +395,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#e84e3c",
+    updatedAt: "2026-08-30T15:29:14+01:00",
   },
 ];
 
