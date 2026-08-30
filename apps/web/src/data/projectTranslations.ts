@@ -39,11 +39,10 @@ const pt: Record<string, Partial<Project>> = {
   },
   "padaria-alianca": {
     summary: "Acabado de sair do forno, diretamente para o feed. 🥐",
-    intro:
-      "Há coisas que sabem melhor quando são feitas em casa. Como tudo aqui.",
+    intro: "Pão fresco todos os dias. Conteúdo também.",
     description:
-      "A Padaria Aliança nasceu de uma ideia: levar os sabores mais tradicionais de Portugal a todos os que entram pela porta. É um lugar onde o tempo abranda, feito de pão fresco, pastelaria verdadeira e do prazer simples de comer bem.\n\nFiquei responsável pela estratégia de conteúdo, fotografia e vídeo, captando aquilo que distingue a Padaria Aliança: tudo é feito fresco, todos os dias. As imagens falavam por si, com planos próximos do pão quente e o vapor ainda a subir, prova de que nada aqui fica à espera.",
-    reflection: "Aqui nada fica à espera. Porque haverias tu de ficar?",
+      "A Padaria Aliança é construída à volta de uma ideia: trazer os sabores mais tradicionais de Portugal a todos os que entram pela porta. É um lugar onde o tempo abranda, com cheiro a pão acabado de sair do forno, pastelaria verdadeira e o simples prazer de comer bem.\n\nFui responsável pela estratégia de conteúdo, fotografia e vídeo, captando o que torna a Padaria Aliança diferente: tudo é feito fresco, todos os dias. Os visuais falaram por si, close-ups de pão quentinho, vapor ainda a subir e sabores tradicionais portugueses.",
+    reflection: "Sabor de sempre, com uma nova forma de se mostrar.",
   },
   munchie: {
     summary:
