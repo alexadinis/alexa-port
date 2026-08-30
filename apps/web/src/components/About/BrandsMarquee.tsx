@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import LogoMark from "../../icons/LogoMark";
+import ContactBurst from "../../icons/ContactBurst";
 import { useLanguage } from "../Language/LanguageProvider";
 
 const paytoneOne = Paytone_One({ subsets: ["latin"], weight: ["400"] });
@@ -94,7 +94,10 @@ const BrandRun = ({ copyIndex }: { copyIndex: number }) => (
             className="brand-letter flex items-center"
             style={{ animationDelay: `${brandIndex * 65 + 240}ms` }}
           >
-            <LogoMark className="h-4 w-4 shrink-0 text-white md:h-5 md:w-5" />
+            <ContactBurst
+              fill="currentColor"
+              className="h-4 w-4 shrink-0 text-white md:h-5 md:w-5"
+            />
           </span>
         </span>
       </span>
