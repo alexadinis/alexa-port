@@ -1,58 +1,105 @@
-# Turborepo Tailwind CSS starter
+# Alexandra Barbosa — Portfolio
 
-This Turborepo starter is maintained by the Turborepo core team.
+Personal portfolio of Alexandra Barbosa, a social media manager, copywriter and content creator based in Portugal.
 
-## Using this example
+The website brings together selected work across social media strategy, copywriting, community management, paid media and content creation. Each case study combines project context, credits and visual storytelling through photography, carousels and video.
 
-Run the following command:
+## Highlights
 
-```sh
-npx create-turbo@latest -e with-tailwind
+- Bilingual experience in English and Portuguese
+- Responsive project gallery and detailed case-study pages
+- Animated brand identity and interactive navigation
+- Image carousels, social posts and video reels
+- Context-aware navigation across light and dark sections
+- Accessible keyboard focus states and reduced-motion support
+- Static generation for project pages
+
+## Featured work
+
+The portfolio currently includes work for:
+
+- KFC Portugal
+- Endesa Portugal
+- Cockburn's
+- Authentic Classical Pilates
+- Munchie
+- L&R Ópticas
+- Padaria Aliança
+- Feel Better
+- Psicomorfose
+
+## Tech stack
+
+- [Next.js 15](https://nextjs.org/) with the App Router
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [Turborepo](https://turbo.build/repo)
+- [Embla Carousel](https://www.embla-carousel.com/)
+- [Phosphor Icons](https://phosphoricons.com/)
+- [pnpm](https://pnpm.io/)
+
+## Project structure
+
+```text
+.
+├── apps/
+│   └── web/
+│       ├── app/              # Routes, layouts and global styles
+│       ├── public/           # Portfolio imagery, video and documents
+│       └── src/
+│           ├── components/   # Page sections and interactive UI
+│           ├── data/         # Projects and translations
+│           ├── icons/        # Custom SVG components
+│           └── lib/          # Shared utilities
+├── packages/                 # Shared configuration packages
+├── pnpm-workspace.yaml
+└── turbo.json
 ```
 
-## What's inside?
+## Running locally
 
-This Turborepo includes the following packages/apps:
+### Requirements
 
-### Apps and Packages
+- Node.js 18 or newer
+- pnpm 8
 
-- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `ui`: a stub React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Setup
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Building packages/ui
-
-This example is set up to produce compiled styles for `ui` components into the `dist` directory. The component `.tsx` files are consumed by the Next.js apps directly using `transpilePackages` in `next.config.js`. This was chosen for several reasons:
-
-- Make sharing one `tailwind.config.js` to apps and packages as easy as possible.
-- Make package compilation simple by only depending on the Next.js Compiler and `tailwindcss`.
-- Ensure Tailwind classes do not overwrite each other. The `ui` package uses a `ui-` prefix for it's classes.
-- Maintain clear package export boundaries.
-
-Another option is to consume `packages/ui` directly from source without building. If using this option, you will need to update the `tailwind.config.js` in your apps to be aware of your package locations, so it can find all usages of the `tailwindcss` class names for CSS compilation.
-
-For example, in [tailwind.config.js](packages/tailwind-config/tailwind.config.js):
-
-```js
-  content: [
-    // app content
-    `src/**/*.{js,ts,jsx,tsx}`,
-    // include packages if not transpiling
-    "../../packages/ui/*.{js,ts,jsx,tsx}",
-  ],
+```bash
+git clone https://github.com/alexadinis/alexa-port.git
+cd alexa-port
+pnpm install
+pnpm dev
 ```
 
-If you choose this strategy, you can remove the `tailwindcss` and `autoprefixer` dependencies from the `ui` package.
+Open [http://localhost:3000](http://localhost:3000).
 
-### Utilities
+## Available commands
 
-This Turborepo has some additional tools already setup for you:
+Run these commands from the repository root:
 
-- [Tailwind CSS](https://tailwindcss.com/) for styles
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+| Command | Purpose |
+| --- | --- |
+| `pnpm dev` | Start the development environment |
+| `pnpm build` | Create a production build |
+| `pnpm check-types` | Run TypeScript checks |
+| `pnpm lint` | Run linting across the workspace |
+| `pnpm format` | Format TypeScript and Markdown files |
+
+To run only the portfolio application:
+
+```bash
+pnpm --filter web dev
+pnpm --filter web build
+```
+
+## Deployment
+
+The site can be deployed as a Next.js application on Vercel or another Node.js-compatible platform. For a monorepo deployment, use the repository root and the standard `pnpm build` command, or configure `apps/web` as the application workspace.
+
+## Content and credits
+
+Design, content and development by Alexandra Barbosa.
+
+Brand names, campaign materials, photography and other portfolio assets remain the property of their respective owners and are presented here solely as examples of professional work. They are not licensed for reuse.
