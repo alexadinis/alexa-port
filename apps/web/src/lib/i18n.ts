@@ -40,6 +40,29 @@ export const localizeHref = (href: string, language: Language) => {
   return `${prefix}/${[segment, ...rest].join("/")}`;
 };
 
+/**
+ * The inverse of `localizeHref`: recover the internal form from a real URL path
+ * in `language`. Needed wherever a rendered pathname has to be re-localized,
+ * because the segments no longer match across languages.
+ */
+export const internalizeHref = (pathname: string, language: Language) => {
+  if (!pathname.startsWith("/")) return pathname;
+
+  const unprefixed =
+    language === DEFAULT_LANGUAGE
+      ? pathname
+      : pathname.replace(new RegExp(`^/${language}(?=/|$)`), "") || "/";
+  if (unprefixed === "/") return "/";
+
+  const [head = "", ...rest] = unprefixed.slice(1).split("/");
+  const internal =
+    Object.keys(LOCALIZED_SEGMENTS).find(
+      (key) => LOCALIZED_SEGMENTS[key]?.[language] === head,
+    ) ?? head;
+
+  return `/${[internal, ...rest].join("/")}`;
+};
+
 /** The same page in the other language, for the language toggle. */
 export const alternateLanguage = (language: Language): Language =>
   language === "pt" ? "en" : "pt";
