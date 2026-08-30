@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ArrowLeft,
   Atom,
@@ -9,6 +11,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { useEffect, useState } from "react";
 import InstagramPosts from "../components/Project/InstagramPosts";
 import ProjectBannerVideo from "../components/Project/ProjectBannerVideo";
 import ProjectCredits from "../components/Project/ProjectCredits";
@@ -61,6 +64,8 @@ const FEED_SEPARATORS = [
   },
 ];
 
+const NEXT_PROJECT_LOAD_THRESHOLD = 0.7;
+
 export default function ProjectRoute({
   language,
   slug,
@@ -80,12 +85,56 @@ export default function ProjectRoute({
       language,
     ),
   );
+  const [visibleProjectCount, setVisibleProjectCount] = useState(1);
+
+  useEffect(() => {
+    if (visibleProjectCount >= feedProjects.length) return;
+
+    let hasQueuedNextProject = false;
+    let frame: number | null = null;
+
+    const loadNextProjectAtThreshold = () => {
+      frame = null;
+      if (hasQueuedNextProject) return;
+
+      const scrollableHeight = Math.max(
+        document.documentElement.scrollHeight - window.innerHeight,
+        1,
+      );
+      const scrollProgress = window.scrollY / scrollableHeight;
+
+      if (scrollProgress < NEXT_PROJECT_LOAD_THRESHOLD) return;
+
+      hasQueuedNextProject = true;
+      setVisibleProjectCount((count) =>
+        Math.min(count + 1, feedProjects.length),
+      );
+    };
+
+    const scheduleThresholdCheck = () => {
+      if (frame === null) {
+        frame = window.requestAnimationFrame(loadNextProjectAtThreshold);
+      }
+    };
+
+    window.addEventListener("scroll", scheduleThresholdCheck, {
+      passive: true,
+    });
+    window.addEventListener("resize", scheduleThresholdCheck);
+    if (visibleProjectCount === 1) scheduleThresholdCheck();
+
+    return () => {
+      window.removeEventListener("scroll", scheduleThresholdCheck);
+      window.removeEventListener("resize", scheduleThresholdCheck);
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
+  }, [feedProjects.length, visibleProjectCount]);
 
   return (
     <main className="min-h-screen bg-black text-white">
       <ProjectScrollProgress />
       <ProjectFeedTracker />
-      {feedProjects.map((project, feedIndex) => {
+      {feedProjects.slice(0, visibleProjectCount).map((project, feedIndex) => {
         const projectIndex = PROJECTS.findIndex(
           (item) => item.slug === project.slug,
         );
