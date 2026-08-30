@@ -59,6 +59,14 @@ export default async function Page() {
       <Work />
 
       <div className="relative -mb-12 -mt-12 z-10">
+        {/* The 48px negative-margin gap between sections paints the body
+            background (black). Above a light section that puts the colour
+            change at the band's top edge instead of its middle, so extend
+            Work's light background down to where Contact's black starts. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-24 bg-white"
+        />
         <SectionLineMarquees
           lineColors={["bg-red", "bg-yellow"]}
           icons={[

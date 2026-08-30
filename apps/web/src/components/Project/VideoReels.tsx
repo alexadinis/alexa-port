@@ -10,6 +10,7 @@ import {
   SpeakerHigh,
   SpeakerSlash,
 } from "@phosphor-icons/react";
+import Image from "next/image";
 import { type CSSProperties, useEffect, useRef, useState } from "react";
 
 export interface Reel {
@@ -96,7 +97,13 @@ function VideoReel({ reel, index, isActive, identity, onPlay, onPause, onEnded }
           className="size-9 overflow-hidden rounded-full bg-white ring-2 ring-offset-2 ring-offset-[#181818]"
           style={{ "--tw-ring-color": identity.ringColor } as CSSProperties}
         >
-          <img src={identity.profileImage} alt={`${identity.imageAltPrefix} profile logo`} className="size-full object-cover" />
+          <Image
+            src={identity.profileImage}
+            alt={`${identity.imageAltPrefix} profile logo`}
+            width={36}
+            height={36}
+            className="size-full object-cover"
+          />
         </div>
         <div className="min-w-0 flex-1 leading-tight">
           <p className="truncate text-xs font-semibold">{identity.accountName}</p>

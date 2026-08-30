@@ -2,6 +2,7 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -37,11 +38,14 @@ export function LanguageProvider({
     document.cookie = `${LANGUAGE_STORAGE_KEY}=${language}; path=/; max-age=31536000; samesite=lax`;
   }, [language]);
 
-  const setLanguage = (nextLanguage: Language) => {
-    setLanguageState(nextLanguage);
-    document.cookie = `${LANGUAGE_STORAGE_KEY}=${nextLanguage}; path=/; max-age=31536000; samesite=lax`;
-    router.refresh();
-  };
+  const setLanguage = useCallback(
+    (nextLanguage: Language) => {
+      setLanguageState(nextLanguage);
+      document.cookie = `${LANGUAGE_STORAGE_KEY}=${nextLanguage}; path=/; max-age=31536000; samesite=lax`;
+      router.refresh();
+    },
+    [router],
+  );
 
   const value = useMemo(
     () => ({
@@ -49,7 +53,7 @@ export function LanguageProvider({
       setLanguage,
       toggleLanguage: () => setLanguage(language === "pt" ? "en" : "pt"),
     }),
-    [language, router],
+    [language, setLanguage],
   );
 
   return (
