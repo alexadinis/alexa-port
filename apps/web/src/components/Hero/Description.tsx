@@ -21,6 +21,7 @@ const Description = () => {
           ajudar{" "}
           <TypeAnimation
             sequence={["marcas", 2500, "empresas", 2500, "sonhos", 2500]}
+            preRenderFirstString
             wrapper="span"
             speed={20}
             style={{ display: "inline-block", color: "#44985a" }}
@@ -53,6 +54,7 @@ const Description = () => {
             "dreams",
             2500,
           ]}
+          preRenderFirstString
           wrapper="span"
           speed={20}
           style={{ display: "inline-block", color: "#44985a" }}
