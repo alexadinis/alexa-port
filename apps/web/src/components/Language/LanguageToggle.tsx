@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useLanguage } from "./LanguageProvider";
 import {
   alternateLanguage,
-  internalizeHref,
+  delocalizePathname,
   localizeHref,
 } from "../../lib/i18n";
 
@@ -15,9 +15,7 @@ export default function LanguageToggle() {
   const isPortuguese = language === "pt";
   const target = alternateLanguage(language);
 
-  // Segments differ per language, so recover the internal path before
-  // localizing it, or the toggle lands on a URL that does not exist.
-  const basePath = internalizeHref(pathname, language);
+  const basePath = delocalizePathname(pathname, language);
 
   return (
     <Link

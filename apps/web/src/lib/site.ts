@@ -1,5 +1,6 @@
 import { DEFAULT_LANGUAGE, LANGUAGES, localizeHref, type Language } from "./i18n";
 
+/** Official public origin used by canonical URLs, sitemap and structured data. */
 export const PRODUCTION_URL = "https://www.alexandrabarbosa.pt";
 
 /**
@@ -9,8 +10,8 @@ export const PRODUCTION_URL = "https://www.alexandrabarbosa.pt";
  * of the render.
  */
 const resolveSiteUrl = () => {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
   if (process.env.NEXT_PUBLIC_VERCEL_ENV === "production") return PRODUCTION_URL;
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
   if (process.env.NEXT_PUBLIC_VERCEL_URL)
     return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
   return "http://localhost:3000";
@@ -26,24 +27,24 @@ export const SOCIAL_PROFILES = [
   "https://www.instagram.com/alexandrabarbosa.pt/",
 ];
 
-export const CONTACT_EMAIL = "alexandra.dn.barbosa@gmail.com";
+export const CONTACT_EMAIL = "hello@alexandrabarbosa.pt";
 
 export const SITE_COPY: Record<
   Language,
   { title: string; tagline: string; description: string; jobTitle: string }
 > = {
   pt: {
-    title: "Alexandra Barbosa — Social media e design",
+    title: "Alexandra B. | Especialista Social Media & Design | Porto",
     tagline: "Gestão de redes sociais, conteúdo e design",
     description:
-      "Portefólio da Alexandra Barbosa, freelancer de redes sociais e design no Porto. Conteúdo, estratégia e comunidade para a Endesa, o KFC e a Padaria Aliança.",
+      "Social media manager e designer no Porto com +7 anos de experiência. Já trabalhei com marcas como KFC, Endesa, Cockburn’s e Munchie BK. Vê o portfólio.",
     jobTitle: "Gestora de redes sociais e designer",
   },
   en: {
-    title: "Alexandra Barbosa — Social media & design",
+    title: "Alexandra B. | Social Media & Design Specialist | Porto",
     tagline: "Social media management, content and design",
     description:
-      "Portfolio of Alexandra Barbosa, freelance social media manager and designer in Porto. Content, strategy and community for Endesa, KFC and Padaria Aliança.",
+      "Social media manager and designer based in Porto with 7+ years of experience. Worked with brands like KFC, Endesa, Cockburn's and Munchie BK. See the portfolio.",
     jobTitle: "Social media manager and designer",
   },
 };

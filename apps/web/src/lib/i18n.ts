@@ -2,7 +2,7 @@ export const LANGUAGES = ["pt", "en"] as const;
 
 export type Language = (typeof LANGUAGES)[number];
 
-/** Portuguese is the primary audience, so it is served unprefixed at the root. */
+/** Portuguese is the primary audience and the x-default SEO language. */
 export const DEFAULT_LANGUAGE: Language = "pt";
 
 /** BCP 47 tags, used for `<html lang>` and hreflang annotations. */
@@ -14,53 +14,33 @@ export const LOCALE_TAGS: Record<Language, string> = {
 export const isLanguage = (value: string): value is Language =>
   (LANGUAGES as readonly string[]).includes(value);
 
-/**
- * Route segments spelled differently per language. Callers everywhere pass the
- * internal English form, which is the key; the value is what ships in the URL.
- */
-const LOCALIZED_SEGMENTS: Record<string, Partial<Record<Language, string>>> = {
-  projects: { pt: "projetos" },
-};
-
-/**
- * Turn an internal app-relative path into the URL for one language: translate
- * the leading segment, then prefix the language. The default language has no
- * prefix, so `/projects/x` becomes `/projetos/x` in Portuguese and
- * `/en/projects/x` in English.
- */
+/** Convert a shared, English-shaped route into its localized public URL. */
 export const localizeHref = (href: string, language: Language) => {
   if (!href.startsWith("/")) return href;
 
-  const prefix = language === DEFAULT_LANGUAGE ? "" : `/${language}`;
-  if (href === "/") return prefix || "/";
+  const [path = "/", fragment] = href.split("#", 2);
+  const localizedPath = language === "pt"
+    ? path
+        .replace(/^\/projects(?=\/|$)/, "/projetos")
+        .replace(/^\/privacy(?=\/|$)/, "/privacidade")
+    : path;
+  const suffix = fragment === undefined ? "" : `#${fragment}`;
 
-  const [head = "", ...rest] = href.slice(1).split("/");
-  const segment = LOCALIZED_SEGMENTS[head]?.[language] ?? head;
-
-  return `${prefix}/${[segment, ...rest].join("/")}`;
+  return localizedPath === "/"
+    ? `/${language}${suffix}`
+    : `/${language}${localizedPath}${suffix}`;
 };
 
-/**
- * The inverse of `localizeHref`: recover the internal form from a real URL path
- * in `language`. Needed wherever a rendered pathname has to be re-localized,
- * because the segments no longer match across languages.
- */
-export const internalizeHref = (pathname: string, language: Language) => {
-  if (!pathname.startsWith("/")) return pathname;
+/** Reduce a localized browser pathname back to the shared route shape. */
+export const delocalizePathname = (pathname: string, language: Language) => {
+  const withoutLanguage =
+    pathname.replace(new RegExp(`^/${language}(?=/|$)`), "") || "/";
 
-  const unprefixed =
-    language === DEFAULT_LANGUAGE
-      ? pathname
-      : pathname.replace(new RegExp(`^/${language}(?=/|$)`), "") || "/";
-  if (unprefixed === "/") return "/";
-
-  const [head = "", ...rest] = unprefixed.slice(1).split("/");
-  const internal =
-    Object.keys(LOCALIZED_SEGMENTS).find(
-      (key) => LOCALIZED_SEGMENTS[key]?.[language] === head,
-    ) ?? head;
-
-  return `/${[internal, ...rest].join("/")}`;
+  return language === "pt"
+    ? withoutLanguage
+        .replace(/^\/projetos(?=\/|$)/, "/projects")
+        .replace(/^\/privacidade(?=\/|$)/, "/privacy")
+    : withoutLanguage;
 };
 
 /** The same page in the other language, for the language toggle. */

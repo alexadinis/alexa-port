@@ -1,16 +1,23 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /**
-   * The Portuguese route moved to /projetos. These URLs are indexed under the
-   * old English segment, so they redirect permanently rather than 404. The
-   * English route is unprefixed by `/en`, so it never matches this source.
-   */
   async redirects() {
     return [
       {
+        source: "/:path*",
+        has: [{ type: "host", value: "alexandrabarbosa.pt" }],
+        destination: "https://www.alexandrabarbosa.pt/:path*",
+        permanent: true,
+      },
+      { source: "/", destination: "/pt", permanent: true },
+      {
         source: "/projects/:slug",
-        destination: "/projetos/:slug",
+        destination: "/pt/projetos/:slug",
+        permanent: true,
+      },
+      {
+        source: "/projetos/:slug",
+        destination: "/pt/projetos/:slug",
         permanent: true,
       },
     ];
