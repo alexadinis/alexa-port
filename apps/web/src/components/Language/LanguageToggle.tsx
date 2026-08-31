@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useLanguage } from "./LanguageProvider";
+import { Switch } from "../ui/Switch";
 import {
   alternateLanguage,
   delocalizePathname,
@@ -12,36 +12,35 @@ import {
 export default function LanguageToggle() {
   const { language } = useLanguage();
   const pathname = usePathname();
+  const router = useRouter();
   const isPortuguese = language === "pt";
   const target = alternateLanguage(language);
-  const visibleLanguage = isPortuguese ? "PT" : "EN";
-  const targetLanguage = isPortuguese ? "inglês" : "Portuguese";
-
   const basePath = delocalizePathname(pathname, language);
+  const targetHref = localizeHref(basePath, target);
+  const accessibleLabel = isPortuguese
+    ? "PT / EN — idioma atual: português; mudar para inglês"
+    : "PT / EN — current language: English; switch to Portuguese";
 
   return (
-    <Link
-      href={localizeHref(basePath, target)}
-      hrefLang={target === "pt" ? "pt-PT" : "en"}
-      aria-label={`${visibleLanguage} — ${isPortuguese ? "mudar idioma para" : "switch website language to"} ${targetLanguage}`}
-      title={`${isPortuguese ? "Mudar para inglês" : "Switch to Portuguese"}`}
-      className={`relative flex h-11 w-16 shrink-0 items-center rounded-full p-1 text-[0.65rem] font-semibold uppercase tracking-[0.04em] text-black transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow ${
-        isPortuguese ? "bg-green" : "bg-blue"
-      }`}
-    >
+    <div className="flex min-h-11 shrink-0 items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.04em]">
       <span
         aria-hidden="true"
-        className={`absolute left-1 size-6 rounded-full bg-white transition-transform duration-300 ease-out ${
-          isPortuguese ? "translate-x-0" : "translate-x-7"
-        }`}
+        className={isPortuguese ? "opacity-100" : "opacity-60"}
+      >
+        PT
+      </span>
+      <Switch
+        checked={!isPortuguese}
+        onCheckedChange={() => router.push(targetHref)}
+        aria-label={accessibleLabel}
+        title={isPortuguese ? "Mudar para inglês" : "Switch to Portuguese"}
       />
       <span
-        className={`relative z-10 w-full transition-[padding] duration-300 ease-out ${
-          isPortuguese ? "pl-7 text-center" : "pr-7 text-center"
-        }`}
+        aria-hidden="true"
+        className={isPortuguese ? "opacity-60" : "opacity-100"}
       >
-        {visibleLanguage}
+        EN
       </span>
-    </Link>
+    </div>
   );
 }
