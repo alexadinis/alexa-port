@@ -19,10 +19,11 @@ export const localizeHref = (href: string, language: Language) => {
   if (!href.startsWith("/")) return href;
 
   const [path = "/", fragment] = href.split("#", 2);
-  const localizedPath =
-    language === "pt"
-      ? path.replace(/^\/projects(?=\/|$)/, "/projetos")
-      : path;
+  const localizedPath = language === "pt"
+    ? path
+        .replace(/^\/projects(?=\/|$)/, "/projetos")
+        .replace(/^\/privacy(?=\/|$)/, "/privacidade")
+    : path;
   const suffix = fragment === undefined ? "" : `#${fragment}`;
 
   return localizedPath === "/"
@@ -36,7 +37,9 @@ export const delocalizePathname = (pathname: string, language: Language) => {
     pathname.replace(new RegExp(`^/${language}(?=/|$)`), "") || "/";
 
   return language === "pt"
-    ? withoutLanguage.replace(/^\/projetos(?=\/|$)/, "/projects")
+    ? withoutLanguage
+        .replace(/^\/projetos(?=\/|$)/, "/projects")
+        .replace(/^\/privacidade(?=\/|$)/, "/privacy")
     : withoutLanguage;
 };
 

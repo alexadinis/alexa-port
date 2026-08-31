@@ -3,6 +3,8 @@
 import { Paytone_One } from "next/font/google";
 import ContactFormTrigger from "./ContactFormTrigger";
 import { useLanguage } from "../Language/LanguageProvider";
+import Link from "next/link";
+import { localizeHref } from "../../lib/i18n";
 
 const paytoneOne = Paytone_One({ subsets: ["latin"], weight: ["400"] });
 
@@ -55,7 +57,15 @@ const Contact = () => {
         </div>
 
         <footer className="grid gap-3 border-t border-white/30 py-3 text-xs sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
-          <p>© {new Date().getFullYear()} alexandrabarbosa.pt</p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <p>© {new Date().getFullYear()} alexandrabarbosa.pt</p>
+            <Link
+              href={localizeHref("/privacy", language)}
+              className="py-1 underline decoration-white/40 underline-offset-4 transition-colors hover:text-yellow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow"
+            >
+              {language === "pt" ? "Privacidade" : "Privacy"}
+            </Link>
+          </div>
 
           <nav
             aria-label="Social media"

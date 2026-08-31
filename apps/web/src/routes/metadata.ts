@@ -130,6 +130,27 @@ export const buildHomeMetadata = (language: Language): Metadata => {
   };
 };
 
+export const buildPrivacyMetadata = (language: Language): Metadata => {
+  const isPortuguese = language === "pt";
+  const title = isPortuguese ? "Política de Privacidade" : "Privacy Policy";
+  const description = isPortuguese
+    ? "Saiba como são tratados os dados pessoais e de navegação no website de Alexandra Dinis Barbosa."
+    : "Learn how personal and browsing data is handled on Alexandra Dinis Barbosa's website.";
+  const alternates = languageAlternates("/privacy", language);
+
+  return {
+    title,
+    description,
+    alternates,
+    openGraph: {
+      url: alternates.canonical,
+      title,
+      description,
+      images: [OG_IMAGE],
+    },
+  };
+};
+
 export const buildProjectMetadata = (
   language: Language,
   slug: string,

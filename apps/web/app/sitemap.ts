@@ -4,7 +4,11 @@ import { LANGUAGES, localizeHref } from "../src/lib/i18n";
 import { absoluteUrl, languageAlternates } from "../src/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ["/", ...PROJECTS.map((project) => `/projects/${project.slug}`)];
+  const paths = [
+    "/",
+    "/privacy",
+    ...PROJECTS.map((project) => `/projects/${project.slug}`),
+  ];
 
   return paths.flatMap((path) =>
     LANGUAGES.map((language) => ({
