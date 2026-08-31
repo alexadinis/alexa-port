@@ -14,6 +14,8 @@ export default function LanguageToggle() {
   const pathname = usePathname();
   const isPortuguese = language === "pt";
   const target = alternateLanguage(language);
+  const visibleLanguage = isPortuguese ? "PT" : "EN";
+  const targetLanguage = isPortuguese ? "inglês" : "Portuguese";
 
   const basePath = delocalizePathname(pathname, language);
 
@@ -21,9 +23,9 @@ export default function LanguageToggle() {
     <Link
       href={localizeHref(basePath, target)}
       hrefLang={target === "pt" ? "pt-PT" : "en"}
-      aria-label={`Switch website language to ${isPortuguese ? "English" : "Português"}`}
-      title={`Switch to ${isPortuguese ? "English" : "Português"}`}
-      className={`relative flex h-8 w-[3.75rem] shrink-0 items-center rounded-full p-1 text-[0.65rem] font-semibold uppercase tracking-[0.04em] text-white transition-colors duration-300 before:absolute before:-inset-1.5 before:content-[''] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow ${
+      aria-label={`${visibleLanguage} — ${isPortuguese ? "mudar idioma para" : "switch website language to"} ${targetLanguage}`}
+      title={`${isPortuguese ? "Mudar para inglês" : "Switch to Portuguese"}`}
+      className={`relative flex h-11 w-16 shrink-0 items-center rounded-full p-1 text-[0.65rem] font-semibold uppercase tracking-[0.04em] text-black transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow ${
         isPortuguese ? "bg-green" : "bg-blue"
       }`}
     >
@@ -38,7 +40,7 @@ export default function LanguageToggle() {
           isPortuguese ? "pl-7 text-center" : "pr-7 text-center"
         }`}
       >
-        {isPortuguese ? "PT" : "EN"}
+        {visibleLanguage}
       </span>
     </Link>
   );
