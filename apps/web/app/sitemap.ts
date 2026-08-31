@@ -32,6 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return LANGUAGES.flatMap((language) => [
     entry("/", language, homeLastModified(language)),
+    entry("/projects", language, homeLastModified(language)),
     entry("/privacy", language, new Date("2026-08-31")),
     ...PROJECTS.map((project) =>
       entry(

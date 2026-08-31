@@ -151,6 +151,57 @@ export const buildPrivacyMetadata = (language: Language): Metadata => {
   };
 };
 
+export const buildProjectsMetadata = (language: Language): Metadata => {
+  const isPortuguese = language === "pt";
+  const title = isPortuguese
+    ? "Projetos de Social Media e Design"
+    : "Social Media & Design Projects";
+  const description = isPortuguese
+    ? "Explora projetos de estratégia, gestão de redes sociais, criação de conteúdo, copywriting e design para marcas em Portugal."
+    : "Explore social media strategy, management, content creation, copywriting and design projects for brands in Portugal.";
+  const alternates = languageAlternates("/projects", language);
+
+  return {
+    title: { absolute: `${title} | Alexandra Barbosa` },
+    description,
+    alternates,
+    openGraph: {
+      url: alternates.canonical,
+      title,
+      description,
+      images: [OG_IMAGE],
+    },
+  };
+};
+
+export const projectsJsonLd = (language: Language) => {
+  const pageUrl = languageAlternates("/projects", language).canonical;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${pageUrl}#collection`,
+    name:
+      language === "pt"
+        ? "Projetos de Alexandra Barbosa"
+        : "Alexandra Barbosa's projects",
+    url: pageUrl,
+    inLanguage: language === "pt" ? "pt-PT" : "en",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: PROJECTS.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: project.title,
+        url: languageAlternates(
+          `/projects/${project.slug}`,
+          language,
+        ).canonical,
+      })),
+    },
+  };
+};
+
 export const buildProjectMetadata = (
   language: Language,
   slug: string,

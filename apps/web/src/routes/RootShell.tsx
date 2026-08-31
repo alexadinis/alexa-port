@@ -38,7 +38,7 @@ const poppins = Poppins({
 const NAV_LINKS = [
   { label: "Home", href: "/#home" },
   { label: "About me", href: "/#about" },
-  { label: "Projects", href: "/#work" },
+  { label: "Projects", href: "/projects" },
   { label: "Get in touch", href: "/#contact" },
 ];
 
