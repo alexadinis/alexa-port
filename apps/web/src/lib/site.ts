@@ -27,7 +27,7 @@ export const SOCIAL_PROFILES = [
   "https://www.instagram.com/alexandrabarbosa.pt/",
 ];
 
-export const CONTACT_EMAIL = "alexandra.dn.barbosa@gmail.com";
+export const CONTACT_EMAIL = "hello@alexandrabarbosa.pt";
 
 export const SITE_COPY: Record<
   Language,
