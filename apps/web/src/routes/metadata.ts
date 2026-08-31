@@ -163,7 +163,8 @@ export const buildProjectMetadata = (
   const path = `/projects/${project.slug}`;
   const alternates = languageAlternates(path, language);
   const title = seo?.title ?? project.title;
-  const description = seo?.description ?? project.description ?? project.summary;
+  const description =
+    seo?.description ?? project.description ?? project.summary;
   const image = absoluteUrl(project.detailImage ?? project.image);
 
   return {
@@ -188,18 +189,58 @@ export const projectJsonLd = (language: Language, slug: string) => {
 
   const project = localizeProject(source, language);
   const seo = PROJECT_SEO_COPY[language][slug];
+  const pageUrl = languageAlternates(
+    `/projects/${project.slug}`,
+    language,
+  ).canonical;
+  const startYear = project.year?.match(/\d{4}/)?.[0];
+  const homeName = language === "pt" ? "Início" : "Home";
+  const clientName = project.client ?? project.title;
 
   return {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: project.title,
-    headline: seo?.title ?? project.title,
-    description: seo?.description ?? project.description ?? project.summary,
-    url: languageAlternates(`/projects/${project.slug}`, language).canonical,
-    inLanguage: language === "pt" ? "pt-PT" : "en",
-    image: absoluteUrl(project.detailImage ?? project.image),
-    dateCreated: project.year,
-    author: { "@type": "Person", name: "Alexandra Barbosa" },
-    about: project.client ?? project.title,
+    "@graph": [
+      {
+        "@type": "CreativeWork",
+        "@id": `${pageUrl}#creative-work`,
+        name: project.title,
+        headline: seo?.title ?? project.title,
+        description: seo?.description ?? project.description ?? project.summary,
+        url: pageUrl,
+        inLanguage: language === "pt" ? "pt-PT" : "en",
+        image: absoluteUrl(project.detailImage ?? project.image),
+        ...(startYear ? { dateCreated: startYear } : {}),
+        dateModified: project.updatedAt,
+        author: {
+          "@type": "Person",
+          "@id": absoluteUrl("/#person"),
+          name: "Alexandra Barbosa",
+        },
+        about: {
+          "@type": "Organization",
+          name: clientName,
+          ...(project.clientUrl ? { sameAs: project.clientUrl } : {}),
+        },
+        keywords: project.services,
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: homeName,
+            item: languageAlternates("/", language).canonical,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: project.title,
+            item: pageUrl,
+          },
+        ],
+      },
+    ],
   };
 };

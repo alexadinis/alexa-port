@@ -6,12 +6,27 @@ import { LanguageProvider } from "../components/Language/LanguageProvider";
 import { LOCALE_TAGS, localizeHref, type Language } from "../lib/i18n";
 import {
   absoluteUrl,
+  CONTACT_EMAIL,
   SITE_COPY,
   SITE_NAME,
   SITE_URL,
   SOCIAL_PROFILES,
   OG_IMAGE,
 } from "../lib/site";
+
+const KNOWS_ABOUT = [
+  "Social media management",
+  "Content creation",
+  "Social media strategy",
+  "Copywriting",
+  "Community management",
+  "Paid media",
+  "Analytics and reporting",
+  "Graphic design",
+  "Branding and art direction",
+  "Photography and video",
+  "Audiovisual editing",
+];
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -76,20 +91,36 @@ export default function RootShell({
 }) {
   const copy = SITE_COPY[language];
 
-  const personJsonLd = {
+  const personId = absoluteUrl("/#person");
+  const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: SITE_NAME,
-    url: absoluteUrl(localizeHref("/", language)),
-    jobTitle: copy.jobTitle,
-    description: copy.description,
-    image: absoluteUrl("/alexandra-barbosa.jpg"),
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Porto",
-      addressCountry: "PT",
-    },
-    sameAs: SOCIAL_PROFILES,
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": personId,
+        name: SITE_NAME,
+        url: absoluteUrl(localizeHref("/", language)),
+        email: `mailto:${CONTACT_EMAIL}`,
+        jobTitle: copy.jobTitle,
+        description: copy.description,
+        image: absoluteUrl("/alexandra-barbosa.jpg"),
+        knowsAbout: KNOWS_ABOUT,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Porto",
+          addressCountry: "PT",
+        },
+        sameAs: SOCIAL_PROFILES,
+      },
+      {
+        "@type": "WebSite",
+        "@id": absoluteUrl("/#website"),
+        name: SITE_NAME,
+        url: SITE_URL,
+        inLanguage: ["pt-PT", "en"],
+        author: { "@id": personId },
+      },
+    ],
   };
 
   return (
@@ -97,7 +128,7 @@ export default function RootShell({
       <body className={poppins.className}>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <LanguageProvider language={language}>
           <Navbar navLinks={NAV_LINKS} />
