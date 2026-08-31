@@ -1,6 +1,7 @@
 import { DEFAULT_LANGUAGE, LANGUAGES, localizeHref, type Language } from "./i18n";
 
-export const PRODUCTION_URL = "https://alexandrabarbosa.pt";
+/** Official public origin used by canonical URLs, sitemap and structured data. */
+export const PRODUCTION_URL = "https://www.alexandrabarbosa.pt";
 
 /**
  * Vercel exposes the deployment host but not a full URL, and previews need to
@@ -9,8 +10,8 @@ export const PRODUCTION_URL = "https://alexandrabarbosa.pt";
  * of the render.
  */
 const resolveSiteUrl = () => {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
   if (process.env.NEXT_PUBLIC_VERCEL_ENV === "production") return PRODUCTION_URL;
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
   if (process.env.NEXT_PUBLIC_VERCEL_URL)
     return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
   return "http://localhost:3000";
