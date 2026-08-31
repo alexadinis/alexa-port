@@ -9,7 +9,7 @@ const Description = () => {
   if (language === "pt") {
     return (
       <div className="w-full max-w-[46rem] text-center md:text-left">
-        <p className="text-xl font-semibold text-blue">
+        <p className="text-xl font-semibold text-black/70">
           Social media manager e designer freelance no Porto.
         </p>
         <p className="mt-3 text-lg leading-relaxed text-black/70">
@@ -35,7 +35,7 @@ const Description = () => {
   }
   return (
     <div className="w-full max-w-[46rem] text-center md:text-left">
-      <p className="text-xl font-semibold text-blue">
+      <p className="text-xl font-semibold text-black/70">
         Freelance social media manager and designer based in Porto.
       </p>
       <p className="mt-3 text-lg leading-relaxed text-black/70">
