@@ -60,7 +60,6 @@ const About = () => {
               fill
               sizes="(max-width: 767px) 340px, 40vw"
               className="object-cover object-[50%_48%]"
-              priority
             />
           </div>
 
