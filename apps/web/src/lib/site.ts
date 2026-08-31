@@ -33,17 +33,17 @@ export const SITE_COPY: Record<
   { title: string; tagline: string; description: string; jobTitle: string }
 > = {
   pt: {
-    title: "Alexandra Barbosa — Social media e design",
+    title: "Alexandra B. | Especialista Social Media & Design | Porto",
     tagline: "Gestão de redes sociais, conteúdo e design",
     description:
-      "Portefólio da Alexandra Barbosa, freelancer de redes sociais e design no Porto. Estratégia, conteúdo e community management para marcas como a Endesa, KFC e Padaria Aliança.",
+      "Social media manager e designer no Porto com +7 anos de experiência. Já trabalhei com marcas como KFC, Endesa, Cockburn’s e Munchie BK. Vê o portfólio.",
     jobTitle: "Gestora de redes sociais e designer",
   },
   en: {
-    title: "Alexandra Barbosa — Social media & design",
+    title: "Alexandra B. | Social Media & Design Specialist | Porto",
     tagline: "Social media management, content and design",
     description:
-      "Portfolio of Alexandra Barbosa, a freelance social media and design specialist based in Porto, Portugal. Strategy, content and community management for brands such as Endesa, KFC and Padaria Aliança.",
+      "Social media manager and designer based in Porto with 7+ years of experience. Worked with brands like KFC, Endesa, Cockburn's and Munchie BK. See the portfolio.",
     jobTitle: "Social media manager and designer",
   },
 };

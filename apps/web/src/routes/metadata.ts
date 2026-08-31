@@ -9,6 +9,106 @@ import {
   SITE_COPY,
 } from "../lib/site";
 
+const PROJECT_SEO_COPY: Record<
+  Language,
+  Record<string, { title: string; description: string }>
+> = {
+  pt: {
+    "endesa-portugal": {
+      title: "Endesa Portugal | Estratégia de Social Media (+100% Alcance)",
+      description:
+        "Estratégia de social media para a Endesa Portugal: +100% de alcance e impressões em 8 meses no Instagram e Facebook. Vídeo, copywriting e gestão de comunidade.",
+    },
+    "kfc-portugal": {
+      title: "KFC Portugal | Social Media Meme-First (+40% Engagement)",
+      description:
+        "Estratégia meme-first para a KFC Portugal: +40% de engagement no Instagram e +268 mil seguidores no TikTok em 8 meses. Copywriting e gestão de comunidade.",
+    },
+    "padaria-alianca": {
+      title: "Padaria Aliança | Fotografia, Vídeo e Social Media",
+      description:
+        "Estratégia de conteúdo, fotografia e vídeo para a Padaria Aliança: visuais que captam o pão fresco feito diariamente. Gestão de redes sociais e publicidade paga.",
+    },
+    munchie: {
+      title: "Munchie BK | Social Media, Criação de Conteúdo e Estratégia",
+      description:
+        "Estratégia de conteúdo, fotografia e copywriting para a Munchie BK, a primeira hamburgueria tradicional do Porto. Gestão de redes sociais e publicidade paga.",
+    },
+    "feel-better": {
+      title: "Feel Better Porto | Social Media e Criação de Conteúdo",
+      description:
+        "Construção do zero de conteúdo, copywriting e redes sociais para a Feel Better by Joana Pereira, tornando a depilação a laser numa marca de bem-estar apelativa.",
+    },
+    "lr-opticas": {
+      title: "L&R Ópticas | Criação e Gestão de Redes Sociais",
+      description:
+        "Da criação à gestão contínua: desenvolvo o Instagram e Facebook da L&R Ópticas, com conteúdo de marcas premium e saúde ocular, numa voz clara e próxima.",
+    },
+    "psicomorfose-psicologia": {
+      title: "Psicomorfose | Psicologia | Branding e Social Media",
+      description:
+        "Trabalho de branding e conteúdo para a Psicomorfose, clínica de psicologia: identidade visual, Reels, carrosséis e Stories, com uma voz humana e informada.",
+    },
+    "authentic-classical-pilates": {
+      title: "Authentic Classical Pilates | Estratégia e Vídeo",
+      description:
+        'Estratégia de conteúdo minimalista e vídeo promocional "return to life" para os estúdios de Pilates clássico no Porto e Paredes. Copywriting e storytelling.',
+    },
+    cockburns: {
+      title: "Cockburn's | Social Media para Vinho do Porto",
+      description:
+        "Gestão diária de Instagram, Facebook e X para a Cockburn's, dando voz jovem e fresca ao vinho do Porto sem perder a herança da marca. Copywriting, gestão de comunidade.",
+    },
+  },
+  en: {
+    "endesa-portugal": {
+      title: "Endesa Portugal | Social Media Strategy & Content (+100% Reach)",
+      description:
+        "Social media strategy for Endesa Portugal: +100% reach and impressions in 8 months across Instagram and Facebook. Video, copywriting and community management.",
+    },
+    "kfc-portugal": {
+      title: "KFC Portugal | Meme-First Social Media (+40% Engagement)",
+      description:
+        "Meme-first strategy for KFC Portugal: +40% engagement on Instagram and +268K organic followers on TikTok in 8 months. Copywriting and community management.",
+    },
+    "padaria-alianca": {
+      title: "Padaria Aliança | Photography, Video & Social Media",
+      description:
+        "Content strategy, photography and video for Padaria Aliança: visuals capturing freshly baked bread every day. Social media management and paid media.",
+    },
+    munchie: {
+      title: "Munchie BK | Social Media, Content Creation & Strategy",
+      description:
+        "Content strategy, photography and copywriting for Munchie BK, Porto's first traditional burger house. Social media management and paid advertising.",
+    },
+    "feel-better": {
+      title: "Feel Better Porto | Social Media & Content Creation",
+      description:
+        "Built content, copywriting and social media from scratch for Feel Better by Joana Pereira, turning laser hair removal into an approachable wellness brand.",
+    },
+    "lr-opticas": {
+      title: "L&R Ópticas | Social Media Creation & Management",
+      description:
+        "From creation to ongoing management: I run Instagram and Facebook for L&R Ópticas, with premium brand content and eye health topics, in a clear, close tone.",
+    },
+    "psicomorfose-psicologia": {
+      title: "Psicomorfose | Psychology | Branding & Social Media",
+      description:
+        "Branding and content work for Psicomorfose, a psychology practice: visual identity, Reels, carousels and Stories, with a warm, informed voice.",
+    },
+    "authentic-classical-pilates": {
+      title: "Authentic Classical Pilates | Strategy & Video",
+      description:
+        'Minimalist content strategy and "return to life" promo video for the Classical Pilates studios in Porto and Paredes. Copywriting and storytelling.',
+    },
+    cockburns: {
+      title: "Cockburn's | Social Media for Port Wine",
+      description:
+        "Daily management of Instagram, Facebook and X for Cockburn's, giving Port wine a young, fresh voice without losing its heritage. Copywriting, community management.",
+    },
+  },
+};
+
 export const projectStaticParams = () =>
   PROJECTS.map((project) => ({ slug: project.slug }));
 
@@ -38,19 +138,21 @@ export const buildProjectMetadata = (
   if (!source) return {};
 
   const project = localizeProject(source, language);
+  const seo = PROJECT_SEO_COPY[language][slug];
   const path = `/projects/${project.slug}`;
   const alternates = languageAlternates(path, language);
-  const description = project.description ?? project.summary;
+  const title = seo?.title ?? project.title;
+  const description = seo?.description ?? project.description ?? project.summary;
   const image = absoluteUrl(project.detailImage ?? project.image);
 
   return {
-    title: project.title,
+    title: { absolute: title },
     description,
     alternates,
     openGraph: {
       type: "article",
       url: alternates.canonical,
-      title: project.title,
+      title,
       description,
       images: [{ url: image, alt: `${project.title} project artwork` }],
     },
@@ -64,13 +166,14 @@ export const projectJsonLd = (language: Language, slug: string) => {
   if (!source) return null;
 
   const project = localizeProject(source, language);
+  const seo = PROJECT_SEO_COPY[language][slug];
 
   return {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: project.title,
-    headline: project.title,
-    description: project.description ?? project.summary,
+    headline: seo?.title ?? project.title,
+    description: seo?.description ?? project.description ?? project.summary,
     url: languageAlternates(`/projects/${project.slug}`, language).canonical,
     inLanguage: language === "pt" ? "pt-PT" : "en",
     image: absoluteUrl(project.detailImage ?? project.image),
