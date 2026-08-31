@@ -3,7 +3,11 @@
 import { useEffect } from "react";
 import { localizeHref, type Language } from "../../lib/i18n";
 
-export default function ProjectFeedTracker({ language }: { language: Language }) {
+export default function ProjectFeedTracker({
+  language,
+}: {
+  language: Language;
+}) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

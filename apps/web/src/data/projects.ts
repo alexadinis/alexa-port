@@ -27,17 +27,26 @@ export interface Project {
   detailImage?: string;
   detailVideo?: string;
   description?: string;
+  /** Hand-written SERP snippet, kept under 160 chars. */
+  metaDescription?: string;
   image: string;
   thumbnail?: string;
   relatedThumbnail?: string;
   focus: string;
   services: string[];
   accent: string;
+  /**
+   * When this case study's copy last changed, for sitemap `lastmod`. Bump it
+   * when the copy changes, not when the file happens to be touched.
+   */
+  updatedAt: string;
 }
 
 export const PROJECTS: Project[] = [
   {
     slug: "endesa-portugal",
+    metaDescription:
+      "Social media strategy for Endesa Portugal that doubled reach and impressions on Facebook and Instagram in 11 months. Case study by Alexandra Barbosa.",
     title: "Endesa Portugal",
     summary:
       "Where energy meets creativity.\nPowering up Endesa's social media. ⚡",
@@ -65,9 +74,12 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#f4c755",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "kfc-portugal",
+    metaDescription:
+      "Meme-first social media for KFC Portugal as Colonel Sanders: +40% Instagram engagement and 268K TikTok followers grown organically in 8 months.",
     title: "KFC Portugal",
     summary:
       "Serving up crispy content for KFC Portugal's social media as Colonel Sanders. 🍗",
@@ -101,9 +113,12 @@ export const PROJECTS: Project[] = [
       "Content Ideation",
     ],
     accent: "#e84e3c",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "padaria-alianca",
+    metaDescription:
+      "Content strategy, photography and video for Padaria Aliança, a Porto bakery: fresh bread, real pastries and visuals that do the talking.",
     title: "Padaria Aliança",
     summary: "Fresh out of the oven, straight into the feed. 🥐",
     intro: "Some things are better homemade. Like everything here.",
@@ -133,9 +148,12 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#3476ee",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "munchie",
+    metaDescription:
+      "Social media and food content for Munchie, Porto's first traditional burger joint: craveable visuals and copy that grew its online presence.",
     title: "Munchie",
     summary: "Artisan burgers and irresistible content, to savor on screen. 🍔",
     intro: "Handcrafted burgers, meet handcrafted content.",
@@ -167,9 +185,12 @@ export const PROJECTS: Project[] = [
       "Photography",
     ],
     accent: "#44985a",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "feel-better",
+    metaDescription:
+      "Content, copywriting and social media for Feel Better by Joana Pereira, turning laser hair removal into a wellness brand people follow.",
     title: "Feel Better",
     summary: "Less hair, more shine for Feel Better’s social media. 💫",
     intro: "A glow-up story, literally.",
@@ -193,9 +214,12 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#f2cddd",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "lr-opticas",
+    metaDescription:
+      "Social media strategy and content for L&R Ópticas, eight optician stores near Porto: eyewear brands, eye-health tips and myths debunked.",
     title: "L&R Ópticas",
     summary:
       "Social media management with a clear and precise vision of L&R Ópticas. 👓",
@@ -220,9 +244,12 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#e84e3c",
+    updatedAt: "2026-08-30T15:29:14+01:00",
   },
   {
     slug: "psicomorfose-psicologia",
+    metaDescription:
+      "Brand identity and social media for Psicomorfose, a clinical psychology practice: a calm, human voice for anxiety, burnout and real change.",
     title: "PsicoMorfose - Psicologia",
     summary:
       "A warmer language for the mind, on Psicomorfose's social media. 🍂",
@@ -259,9 +286,12 @@ export const PROJECTS: Project[] = [
       "Paid Media",
     ],
     accent: "#f4c755",
+    updatedAt: "2026-08-30T15:29:14+01:00",
   },
   {
     slug: "authentic-classical-pilates",
+    metaDescription:
+      "Minimalist social media and campaign rollout for Authentic Classical Pilates, Porto and Paredes, built on the precision of the Contrology method.",
     title: "Authentic Classical Pilates",
     summary:
       "Breathing life into Authentic Classical Pilates' social media. 🧘",
@@ -331,9 +361,12 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#3476ee",
+    updatedAt: "2026-08-30T11:24:16+01:00",
   },
   {
     slug: "cockburns",
+    metaDescription:
+      "Daily social media for Cockburn's Port wine: a young, irreverent voice built on real photography, with steady growth on Instagram, Facebook and X.",
     title: "Cockburn's",
     summary:
       "From the bottle to the digital world, bringing the best of Port wine to social media. 🍷",
@@ -382,6 +415,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#e84e3c",
+    updatedAt: "2026-08-30T15:29:14+01:00",
   },
 ];
 

@@ -52,9 +52,10 @@ export const SITE_COPY: Record<
 export const absoluteUrl = (path: string) => new URL(path, SITE_URL).toString();
 
 /**
- * Canonical plus hreflang map for a page. `path` is the unprefixed (Portuguese)
- * path; the canonical is this language's own URL, and Portuguese doubles as
- * x-default since it is the primary audience.
+ * Canonical plus hreflang map for a page. `path` is the internal English form;
+ * `localizeHref` translates the segments and adds the language prefix. The
+ * canonical is this language's own URL, and Portuguese doubles as x-default
+ * since it is the primary audience.
  */
 export const languageAlternates = (path: string, language: Language) => ({
   canonical: absoluteUrl(localizeHref(path, language)),

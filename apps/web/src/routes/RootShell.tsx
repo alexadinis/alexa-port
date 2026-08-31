@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Navbar from "../components/Navbar/Navbar";
@@ -102,6 +103,9 @@ export default function RootShell({
           <Navbar navLinks={NAV_LINKS} />
           {children}
         </LanguageProvider>
+        {/* Both language trees render through this shell, so one mount covers
+            /pt and /en. Cookieless, so it needs no consent banner. */}
+        <Analytics />
       </body>
     </html>
   );
