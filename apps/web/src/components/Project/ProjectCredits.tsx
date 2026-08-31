@@ -5,7 +5,7 @@ import type { Project } from "../../data/projects";
 import { useLanguage } from "../Language/LanguageProvider";
 
 const creditLinkClassName =
-  "underline decoration-white/35 underline-offset-4 transition-colors hover:text-blue hover:decoration-blue focus-visible:text-blue focus-visible:decoration-blue focus-visible:outline-none";
+  "inline-flex min-h-11 items-center underline decoration-white/35 underline-offset-4 transition-colors hover:text-blue hover:decoration-blue focus-visible:text-blue focus-visible:decoration-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink";
 
 function renderCreditValue(
   value: string,

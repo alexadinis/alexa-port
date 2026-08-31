@@ -174,7 +174,7 @@ export default function ProjectRoute({
             >
               <Link
                 href={localizeHref("/#work", language)}
-                className="project-back-link group mb-16 inline-flex items-center gap-2 text-sm text-white/75 transition-colors hover:text-white md:mb-24"
+                className="project-back-link group mb-16 inline-flex min-h-11 items-center gap-2 text-sm text-white/75 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink md:mb-24"
               >
                 <span
                   className="relative size-[18px] shrink-0"
