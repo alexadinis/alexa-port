@@ -428,6 +428,7 @@ const BrandsMarquee = () => {
         >
           {language === "pt" ? "marcas que já trabalhei" : "brands I have worked with"}
         </h3>
+        <p className="sr-only">{BRANDS.map(({ name }) => name).join(", ")}.</p>
       </div>
 
       <div
