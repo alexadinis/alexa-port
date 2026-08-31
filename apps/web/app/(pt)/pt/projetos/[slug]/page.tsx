@@ -1,9 +1,9 @@
-import ProjectRoute from "../../../../src/routes/ProjectRoute";
+import ProjectRoute from "../../../../../src/routes/ProjectRoute";
 import {
   buildProjectMetadata,
   projectJsonLd,
   projectStaticParams,
-} from "../../../../src/routes/metadata";
+} from "../../../../../src/routes/metadata";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;

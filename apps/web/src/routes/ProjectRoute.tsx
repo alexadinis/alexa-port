@@ -133,7 +133,7 @@ export default function ProjectRoute({
   return (
     <main className="min-h-screen bg-black text-white">
       <ProjectScrollProgress />
-      <ProjectFeedTracker />
+      <ProjectFeedTracker language={language} />
       {feedProjects.slice(0, visibleProjectCount).map((project, feedIndex) => {
         const projectIndex = PROJECTS.findIndex(
           (item) => item.slug === project.slug,
