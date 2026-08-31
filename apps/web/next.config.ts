@@ -14,9 +14,17 @@ const securityHeaders = [
   },
 ];
 
+const llmsTxtLink = {
+  key: "Link",
+  value: '</llms.txt>; rel="describedby"; type="text/plain"',
+};
+
 const nextConfig: NextConfig = {
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      { source: "/:language(pt|en)", headers: [llmsTxtLink] },
+    ];
   },
   async redirects() {
     return [
