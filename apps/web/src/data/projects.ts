@@ -159,9 +159,9 @@ export const PROJECTS: Project[] = [
     intro: "Handcrafted burgers, meet handcrafted content.",
     client: "Munchie BK",
     developedAt: "anca design studio",
-    year: "2021/2022",
+    year: "2020/2022",
     description:
-      "Munchie is Porto's first traditional burger joint, known for winning hearts (and appetites) with its \"7 Picados Mortais.\" Young, bold, and informal by nature, the brand is anything but fast food, it's fresh, local ingredients and burgers that are as good to look at as they are to eat.\n\nThe mission was simple: turn a passion for burgers into an irresistible digital presence. To get there, I built a content strategy that was mouth-watering, designed to make followers crave more, one post at a time.\n\nThe recipe? High-quality visuals that capture the brand's handcrafted essence, copywriting that speaks the audience's language, and community-driven engagement tactics that keep the conversation going.\n\nThe result: a stronger brand identity and steady growth in Munchie's online presence, making the brand feel even closer (and even more craveable) to its fans.",
+      "Munchie is the first traditional burger restaurant in Porto, known for winning hearts and appetites with its “7 Deadly Bites”. Young, bold and informal, the brand is far from fast food: fresh, locally sourced ingredients and burgers that look just as good as they taste.\n\nThe mission was simple: turn a passion for burgers into an irresistible digital presence. To do that, I created a mouth-watering content strategy designed to leave followers craving more.\n\nI created and implemented the social media strategy for Instagram and Facebook, taking care of social media management, content creation, photography and video, creative direction, copywriting and performance analysis. The recipe? A strategy built around a young, fun, provocative and approachable voice, combining product content, Reels, memes, trends, informative content and formats designed to spark interaction.\n\nCommunity also became a central part of the strategy through interactive Stories, questions, polls and other participatory formats. The goal was simple: not just to talk to the audience, but to create opportunities to talk with them.\n\nBetween 2020 and 2022, Munchie developed a more consistent and recognisable digital presence, with a voice of its own, while its community grew to 5,000 followers.\n\nThe result? A stronger brand identity and consistent growth in Munchie’s online presence, bringing the brand even closer to its fans.",
     reflection: "Still hungry? Good. That was the plan.",
     image: "/munchie.webp",
     thumbnail: "/munchie/portfolio-munchiebk-showcase.webp",
@@ -185,7 +185,7 @@ export const PROJECTS: Project[] = [
       "Photography",
     ],
     accent: "#44985a",
-    updatedAt: "2026-08-30T11:24:16+01:00",
+    updatedAt: "2026-09-01T14:00:00+01:00",
   },
   {
     slug: "feel-better",
