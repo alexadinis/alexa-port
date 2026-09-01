@@ -65,7 +65,23 @@ const About = () => {
 
           <div className="flex min-w-0 flex-col items-start gap-8">
             <p className="max-w-[24ch] text-pretty text-[clamp(1.8rem,3.4vw,4rem)] font-medium leading-[1.08] tracking-[-0.035em]">
-              {language === "pt" ? <>Fluente em memes, sonho com design e vivo para <StoryTypewriter /> grandes histórias. Crio conteúdo autêntico, estratégias eficazes e dou às marcas uma voz única no mundo digital.</> : <>Fluent in memes, dream about design and live to <StoryTypewriter /> great stories. I create authentic content, craft effective strategies and give brands a unique voice in the digital world.</>}
+              {language === "pt" ? (
+                <>
+                  Fluente em memes, sonho com design e vivo para{" "}
+                  <StoryTypewriter />
+                  <br className="sm:hidden" /> grandes histórias. Crio conteúdo
+                  autêntico, estratégias eficazes e dou às marcas uma voz única
+                  no mundo digital.
+                </>
+              ) : (
+                <>
+                  Fluent in memes, dream about design and live to{" "}
+                  <StoryTypewriter />
+                  <br className="sm:hidden" /> great stories. I create authentic
+                  content, craft effective strategies and give brands a unique
+                  voice in the digital world.
+                </>
+              )}
             </p>
 
             <div className="flex flex-wrap items-center gap-3">

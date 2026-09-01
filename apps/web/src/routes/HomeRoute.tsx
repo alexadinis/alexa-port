@@ -15,7 +15,7 @@ import type { Language } from "../lib/i18n";
 
 export default function HomeRoute({ language }: { language: Language }) {
   return (
-    <main>
+    <main className="overflow-x-clip">
       <div id="home" className="relative scroll-mt-20">
         <Hero
           title={

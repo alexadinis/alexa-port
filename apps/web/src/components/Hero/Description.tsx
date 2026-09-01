@@ -28,8 +28,8 @@ const Description = () => {
             style={{ display: "inline-block", color: "#44985a" }}
             repeat={Infinity}
             className="font-bold"
-          />{" "}
-          a crescer.
+          />
+          <span className="block md:inline"> a crescer.</span>
         </p>
       </div>
     );
@@ -52,8 +52,8 @@ const Description = () => {
           style={{ display: "inline-block", color: "#44985a" }}
           repeat={Infinity}
           className="font-bold"
-        />{" "}
-        grow.
+        />
+        <span className="block md:inline"> grow.</span>
       </p>
     </div>
   );

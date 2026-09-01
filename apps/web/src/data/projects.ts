@@ -126,7 +126,7 @@ export const PROJECTS: Project[] = [
     developedAt: "anca design studio",
     year: "2021 / 2022",
     description:
-      "Padaria Aliança is a bakery built around one idea: bring Portugal's most traditional flavours to everyone who walks through the door. It's a place where time slows down, made for fresh bread, real pastries, and the simple pleasure of good food.\n\nI handled content strategy, photography, and video, capturing what makes Padaria Aliança different: everything made fresh, every single day. The visuals did the talking, close-ups of warm bread, steam still rising, proof that nothing here sits around waiting.",
+      "Padaria Aliança is built around one idea: bringing Portugal's most traditional flavours to everyone who walks through the door. It's a place where time slows down, with the smell of freshly baked bread, real pastry, and the simple pleasure of eating well.\n\nThe challenge, back in 2022, was clear: the bakery had little online presence, with low-quality images and generic content that didn't do justice to what was actually happening inside. I was responsible for content strategy, photography, and video, with the goal of capturing what makes Padaria Aliança different: everything is made fresh, every single day.\n\nThe core creative decision was to show the baking process itself, not just the finished product: video and photography following the treats from oven to counter, with close-ups of warm bread and rising steam. To give the communication personality, I created a recurring format built around wordplay with the names of the pastries, bringing the brand's language closer to its everyday audience: playful, approachable, and never corporate. Content was distributed mainly through carousels and static posts, complemented by a few Reels, still an emerging format at the time.\n\nResults showed up most clearly during festive seasons: by promoting special packages for Easter, Christmas, Mother's Day, and Valentine's Day, Padaria Aliança saw an increase in orders during these periods, confirming that thoughtful, visually crafted content translates into sales, not just engagement.\n\nPadaria Aliança was left with a digital presence that reflects what makes it special: Portuguese tradition, made fresh every day, with a voice as warm and full of flavour as the images themselves (both in the visuals and in the words).",
     reflection: "Nothing here waits around. Why should you?",
     image: "/alianca/portfolio-alianca-grid.webp",
     thumbnail: "/alianca/portfolio-alianca-showcase.webp",
@@ -148,7 +148,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#3476ee",
-    updatedAt: "2026-08-30T11:24:16+01:00",
+    updatedAt: "2026-09-01T14:00:00+01:00",
   },
   {
     slug: "munchie",
@@ -229,7 +229,7 @@ export const PROJECTS: Project[] = [
     creditWork: "Freelance",
     year: "2022/2026",
     description:
-      "L&R Ópticas has eight stores across the Porto district, dedicated to helping people see the world with clearer, healthier vision. My mission was to bring that same clarity to their social media.\n\nI handled the strategy, content creation, and copywriting across their channels, from product content for eyewear brands like Prada, Ray-Ban, Versace, Dolce & Gabbana, and Persol, to educational posts sharing tips and debunking common myths about eye health.\n\nThe result: a social presence that feels as trustworthy as it is easy to follow, combining brand credibility with genuine, everyday usefulness.",
+      "L&R Ópticas has eight stores across the Porto district, dedicated to helping people see the world with more clarity and healthier vision. My mission was to bring that same clarity to their social media — built from the ground up by me.\n\nThe challenge emerged after realizing, together with the store owner, that the previous strategy (focused solely on interaction and informational content) wasn't driving sales. The answer was to introduce product-focused posts, without turning the feed into plain advertising and losing the brand's credibility.\n\nThe core creative decision was to follow a seasonal calendar: sunglasses take center stage in spring and summer, frames lead in winter, and content ties into occasions like Christmas and Valentine's Day with gift suggestions that make the product feel relevant to the moment rather than simply \"for sale.\" Formats are mostly static posts, complemented by Reels and carousels whenever the content calls for more space, like eye health explainers or debunking common myths.\n\nThe result, from January to December 2025: organic growth of 373 Instagram followers and 250 Facebook followers, sustained purely through consistent posting, with no paid advertising behind that growth. Posts reach or exceed 50,000 views per quarter, proof that sales content, when placed at the right point in the calendar, doesn't push the audience away.\n\nToday, L&R Ópticas has a social presence that balances brand trust with genuine everyday usefulness, without ever losing the close, approachable tone that makes it recognizable.",
     reflection: "Sharp vision. Sharp strategy.",
     image: "/l-r.webp",
     thumbnail: "/lr-opticas/home-showcase.jpg",
@@ -244,7 +244,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#e84e3c",
-    updatedAt: "2026-08-30T15:29:14+01:00",
+    updatedAt: "2026-09-01T14:00:00+01:00",
   },
   {
     slug: "psicomorfose-psicologia",
@@ -393,7 +393,7 @@ export const PROJECTS: Project[] = [
       { label: "Year", value: "2024 / 2025" },
     ],
     description:
-      "Cockburn's isn't just tradition, it's proof that Port wine can still feel exciting to a new generation.\n\nI managed the brand's day-to-day presence across Instagram, Facebook, and X, giving Cockburn's a voice that felt young, fresh, and a little irreverent, without losing the heritage behind the name. The profile itself tells that story: built almost entirely on photography, from professional shoots to real moments captured by visitors passing through the cellars, over graphic design. It's less about polished visuals, more about real people, real experiences, and the feeling of actually being there.\n\nThat approach kept the brand close to its community, and it showed: steady, meaningful growth across all platforms, proof that a centuries-old name can still feel personal.",
+      "Cockburn's isn't just tradition: it's proof that Port wine can still excite a new generation.\n\nThe challenge was clear: Port wine had drifted out of the conversation for younger generations, tied to a traditional image that rarely crossed paths with the everyday life of people in their twenties and thirties. The goal wasn't to reinvent the brand, but to make it appealing to this audience without letting tradition fade along the way.\n\nI managed Cockburn's daily presence on Instagram, Facebook, and X for 11 months, between 2024 and 2025, giving the brand a young, fresh, and slightly irreverent voice. The tone of communication leaned on puns and light humour, always respecting the heritage behind the name.\n\nThe core creative decision was to build the profile almost entirely around real photography, rather than overly polished images: from professional productions to genuine moments captured by visitors in the cellars. I complemented this approach with live-covered Stories, filmed by me, at events like Christmas and city fairs, including Baluarte, bringing the brand closer to its community in real time, and not only through planned content.\n\nThe goal set for this strategy was clear: reach 15,000 followers on Instagram. It was achieved. The result was consistent, meaningful growth across every platform, proof that a brand with centuries of history can still feel current, without losing what makes it recognisable.\n\nToday, Cockburn's has a digital presence that speaks the language of a new generation, keeping Port wine's tradition alive through real photography, genuine humour, and authentic presence.",
     reflection: "Some things get better with time... just like this feed.",
     image: "/cockburns/home-showcase.webp",
     thumbnail: "/cockburns/home-showcase.webp",
@@ -415,7 +415,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#e84e3c",
-    updatedAt: "2026-08-30T15:29:14+01:00",
+    updatedAt: "2026-09-01T14:00:00+01:00",
   },
 ];
 
