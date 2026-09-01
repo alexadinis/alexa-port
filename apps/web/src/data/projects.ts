@@ -46,7 +46,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "endesa-portugal",
     metaDescription:
-      "Social media strategy for Endesa Portugal that doubled reach and impressions on Facebook and Instagram in 11 months. Case study by Alexandra Barbosa.",
+      "Social media strategy for Endesa Portugal that doubled reach and impressions on Facebook and Instagram in 8 months. Case study by Alexandra Barbosa.",
     title: "Endesa Portugal",
     summary:
       "Where energy meets creativity.\nPowering up Endesa's social media. ⚡",

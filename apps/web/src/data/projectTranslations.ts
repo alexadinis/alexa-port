@@ -22,7 +22,7 @@ const servicePt: Record<string, string> = {
 const pt: Record<string, Partial<Project>> = {
   "endesa-portugal": {
     metaDescription:
-      "Estratégia de redes sociais para a Endesa Portugal que duplicou o alcance e as impressões no Facebook e no Instagram em 11 meses.",
+      "Estratégia de redes sociais para a Endesa Portugal que duplicou o alcance e as impressões no Facebook e no Instagram em 8 meses.",
     summary: "A criatividade que dá energia às redes sociais da Endesa. ⚡",
     intro:
       "A criar conteúdo que reflete os valores da Endesa, a tornar a energia excitante e acessível para o dia a dia de quem a consome.",
