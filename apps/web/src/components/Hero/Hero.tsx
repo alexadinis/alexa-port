@@ -37,7 +37,10 @@ const Hero = ({ title }: HeroProps) => {
 
       <ServiceStickers />
 
-      <div className="relative z-10 flex w-full max-w-[54rem] flex-col items-center gap-5 text-center md:gap-7">
+      <div
+        data-hero-copy
+        className="relative z-10 flex w-full max-w-[54rem] flex-col items-center gap-5 text-center md:gap-7"
+      >
         <Eyebrow />
         <h1
           className={`${paytoneOne.className} text-[clamp(4.125rem,10.4vw,9.375rem)] leading-[0.84] tracking-[-0.045em] text-black`}

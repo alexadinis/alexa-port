@@ -4,6 +4,34 @@ import { TypeAnimation } from "react-type-animation";
 import { useLanguage } from "../Language/LanguageProvider";
 
 /**
+ * The typed word changes length ("marcas" then "empresas"), and a growing
+ * word reflows the sentence around it — enough to push the last words onto
+ * a new line and shift the whole hero mid-animation. An invisible copy of
+ * the longest word holds the box open and the animation is painted over it,
+ * so the paragraph is laid out once and never moves again.
+ */
+const TypingWord = ({ words }: { words: string[] }) => {
+  const longest = words.reduce((a, b) => (b.length > a.length ? b : a));
+
+  return (
+    <span className="relative inline-block text-left">
+      <span aria-hidden className="invisible font-bold">
+        {longest}
+      </span>
+      <TypeAnimation
+        sequence={words.flatMap((word) => [word, 2500])}
+        preRenderFirstString
+        wrapper="span"
+        speed={20}
+        style={{ color: "#44985a" }}
+        repeat={Infinity}
+        className="absolute top-0 left-0 font-bold whitespace-nowrap"
+      />
+    </span>
+  );
+};
+
+/**
  * Centred under the headline. The typing word is the only coloured thing
  * in the paragraph, so it carries the movement on its own.
  */
@@ -20,16 +48,7 @@ const Description = () => {
           Curiosa e criativa por natureza, com{" "}
           <strong className="font-bold">mais de 7 anos de experiência</strong> a
           transformar ideias em conteúdo que conta histórias e ajuda{" "}
-          <TypeAnimation
-            sequence={["marcas", 2500, "sonhos", 2500, "empresas", 2500]}
-            preRenderFirstString
-            wrapper="span"
-            speed={20}
-            style={{ display: "inline-block", color: "#44985a" }}
-            repeat={Infinity}
-            className="font-bold"
-          />
-          <span className="block md:inline"> a crescer.</span>
+          <TypingWord words={["marcas", "sonhos", "empresas"]} /> a crescer.
         </p>
       </div>
     );
@@ -44,16 +63,7 @@ const Description = () => {
         Curious and creative by nature, with{" "}
         <strong className="font-bold">7+ years of experience</strong> turning
         ideas into content that tells stories and helps{" "}
-        <TypeAnimation
-          sequence={["brands", 2500, "dreams", 2500, "companies", 2500]}
-          preRenderFirstString
-          wrapper="span"
-          speed={20}
-          style={{ display: "inline-block", color: "#44985a" }}
-          repeat={Infinity}
-          className="font-bold"
-        />
-        <span className="block md:inline"> grow.</span>
+        <TypingWord words={["brands", "dreams", "companies"]} /> grow.
       </p>
     </div>
   );
