@@ -109,6 +109,19 @@ const PROJECT_SEO_COPY: Record<
   },
 };
 
+const PROJECT_SEO_IMAGES: Record<string, string> = {
+  "endesa-portugal": "/seo/endesa-portugal-social-media.jpg",
+  "kfc-portugal": "/seo/kfc-portugal-social-media.jpg",
+  "padaria-alianca": "/seo/padaria-alianca-social-media.jpg",
+  munchie: "/seo/munchie-social-media.jpg",
+  "feel-better": "/seo/feel-better-social-media.jpg",
+  "lr-opticas": "/seo/lr-opticas-social-media.jpg",
+  "psicomorfose-psicologia": "/seo/psicomorfose-psicologia-social-media.jpg",
+  "authentic-classical-pilates":
+    "/seo/authentic-classical-pilates-social-media.jpg",
+  cockburns: "/seo/cockburns-social-media.jpg",
+};
+
 export const projectStaticParams = () =>
   PROJECTS.map((project) => ({ slug: project.slug }));
 
@@ -216,7 +229,9 @@ export const buildProjectMetadata = (
   const title = seo?.title ?? project.title;
   const description =
     seo?.description ?? project.description ?? project.summary;
-  const image = absoluteUrl(project.detailImage ?? project.image);
+  const image = absoluteUrl(
+    PROJECT_SEO_IMAGES[slug] ?? project.detailImage ?? project.image,
+  );
 
   return {
     title: { absolute: title },
@@ -227,7 +242,14 @@ export const buildProjectMetadata = (
       url: alternates.canonical,
       title,
       description,
-      images: [{ url: image, alt: `${project.title} project artwork` }],
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: `${project.title} social media project by Alexandra Barbosa`,
+        },
+      ],
     },
     twitter: { images: [image] },
   };
@@ -259,7 +281,9 @@ export const projectJsonLd = (language: Language, slug: string) => {
         description: seo?.description ?? project.description ?? project.summary,
         url: pageUrl,
         inLanguage: language === "pt" ? "pt-PT" : "en",
-        image: absoluteUrl(project.detailImage ?? project.image),
+        image: absoluteUrl(
+          PROJECT_SEO_IMAGES[slug] ?? project.detailImage ?? project.image,
+        ),
         ...(startYear ? { dateCreated: startYear } : {}),
         dateModified: project.updatedAt,
         author: {

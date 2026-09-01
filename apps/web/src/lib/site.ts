@@ -81,7 +81,7 @@ export const languageAlternates = (path: string, language: Language) => ({
  * its image.
  */
 export const OG_IMAGE = {
-  url: "/og-image.png",
+  url: "/seo/alexandra-barbosa-homepage.jpg",
   width: 1200,
   height: 630,
   alt: "Alexandra Barbosa — social media and design portfolio",
