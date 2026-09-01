@@ -1,4 +1,9 @@
-import { DEFAULT_LANGUAGE, LANGUAGES, localizeHref, type Language } from "./i18n";
+import {
+  DEFAULT_LANGUAGE,
+  LANGUAGES,
+  localizeHref,
+  type Language,
+} from "./i18n.ts";
 
 /** Official public origin used by canonical URLs, sitemap and structured data. */
 export const PRODUCTION_URL = "https://www.alexandrabarbosa.pt";
