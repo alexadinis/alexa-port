@@ -81,6 +81,15 @@ html {
   transform: translate3d(0.125rem, 0, 0);
 }
 
+/* The hero CTA reveals its arrow on hover, which no touch device can
+   trigger. Below the desktop breakpoint the arrow is simply always there. */
+@media (max-width: 767px) {
+  .hero-talk-arrow {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @keyframes hero-detail-pulse {
   0%,
   100% {

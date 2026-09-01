@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <Button
       size="lg"
-      className="hero-talk-button group/button mt-3 flex w-max max-w-none items-center gap-2 overflow-hidden whitespace-nowrap border-red text-red hover:bg-red hover:text-white"
+      className="hero-talk-button group/button mt-3 flex w-full min-h-14 max-w-none items-center justify-center gap-2 overflow-hidden whitespace-nowrap border-red text-red hover:bg-red hover:text-white md:w-max md:min-h-0 md:justify-start"
       onClick={() => {
         window.location.href = "mailto:hello@alexandrabarbosa.pt";
       }}
