@@ -21,7 +21,7 @@ const Hero = ({ title }: HeroProps) => {
   return (
     <section
       id="hero-banner"
-      className="relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-white px-5 pt-24 pb-16 text-black md:px-10 md:pt-28 md:pb-20"
+      className="relative flex min-h-dvh w-full select-none items-center justify-center overflow-hidden bg-white px-5 pt-24 pb-16 text-black md:px-10 md:pt-28 md:pb-20"
     >
       <div
         aria-hidden="true"

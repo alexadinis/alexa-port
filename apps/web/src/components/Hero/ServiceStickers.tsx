@@ -81,6 +81,8 @@ const MAX_THROW = 1800;
 /** Share of its speed a sticker keeps per second once let go. */
 const FRICTION = 0.3;
 const BOUNCE = 0.72;
+/** Breathing room retained after two stickers collide. */
+const COLLISION_GAP = 4;
 /** How hard the copy in the middle pushes a sticker back out. */
 const REPULSION = 320;
 
@@ -95,6 +97,7 @@ interface Body {
   spin: number;
   width: number;
   height: number;
+  pinned: boolean;
   placed: boolean;
   pointerId: number | null;
   grabX: number;
@@ -153,6 +156,7 @@ export default function ServiceStickers() {
         spin: 0,
         width: 0,
         height: 0,
+        pinned: sticker.pinned ?? false,
         placed: false,
         pointerId: null,
         grabX: 0,
@@ -181,6 +185,98 @@ export default function ServiceStickers() {
 
     const paint = (body: Body) => {
       body.el.style.transform = `translate3d(${body.x}px, ${body.y}px, 0) rotate(${body.angle}deg)`;
+    };
+
+    const resolveBodyCollisions = () => {
+      for (let firstIndex = 0; firstIndex < bodies.length; firstIndex += 1) {
+        const first = bodies[firstIndex];
+        if (!first) continue;
+
+        for (
+          let secondIndex = firstIndex + 1;
+          secondIndex < bodies.length;
+          secondIndex += 1
+        ) {
+          const second = bodies[secondIndex];
+          if (!second) continue;
+
+          const overlapX =
+            Math.min(first.x + first.width, second.x + second.width) -
+            Math.max(first.x, second.x);
+          const overlapY =
+            Math.min(first.y + first.height, second.y + second.height) -
+            Math.max(first.y, second.y);
+
+          if (overlapX <= 0 || overlapY <= 0) continue;
+
+          const firstFixed = first.pinned || first.pointerId !== null;
+          const secondFixed = second.pinned || second.pointerId !== null;
+          const firstWeight = firstFixed ? 0 : 1;
+          const secondWeight = secondFixed ? 0 : 1;
+          const totalWeight = firstWeight + secondWeight;
+          if (totalWeight === 0) continue;
+
+          const horizontal = overlapX < overlapY;
+          const firstCenter = horizontal
+            ? first.x + first.width / 2
+            : first.y + first.height / 2;
+          const secondCenter = horizontal
+            ? second.x + second.width / 2
+            : second.y + second.height / 2;
+          const direction = secondCenter >= firstCenter ? 1 : -1;
+          const correction =
+            (horizontal ? overlapX : overlapY) + COLLISION_GAP;
+
+          if (horizontal) {
+            first.x -=
+              direction * correction * (firstWeight / totalWeight);
+            second.x +=
+              direction * correction * (secondWeight / totalWeight);
+
+            const relativeSpeed = (second.vx - first.vx) * direction;
+            if (relativeSpeed < 0) {
+              const impulse =
+                (-(1 + BOUNCE) * relativeSpeed) / totalWeight;
+              first.vx -= direction * impulse * firstWeight;
+              second.vx += direction * impulse * secondWeight;
+            }
+          } else {
+            first.y -=
+              direction * correction * (firstWeight / totalWeight);
+            second.y +=
+              direction * correction * (secondWeight / totalWeight);
+
+            const relativeSpeed = (second.vy - first.vy) * direction;
+            if (relativeSpeed < 0) {
+              const impulse =
+                (-(1 + BOUNCE) * relativeSpeed) / totalWeight;
+              first.vy -= direction * impulse * firstWeight;
+              second.vy += direction * impulse * secondWeight;
+            }
+          }
+
+          first.x = clamp(
+            first.x,
+            0,
+            Math.max(0, bounds.width - first.width),
+          );
+          first.y = clamp(
+            first.y,
+            0,
+            Math.max(0, bounds.height - first.height),
+          );
+          second.x = clamp(
+            second.x,
+            0,
+            Math.max(0, bounds.width - second.width),
+          );
+          second.y = clamp(
+            second.y,
+            0,
+            Math.max(0, bounds.height - second.height),
+          );
+        }
+      }
     };
 
     // The markup positions the stickers in percentages so they land in the
@@ -223,6 +319,9 @@ export default function ServiceStickers() {
         body.y = clamp(body.y, 0, Math.max(0, bounds.height - body.height));
         paint(body);
       }
+
+      resolveBodyCollisions();
+      bodies.forEach(paint);
     };
 
     measure();
@@ -271,7 +370,7 @@ export default function ServiceStickers() {
       const decay = Math.pow(FRICTION, dt);
 
       for (const body of bodies) {
-        if (body.pointerId !== null) continue;
+        if (body.pinned || body.pointerId !== null) continue;
 
         body.vx = body.vx * decay + (Math.random() - 0.5) * 24 * dt;
         body.vy = body.vy * decay + (Math.random() - 0.5) * 24 * dt;
@@ -312,9 +411,10 @@ export default function ServiceStickers() {
           body.y = clamp(body.y, 0, maxY);
           body.vy = -body.vy * BOUNCE;
         }
-
-        paint(body);
       }
+
+      resolveBodyCollisions();
+      bodies.forEach(paint);
 
       frameRef.current = requestAnimationFrame(step);
     };
@@ -324,7 +424,7 @@ export default function ServiceStickers() {
     const onPointerDown = (event: PointerEvent) => {
       const el = (event.target as HTMLElement).closest("li");
       const body = bodies.find((candidate) => candidate.el === el);
-      if (!body) return;
+      if (!body || body.pinned) return;
 
       event.preventDefault();
       body.pointerId = event.pointerId;
@@ -390,6 +490,7 @@ export default function ServiceStickers() {
     };
 
     for (const body of bodies) {
+      if (body.pinned) continue;
       body.el.addEventListener("pointerdown", onPointerDown);
     }
 
@@ -409,6 +510,7 @@ export default function ServiceStickers() {
       window.removeEventListener("pointercancel", onPointerUp);
 
       for (const body of bodies) {
+        if (body.pinned) continue;
         body.el.removeEventListener("pointerdown", onPointerDown);
       }
     };
@@ -420,11 +522,15 @@ export default function ServiceStickers() {
   // the fixed navbar, and off the side edges so none of them ends up flush
   // against the viewport.
   return (
-    <ul className="pointer-events-none absolute top-20 right-3 bottom-4 left-3 z-[1] m-0 hidden list-none p-0 select-none sm:block">
+    <ul
+      aria-hidden="true"
+      className="pointer-events-none absolute top-20 right-3 bottom-4 left-3 z-[1] m-0 hidden list-none p-0 select-none sm:block"
+    >
       {STICKERS.map((sticker) => (
         <li
           key={sticker.key}
-          ref={sticker.pinned ? undefined : registerBody(sticker)}
+          data-service-sticker
+          ref={registerBody(sticker)}
           style={{
             left: `${sticker.x * 100}%`,
             top: `${sticker.y * 100}%`,
