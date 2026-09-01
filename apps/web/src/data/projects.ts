@@ -60,7 +60,7 @@ export const PROJECTS: Project[] = [
     year: "2024/2025",
     detailImage: "/endesa-banner.webp",
     description:
-      "Endesa Portugal is a leader in the energy sector, committed to innovation and sustainability. My goal? Bring that commitment to life on social media. Over 11 months, I developed and executed a strategy that doubled impressions and reach (+100%) on Facebook and Instagram.",
+      "Endesa Portugal is a leader in the energy sector, with a strong commitment to innovation and sustainability. My goal? To bring that commitment to life on social media across Instagram and Facebook.\n\nI developed and implemented a strategy that doubled impressions and reach (+100%) in just 8 months, across both Facebook and Instagram.\n\nThe focus? Creating content that reflected Endesa’s forward-thinking values while presenting energy in an engaging, accessible and relevant way, connecting the brand with consumers in their everyday lives.",
     image: "/endesa.webp",
     thumbnail: "/endesa-home-showcase.webp",
     relatedThumbnail: "/endesa-related-work.webp",
