@@ -16,35 +16,34 @@ import type { Language } from "../lib/i18n";
 export default function HomeRoute({ language }: { language: Language }) {
   return (
     <main>
-      <div
-        id="home"
-        className="relative flex min-h-dvh scroll-mt-20 flex-col items-center justify-center p-4 pt-20 md:p-16 md:pt-28"
-      >
+      <div id="home" className="relative scroll-mt-20">
         <Hero
           title={
-            <>
-              {language === "pt" ? "Olá," : "Hello,"} <br />
-              {/* The extra break gives the phone a three-line headline;
-                  it collapses from `md` up, leaving the desktop wording
-                  and line count exactly as they were. */}
-              {language === "pt" ? (
-                <>
-                  sou a<br className="md:hidden" />{" "}
-                  <span className="text-yellow">Alexa</span>.
-                </>
-              ) : (
-                <>
-                  I&apos;m
-                  <br className="md:hidden" />{" "}
-                  <span className="text-yellow">Alexa</span>.
-                </>
-              )}
-            </>
+            language === "pt" ? (
+              <>
+                Olá, sou a
+                <br />
+                Alexa.
+              </>
+            ) : (
+              <>
+                Hello, I&apos;m
+                <br />
+                Alexa.
+              </>
+            )
           }
         />
       </div>
 
       <div className="relative -mt-12 -mb-12 z-10">
+        {/* The hero is a light section now, so the negative-margin gap
+            above the band needs the same treatment as the one before
+            Contact: extend the light background down into the band. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-24 bg-white"
+        />
         <SectionLineMarquees
           icons={[
             <Seal key="1" className="w-16 h-16 text-black mr-2" />,
