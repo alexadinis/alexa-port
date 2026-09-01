@@ -38,10 +38,10 @@ const pt: Record<string, Partial<Project>> = {
     intro:
       "Memes bem feitos e frango ainda melhor: a receita para o engagement.",
     description:
-      "Durante 11 meses, vesti o lendário fato branco e dei voz digital ao Coronel Sanders em Portugal no Instagram, Facebook, TikTok e X.\n\nA missão? Transformar a KFC na marca de fast food mais envolvente nas redes sociais. A estratégia? Uma abordagem meme-first, pensada à medida de cada plataforma e público.\n\nNo Instagram, foi conseguido um aumento de 40% no engagement em apenas seis meses.\n\nNo TikTok, mais do que aparecer, foi conquistado. A KFC Portugal tornou-se a marca com maior engagement no TikTok em Portugal, onde cresceu organicamente mais 268 mil seguidores em apenas 8 meses.\n\nTudo isto enquanto fritava conteúdo de fazer rir, salivar e interagir, sempre com aquele sabor a finger lickin’ good.",
+      "Durante 11 meses, vesti o lendário fato branco e dei voz digital ao Coronel Sanders em Portugal no Instagram, Facebook, TikTok e X.\n\nA missão? Transformar a KFC na marca de fast food mais envolvente nas redes sociais. A estratégia? Uma abordagem meme-first, pensada à medida de cada plataforma e público.\n\nNo Instagram, foi conseguido um aumento de 40% no engagement em apenas seis meses.\n\nNo TikTok, mais do que aparecer, foi conquistado. A KFC Portugal tornou-se a marca com maior engagement no TikTok em Portugal, onde cresceu organicamente mais 268 mil seguidores em apenas 8 meses.\n\nGrande parte do trabalho passou por estar atenta ao que estava a acontecer online e perceber quando uma trend podia ser transformada numa oportunidade para a KFC. Memes, acontecimentos do momento, cultura pop, referências do quotidiano, comentários da comunidade e interações com outras marcas tornaram-se matéria-prima para criar conteúdo rápido, contextual e com personalidade.\n\nMais do que adaptar tendências, a decisão criativa foi fazer com que elas parecessem naturalmente KFC. Porque entrar numa trend é fácil, mas entrar numa trend e fazer parecer que o Coronel Sanders esteve envolvido desde o início? That's the spicy part.\n\nTudo isto enquanto fritava conteúdo de fazer rir, salivar e interagir, sempre com aquele sabor a finger lickin’ good.",
     reflection:
       "Porque a internet vive de memes e a KFC tinha muito para dizer.",
-    updatedAt: "2026-08-30T15:29:14+01:00",
+    updatedAt: "2026-09-01T14:00:00+01:00",
   },
   "padaria-alianca": {
     metaDescription:

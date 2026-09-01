@@ -91,7 +91,7 @@ export const PROJECTS: Project[] = [
     visualCreditUrl: "https://www.behance.net/altomani",
     year: "2024/2025",
     description:
-      "For 11 months, I put on the legendary white suit and gave Colonel Sanders a digital voice in Portugal across Instagram, Facebook, TikTok, and X.\n\nThe mission? Turn KFC into the most engaging fast food brand on social media. The strategy? A meme-first approach, tailored to each platform and audience.\n\nOn Instagram, that meant a 40% increase in engagement in just six months. On TikTok, it meant more than just showing up. KFC Portugal became the brand with the highest engagement on TikTok in Portugal, growing 268K followers organically in just 8 months.\n\nAll while frying up content that made people laugh, drool and hit that follow button.",
+      "For 11 months, I stepped into the legendary white suit and gave Colonel Sanders a digital voice in Portugal across Instagram, Facebook, TikTok and X.\n\nThe mission? To make KFC the most engaging fast-food brand on social media. The strategy? A meme-first approach, tailored to each platform and its audience.\n\nOn Instagram, engagement increased by 40% in just six months.\n\nOn TikTok, it was about more than simply showing up. It was about owning the space. KFC Portugal became the brand with the highest engagement on TikTok in Portugal, while growing organically by more than 268,000 followers in just 8 months.\n\nA big part of the work involved keeping a close eye on what was happening online and spotting when a trend could become an opportunity for KFC. Memes, current events, pop culture, everyday references, community comments and interactions with other brands all became creative fuel for content that was fast, relevant and full of personality.\n\nMore than simply jumping on trends, the creative challenge was to make them feel naturally KFC. Because jumping on a trend is easy. Jumping on a trend and making it feel like Colonel Sanders was in on it from the very beginning? That's the spicy part.\n\nAll while cooking up content designed to make people laugh, crave and engage, with that unmistakable finger lickin’ good flavour.",
     reflection: "Because the internet runs on memes and KFC had a lot to say.",
     image: "/placeholder.jpg",
     thumbnail: "/kfc/kfc-home-showcase.webp",
@@ -113,7 +113,7 @@ export const PROJECTS: Project[] = [
       "Content Ideation",
     ],
     accent: "#e84e3c",
-    updatedAt: "2026-08-30T11:24:16+01:00",
+    updatedAt: "2026-09-01T14:00:00+01:00",
   },
   {
     slug: "padaria-alianca",
