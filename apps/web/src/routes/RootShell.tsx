@@ -58,6 +58,7 @@ export const buildRootMetadata = (language: Language): Metadata => {
     creator: SITE_NAME,
     icons: {
       icon: [
+        { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
         { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
         { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
       ],
