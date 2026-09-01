@@ -126,7 +126,7 @@ export const PROJECTS: Project[] = [
     developedAt: "anca design studio",
     year: "2021 / 2022",
     description:
-      "Padaria Aliança is a bakery built around one idea: bring Portugal's most traditional flavours to everyone who walks through the door. It's a place where time slows down, made for fresh bread, real pastries, and the simple pleasure of good food.\n\nI handled content strategy, photography, and video, capturing what makes Padaria Aliança different: everything made fresh, every single day. The visuals did the talking, close-ups of warm bread, steam still rising, proof that nothing here sits around waiting.",
+      "Padaria Aliança is built around one idea: bringing Portugal's most traditional flavours to everyone who walks through the door. It's a place where time slows down, with the smell of freshly baked bread, real pastry, and the simple pleasure of eating well.\n\nThe challenge, back in 2022, was clear: the bakery had little online presence, with low-quality images and generic content that didn't do justice to what was actually happening inside. I was responsible for content strategy, photography, and video, with the goal of capturing what makes Padaria Aliança different: everything is made fresh, every single day.\n\nThe core creative decision was to show the baking process itself, not just the finished product: video and photography following the treats from oven to counter, with close-ups of warm bread and rising steam. To give the communication personality, I created a recurring format built around wordplay with the names of the pastries, bringing the brand's language closer to its everyday audience: playful, approachable, and never corporate. Content was distributed mainly through carousels and static posts, complemented by a few Reels, still an emerging format at the time.\n\nResults showed up most clearly during festive seasons: by promoting special packages for Easter, Christmas, Mother's Day, and Valentine's Day, Padaria Aliança saw an increase in orders during these periods, confirming that thoughtful, visually crafted content translates into sales, not just engagement.\n\nPadaria Aliança was left with a digital presence that reflects what makes it special: Portuguese tradition, made fresh every day, with a voice as warm and full of flavour as the images themselves (both in the visuals and in the words).",
     reflection: "Nothing here waits around. Why should you?",
     image: "/alianca/portfolio-alianca-grid.webp",
     thumbnail: "/alianca/portfolio-alianca-showcase.webp",
@@ -148,7 +148,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#3476ee",
-    updatedAt: "2026-08-30T11:24:16+01:00",
+    updatedAt: "2026-09-01T14:00:00+01:00",
   },
   {
     slug: "munchie",
