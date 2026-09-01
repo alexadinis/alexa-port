@@ -393,7 +393,7 @@ export const PROJECTS: Project[] = [
       { label: "Year", value: "2024 / 2025" },
     ],
     description:
-      "Cockburn's isn't just tradition, it's proof that Port wine can still feel exciting to a new generation.\n\nI managed the brand's day-to-day presence across Instagram, Facebook, and X, giving Cockburn's a voice that felt young, fresh, and a little irreverent, without losing the heritage behind the name. The profile itself tells that story: built almost entirely on photography, from professional shoots to real moments captured by visitors passing through the cellars, over graphic design. It's less about polished visuals, more about real people, real experiences, and the feeling of actually being there.\n\nThat approach kept the brand close to its community, and it showed: steady, meaningful growth across all platforms, proof that a centuries-old name can still feel personal.",
+      "Cockburn's isn't just tradition: it's proof that Port wine can still excite a new generation.\n\nThe challenge was clear: Port wine had drifted out of the conversation for younger generations, tied to a traditional image that rarely crossed paths with the everyday life of people in their twenties and thirties. The goal wasn't to reinvent the brand, but to make it appealing to this audience without letting tradition fade along the way.\n\nI managed Cockburn's daily presence on Instagram, Facebook, and X for 11 months, between 2024 and 2025, giving the brand a young, fresh, and slightly irreverent voice. The tone of communication leaned on puns and light humour, always respecting the heritage behind the name.\n\nThe core creative decision was to build the profile almost entirely around real photography, rather than overly polished images: from professional productions to genuine moments captured by visitors in the cellars. I complemented this approach with live-covered Stories, filmed by me, at events like Christmas and city fairs, including Baluarte, bringing the brand closer to its community in real time, and not only through planned content.\n\nThe goal set for this strategy was clear: reach 15,000 followers on Instagram. It was achieved. The result was consistent, meaningful growth across every platform, proof that a brand with centuries of history can still feel current, without losing what makes it recognisable.\n\nToday, Cockburn's has a digital presence that speaks the language of a new generation, keeping Port wine's tradition alive through real photography, genuine humour, and authentic presence.",
     reflection: "Some things get better with time... just like this feed.",
     image: "/cockburns/home-showcase.webp",
     thumbnail: "/cockburns/home-showcase.webp",
@@ -415,7 +415,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#e84e3c",
-    updatedAt: "2026-08-30T15:29:14+01:00",
+    updatedAt: "2026-09-01T14:00:00+01:00",
   },
 ];
 
