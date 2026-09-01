@@ -229,7 +229,7 @@ export const PROJECTS: Project[] = [
     creditWork: "Freelance",
     year: "2022/2026",
     description:
-      "L&R Ópticas has eight stores across the Porto district, dedicated to helping people see the world with clearer, healthier vision. My mission was to bring that same clarity to their social media.\n\nI handled the strategy, content creation, and copywriting across their channels, from product content for eyewear brands like Prada, Ray-Ban, Versace, Dolce & Gabbana, and Persol, to educational posts sharing tips and debunking common myths about eye health.\n\nThe result: a social presence that feels as trustworthy as it is easy to follow, combining brand credibility with genuine, everyday usefulness.",
+      "L&R Ópticas has eight stores across the Porto district, dedicated to helping people see the world with more clarity and healthier vision. My mission was to bring that same clarity to their social media — built from the ground up by me.\n\nThe challenge emerged after realizing, together with the store owner, that the previous strategy (focused solely on interaction and informational content) wasn't driving sales. The answer was to introduce product-focused posts, without turning the feed into plain advertising and losing the brand's credibility.\n\nThe core creative decision was to follow a seasonal calendar: sunglasses take center stage in spring and summer, frames lead in winter, and content ties into occasions like Christmas and Valentine's Day with gift suggestions that make the product feel relevant to the moment rather than simply \"for sale.\" Formats are mostly static posts, complemented by Reels and carousels whenever the content calls for more space, like eye health explainers or debunking common myths.\n\nThe result, from January to December 2025: organic growth of 373 Instagram followers and 250 Facebook followers, sustained purely through consistent posting, with no paid advertising behind that growth. Posts reach or exceed 50,000 views per quarter, proof that sales content, when placed at the right point in the calendar, doesn't push the audience away.\n\nToday, L&R Ópticas has a social presence that balances brand trust with genuine everyday usefulness, without ever losing the close, approachable tone that makes it recognizable.",
     reflection: "Sharp vision. Sharp strategy.",
     image: "/l-r.webp",
     thumbnail: "/lr-opticas/home-showcase.jpg",
@@ -244,7 +244,7 @@ export const PROJECTS: Project[] = [
       "Analytics & Reporting",
     ],
     accent: "#e84e3c",
-    updatedAt: "2026-08-30T15:29:14+01:00",
+    updatedAt: "2026-09-01T14:00:00+01:00",
   },
   {
     slug: "psicomorfose-psicologia",
