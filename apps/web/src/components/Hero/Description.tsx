@@ -47,7 +47,7 @@ const Description = () => {
         <p className="text-base leading-relaxed text-balance text-black/70 md:text-lg">
           Curiosa e criativa por natureza, com{" "}
           <strong className="font-bold">mais de 7 anos de experiência</strong> a
-          transformar ideias em conteúdo que conta histórias e ajuda{" "}
+          transformar ideias em conteúdo que conta histórias e a ajudar{" "}
           <TypingWord words={["marcas", "sonhos", "empresas"]} /> a crescer.
         </p>
       </div>
