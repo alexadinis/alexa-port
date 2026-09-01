@@ -56,6 +56,16 @@ export const buildRootMetadata = (language: Language): Metadata => {
     applicationName: SITE_NAME,
     authors: [{ name: SITE_NAME, url: SITE_URL }],
     creator: SITE_NAME,
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+        { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
+      ],
+      apple: [
+        { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
+      ],
+    },
+    manifest: "/manifest.webmanifest",
     openGraph: {
       type: "website",
       siteName: SITE_NAME,
