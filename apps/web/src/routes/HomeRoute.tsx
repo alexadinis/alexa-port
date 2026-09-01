@@ -24,10 +24,20 @@ export default function HomeRoute({ language }: { language: Language }) {
           title={
             <>
               {language === "pt" ? "Olá," : "Hello,"} <br />
+              {/* The extra break gives the phone a three-line headline;
+                  it collapses from `md` up, leaving the desktop wording
+                  and line count exactly as they were. */}
               {language === "pt" ? (
-                <>sou a <span className="text-yellow">Alexa</span>.</>
+                <>
+                  sou a<br className="md:hidden" />{" "}
+                  <span className="text-yellow">Alexa</span>.
+                </>
               ) : (
-                <>I&apos;m <span className="text-yellow">Alexa</span>.</>
+                <>
+                  I&apos;m
+                  <br className="md:hidden" />{" "}
+                  <span className="text-yellow">Alexa</span>.
+                </>
               )}
             </>
           }
