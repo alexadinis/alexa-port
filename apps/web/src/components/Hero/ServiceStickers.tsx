@@ -41,8 +41,8 @@ const STICKERS = [
       "hidden top-[50%] right-[3%] -rotate-3 bg-black text-white lg:flex",
   },
   {
-    pt: "branding",
-    en: "branding",
+    pt: "7 anos disto",
+    en: "7 years of this",
     position:
       "hidden bottom-[11%] right-[13%] -rotate-6 bg-black text-yellow sm:flex",
   },
