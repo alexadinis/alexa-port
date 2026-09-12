@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ConsentControls from "../components/Analytics/ConsentControls";
 import { localizeHref, type Language } from "../lib/i18n";
 
 const externalLinkClass =
@@ -82,6 +83,7 @@ const PrivacyRoute = ({ language }: { language: Language }) => {
                 ? "Se o Google Analytics vier a ser instalado, não será carregado antes de o visitante dar consentimento num banner próprio. A política será atualizada com os cookies, dados, duração e configurações efetivamente utilizados. A Google Ireland Limited atuará como prestadora do serviço; poderá haver tratamento nos Estados Unidos, ao abrigo dos mecanismos de transferência aplicáveis, incluindo o Quadro de Privacidade de Dados UE–EUA e/ou cláusulas contratuais-tipo, conforme aplicável."
                 : "If Google Analytics is installed in the future, it will not load before the visitor gives consent through a dedicated banner. This policy will be updated with the cookies, data, duration and settings actually used. Google Ireland Limited will provide the service; processing may occur in the United States under applicable transfer mechanisms, including the EU–US Data Privacy Framework and/or Standard Contractual Clauses, as applicable."}
             </p>
+            <ConsentControls />
           </section>
 
           <section>

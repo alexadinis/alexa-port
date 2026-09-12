@@ -7,6 +7,7 @@ export type AnalyticsConsent = "granted" | "denied";
 const CONSENT_STORAGE_KEY = "analytics-consent";
 const CONSENT_CHANGE_EVENT = "analytics-consent-change";
 const CONSENT_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 type StoredConsent = {
   value: AnalyticsConsent;
@@ -44,8 +45,17 @@ const dispatchConsentChange = (value: AnalyticsConsent | null) => {
   );
 };
 
+const setGoogleAnalyticsDisabled = (disabled: boolean) => {
+  if (typeof window === "undefined" || !GA_MEASUREMENT_ID) return;
+
+  const analyticsWindow = window as unknown as Record<string, boolean>;
+  analyticsWindow[`ga-disable-${GA_MEASUREMENT_ID}`] = disabled;
+};
+
 export const writeConsent = (value: AnalyticsConsent) => {
   if (typeof window === "undefined") return;
+
+  setGoogleAnalyticsDisabled(value !== "granted");
 
   try {
     const storedConsent: StoredConsent = { value, at: Date.now() };
@@ -62,11 +72,34 @@ export const writeConsent = (value: AnalyticsConsent) => {
 export const clearConsent = () => {
   if (typeof window === "undefined") return;
 
+  setGoogleAnalyticsDisabled(true);
+
   try {
     window.localStorage.removeItem(CONSENT_STORAGE_KEY);
     dispatchConsentChange(null);
   } catch {
     // Clearing consent is best-effort when browser storage is unavailable.
+  }
+};
+
+export const clearGoogleCookies = () => {
+  if (typeof document === "undefined") return;
+
+  try {
+    const cookieNames = document.cookie
+      .split(";")
+      .map((cookie) => cookie.trim().split("=", 1)[0] ?? "")
+      .filter((name) => name === "_ga" || name.startsWith("_ga_"));
+    const domains = [undefined, window.location.hostname, ".alexandrabarbosa.pt"];
+
+    for (const name of cookieNames) {
+      for (const domain of domains) {
+        const domainAttribute = domain ? `; Domain=${domain}` : "";
+        document.cookie = `${name}=; Max-Age=0; Path=/${domainAttribute}; SameSite=Lax`;
+      }
+    }
+  } catch {
+    // Cookie removal is best-effort in browsers that restrict cookie access.
   }
 };
 
