@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import CookieBanner from "../components/Analytics/CookieBanner";
 import GoogleAnalyticsGate from "../components/Analytics/GoogleAnalyticsGate";
 import Navbar from "../components/Navbar/Navbar";
 import { LanguageProvider } from "../components/Language/LanguageProvider";
@@ -145,6 +146,7 @@ export default function RootShell({
         <LanguageProvider language={language}>
           <Navbar navLinks={NAV_LINKS} />
           {children}
+          <CookieBanner />
         </LanguageProvider>
         {/* Vercel Analytics remains cookieless; GA4 is gated separately on the
             visitor's explicit analytics consent. */}
