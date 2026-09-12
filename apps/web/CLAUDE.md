@@ -30,3 +30,10 @@ Use relative imports. The `@/*` aliases in `tsconfig.json` point at a `packages/
 - The contact form submits to `POST /api/contact`.
 - Set `RESEND_API_KEY` in the environment to enable email delivery.
 - The sender domain must be verified in Resend.
+
+## Google Analytics
+
+- Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` to enable Google Analytics 4 and the consent banner; leave it empty to disable both.
+- `GoogleAnalyticsGate` mounts GA only after the visitor grants analytics consent.
+- The consent choice is stored in `localStorage` under `analytics-consent` for 12 months.
+- The privacy policy lists the analytics cookies and retention periods. Update it whenever the cookies, retention, or analytics configuration changes.
