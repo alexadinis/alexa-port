@@ -31,9 +31,10 @@ Use relative imports. The `@/*` aliases in `tsconfig.json` point at a `packages/
 - Set `RESEND_API_KEY` in the environment to enable email delivery.
 - The sender domain must be verified in Resend.
 
-## Google Analytics
+## Analytics
 
 - Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` to enable Google Analytics 4 and the consent banner; leave it empty to disable both.
 - `GoogleAnalyticsGate` mounts GA only after the visitor grants analytics consent.
+- Vercel Analytics and Speed Insights are cookieless and always on; GA4 is the only analytics service gated on consent.
 - The consent choice is stored in `localStorage` under `analytics-consent` for 12 months.
 - The privacy policy lists the analytics cookies and retention periods. Update it whenever the cookies, retention, or analytics configuration changes.

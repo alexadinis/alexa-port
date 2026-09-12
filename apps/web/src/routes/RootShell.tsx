@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import CookieBanner from "../components/Analytics/CookieBanner";
@@ -148,9 +149,10 @@ export default function RootShell({
           {children}
           <CookieBanner />
         </LanguageProvider>
-        {/* Vercel Analytics remains cookieless; GA4 is gated separately on the
-            visitor's explicit analytics consent. */}
+        {/* Vercel Analytics and Speed Insights remain cookieless; GA4 is gated
+            separately on the visitor's explicit analytics consent. */}
         <Analytics />
+        <SpeedInsights />
         <GoogleAnalyticsGate />
       </body>
     </html>
