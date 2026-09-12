@@ -104,8 +104,20 @@ export const clearGoogleCookies = () => {
 };
 
 const subscribe = (onStoreChange: () => void) => {
+  const handleStorageChange = (event: StorageEvent) => {
+    if (event.key !== null && event.key !== CONSENT_STORAGE_KEY) return;
+
+    setGoogleAnalyticsDisabled(readConsent() !== "granted");
+    onStoreChange();
+  };
+
   window.addEventListener(CONSENT_CHANGE_EVENT, onStoreChange);
-  return () => window.removeEventListener(CONSENT_CHANGE_EVENT, onStoreChange);
+  window.addEventListener("storage", handleStorageChange);
+
+  return () => {
+    window.removeEventListener(CONSENT_CHANGE_EVENT, onStoreChange);
+    window.removeEventListener("storage", handleStorageChange);
+  };
 };
 
 const getServerSnapshot = () => null;
