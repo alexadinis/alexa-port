@@ -8,6 +8,7 @@ const CONSENT_STORAGE_KEY = "analytics-consent";
 const CONSENT_CHANGE_EVENT = "analytics-consent-change";
 const CONSENT_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+let volatileConsent: AnalyticsConsent | null = null;
 
 type StoredConsent = {
   value: AnalyticsConsent;
@@ -19,6 +20,7 @@ const isAnalyticsConsent = (value: unknown): value is AnalyticsConsent =>
 
 export const readConsent = (): AnalyticsConsent | null => {
   if (typeof window === "undefined") return null;
+  if (volatileConsent !== null) return volatileConsent;
 
   try {
     const storedValue = window.localStorage.getItem(CONSENT_STORAGE_KEY);
@@ -56,6 +58,7 @@ export const writeConsent = (value: AnalyticsConsent) => {
   if (typeof window === "undefined") return;
 
   setGoogleAnalyticsDisabled(value !== "granted");
+  volatileConsent = value;
 
   try {
     const storedConsent: StoredConsent = { value, at: Date.now() };
@@ -63,23 +66,26 @@ export const writeConsent = (value: AnalyticsConsent) => {
       CONSENT_STORAGE_KEY,
       JSON.stringify(storedConsent),
     );
-    dispatchConsentChange(value);
   } catch {
     // Storage can be unavailable in private or restricted browsing contexts.
   }
+
+  dispatchConsentChange(value);
 };
 
 export const clearConsent = () => {
   if (typeof window === "undefined") return;
 
   setGoogleAnalyticsDisabled(true);
+  volatileConsent = null;
 
   try {
     window.localStorage.removeItem(CONSENT_STORAGE_KEY);
-    dispatchConsentChange(null);
   } catch {
     // Clearing consent is best-effort when browser storage is unavailable.
   }
+
+  dispatchConsentChange(null);
 };
 
 export const clearGoogleCookies = () => {
@@ -107,6 +113,7 @@ const subscribe = (onStoreChange: () => void) => {
   const handleStorageChange = (event: StorageEvent) => {
     if (event.key !== null && event.key !== CONSENT_STORAGE_KEY) return;
 
+    volatileConsent = null;
     setGoogleAnalyticsDisabled(readConsent() !== "granted");
     onStoreChange();
   };
