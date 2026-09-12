@@ -56,8 +56,8 @@ const PrivacyRoute = ({ language }: { language: Language }) => {
             </ul>
             <p>
               {pt
-                ? "O formulário não envia nem guarda diretamente os dados numa base de dados do website. Ao submeter, é criada uma mensagem no programa de email do visitante; os dados só são enviados quando essa pessoa decide enviar o email."
-                : "The form does not directly send or store data in a website database. Submitting it creates a message in the visitor's email application; data is only sent when that person chooses to send the email."}
+                ? "As submissões do formulário são enviadas por email à Alexandra através da Resend (Resend, Inc., EUA), que atua como subcontratante. Os dados são usados apenas para responder ao contacto e não são guardados numa base de dados do website."
+                : "Form submissions are sent by email to Alexandra through Resend (Resend, Inc., USA), acting as a processor. The data is used only to answer the enquiry and is not stored in a website database."}
             </p>
           </section>
 
