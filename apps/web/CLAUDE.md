@@ -21,9 +21,9 @@ Component variants use `tailwind-variants` — see Button component for the patt
 - `react-fast-marquee` — Marquee animations
 - `react-type-animation` — Typing effects
 
-## Path Alias
+## Imports
 
-The configured `@/components/*`, `@/utils`, and `@/icons` aliases map to shared modules in `packages/ui/src/`.
+Use relative imports. The `@/*` aliases in `tsconfig.json` point at a `packages/ui` package that no longer exists, so they resolve to nothing.
 
 ## Contact form
 
