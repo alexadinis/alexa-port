@@ -7,7 +7,7 @@ Next.js 15 App Router with React 19 and Tailwind CSS 4.
 - `app/` — Routes and layout. `layout.tsx` sets Poppins font and Navbar.
 - `src/components/` — Feature folders (Hero/, Work/, Slider/, Navbar/, etc.) each containing the main component and subcomponents.
 - `src/icons/` — Custom SVG icon components. Also uses `@phosphor-icons/react`.
-- `src/utils/` — Shared utilities.
+- `src/lib/` — App-specific utilities and site constants.
 
 ## Styling
 
@@ -23,7 +23,7 @@ Component variants use `tailwind-variants` — see Button component for the patt
 
 ## Path Alias
 
-`@/` maps to the web app root (`apps/web/`).
+The configured `@/components/*`, `@/utils`, and `@/icons` aliases map to shared modules in `packages/ui/src/`.
 
 ## Contact form
 
