@@ -23,7 +23,7 @@ const PrivacyRoute = ({ language }: { language: Language }) => {
             {pt ? "Política de Privacidade" : "Privacy Policy"}
           </h1>
           <p className="mt-6 text-sm text-white/60">
-            {pt ? "Última atualização: 31 de agosto de 2026" : "Last updated: 31 August 2026"}
+            {pt ? "Última atualização: 12 de setembro de 2026" : "Last updated: 12 September 2026"}
           </p>
         </header>
 
@@ -54,6 +54,7 @@ const PrivacyRoute = ({ language }: { language: Language }) => {
             <ul>
               <li>{pt ? "nome, endereço de email e mensagem fornecidos através do formulário de contacto ou por email;" : "name, email address and message provided through the contact form or by email;"}</li>
               <li>{pt ? "dados técnicos de navegação necessários ao funcionamento e segurança do website, como endereço IP, data e hora do acesso, páginas pedidas, tipo de navegador, dispositivo e registos técnicos do servidor." : "technical browsing data needed to operate and secure the website, such as IP address, access date and time, requested pages, browser and device type, and server logs."}</li>
+              <li>{pt ? "dados de analytics recolhidos apenas após consentimento: páginas visitadas, localização aproximada derivada de um endereço IP truncado, tipo de dispositivo e navegador, página de referência e um identificador de cliente pseudónimo guardado num cookie." : "analytics data collected only after consent: pages visited, approximate location derived from a truncated IP address, device and browser type, referrer, and a pseudonymous client identifier stored in a cookie."}</li>
             </ul>
             <p>
               {pt
@@ -75,13 +76,18 @@ const PrivacyRoute = ({ language }: { language: Language }) => {
             <h2>{pt ? "4. Cookies e Google Analytics" : "4. Cookies and Google Analytics"}</h2>
             <p>
               {pt
-                ? "Neste momento, o website não utiliza o Google Analytics nem ativa cookies de analytics ou marketing. Poderão existir apenas tecnologias estritamente necessárias ao funcionamento e segurança, que não dependem de consentimento quando se limitam a essa finalidade."
-                : "The website does not currently use Google Analytics or activate analytics or marketing cookies. Only technologies strictly necessary for operation and security may be used; these do not require consent when limited to that purpose."}
+                ? "Este website utiliza o Google Analytics 4 para medir o tráfego e perceber que páginas são vistas. O Google Analytics só é carregado depois de o visitante aceitar no banner de cookies. O consentimento pode ser retirado a qualquer momento através do controlo nesta secção."
+                : "This website uses Google Analytics 4 to measure traffic and understand which pages are viewed. Google Analytics is loaded only after the visitor accepts in the cookie banner. Consent can be withdrawn at any time using the control in this section."}
             </p>
             <p>
               {pt
-                ? "Se o Google Analytics vier a ser instalado, não será carregado antes de o visitante dar consentimento num banner próprio. A política será atualizada com os cookies, dados, duração e configurações efetivamente utilizados. A Google Ireland Limited atuará como prestadora do serviço; poderá haver tratamento nos Estados Unidos, ao abrigo dos mecanismos de transferência aplicáveis, incluindo o Quadro de Privacidade de Dados UE–EUA e/ou cláusulas contratuais-tipo, conforme aplicável."
-                : "If Google Analytics is installed in the future, it will not load before the visitor gives consent through a dedicated banner. This policy will be updated with the cookies, data, duration and settings actually used. Google Ireland Limited will provide the service; processing may occur in the United States under applicable transfer mechanisms, including the EU–US Data Privacy Framework and/or Standard Contractual Clauses, as applicable."}
+                ? "São utilizados os cookies _ga (2 anos, para distinguir visitantes) e _ga_RZ63T51JEC (2 anos, para manter o estado da sessão). Os endereços IP são truncados pelo Google Analytics 4 antes do armazenamento. O Google Signals e as funcionalidades de publicidade estão desativados."
+                : "The cookies used are _ga (2 years, to distinguish visitors) and _ga_RZ63T51JEC (2 years, to maintain session state). IP addresses are truncated by Google Analytics 4 before storage. Google Signals and advertising features are turned off."}
+            </p>
+            <p>
+              {pt
+                ? "A Google Ireland Limited atua como prestadora do serviço; poderá haver tratamento nos Estados Unidos, ao abrigo dos mecanismos de transferência aplicáveis, incluindo o Quadro de Privacidade de Dados UE–EUA e/ou cláusulas contratuais-tipo, conforme aplicável."
+                : "Google Ireland Limited provides the service; processing may occur in the United States under applicable transfer mechanisms, including the EU–US Data Privacy Framework and/or Standard Contractual Clauses, as applicable."}
             </p>
             <ConsentControls />
           </section>
@@ -105,7 +111,8 @@ const PrivacyRoute = ({ language }: { language: Language }) => {
             <ul>
               <li>{pt ? "Contactos e pedidos de orçamento: pelo período necessário para responder e acompanhar o contacto, até ao máximo de 24 meses após a última comunicação, salvo se existir uma relação contratual ou obrigação legal que justifique prazo superior." : "Enquiries and quote requests: for as long as needed to reply and follow up, up to 24 months after the last communication, unless a contractual relationship or legal duty requires longer retention."}</li>
               <li>{pt ? "Registos técnicos: pelo período definido pelo fornecedor de alojamento e apenas enquanto necessário para segurança, diagnóstico e funcionamento do serviço." : "Technical logs: for the period set by the hosting provider and only as long as necessary for security, diagnostics and service operation."}</li>
-              <li>{pt ? "Dados de analytics futuros: durante o prazo que vier a ser indicado no banner e nesta política antes da sua ativação." : "Future analytics data: for the period disclosed in the banner and this policy before analytics is activated."}</li>
+              <li>{pt ? "Dados de eventos de analytics: durante 14 meses no Google Analytics." : "Analytics event data: for 14 months in Google Analytics."}</li>
+              <li>{pt ? "Escolha de consentimento: durante 12 meses no navegador." : "Consent choice: for 12 months in the browser."}</li>
             </ul>
           </section>
 
