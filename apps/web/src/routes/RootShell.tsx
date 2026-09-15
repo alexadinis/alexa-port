@@ -5,6 +5,7 @@ import { Poppins } from "next/font/google";
 import CookieBanner from "../components/Analytics/CookieBanner";
 import GoogleAnalyticsGate from "../components/Analytics/GoogleAnalyticsGate";
 import Navbar from "../components/Navbar/Navbar";
+import ContactDialogProvider from "../components/Contact/ContactDialogProvider";
 import { LanguageProvider } from "../components/Language/LanguageProvider";
 import { LOCALE_TAGS, localizeHref, type Language } from "../lib/i18n";
 import {
@@ -145,9 +146,11 @@ export default function RootShell({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <LanguageProvider language={language}>
-          <Navbar navLinks={NAV_LINKS} />
-          {children}
-          <CookieBanner />
+          <ContactDialogProvider>
+            <Navbar navLinks={NAV_LINKS} />
+            {children}
+            <CookieBanner />
+          </ContactDialogProvider>
         </LanguageProvider>
         {/* Vercel Analytics and Speed Insights remain cookieless; GA4 is gated
             separately on the visitor's explicit analytics consent. */}

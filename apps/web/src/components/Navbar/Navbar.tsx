@@ -7,6 +7,7 @@ import LanguageToggle from "../Language/LanguageToggle";
 import { useLanguage } from "../Language/LanguageProvider";
 import { localizeHref } from "../../lib/i18n";
 import WalkingLogo from "./WalkingLogo";
+import { useContactDialog } from "../Contact/ContactDialogProvider";
 
 interface NavLink {
   label: string;
@@ -41,6 +42,7 @@ const LIGHT_AT_TOP = /^\/(pt|en)(\/(projetos|projects))?\/?$/;
 const Navbar = ({ navLinks }: NavbarProps) => {
   const { language } = useLanguage();
   const pathname = usePathname();
+  const { openContactDialog } = useContactDialog();
   const [isOverLight, setIsOverLight] = useState(() =>
     LIGHT_AT_TOP.test(pathname ?? ""),
   );
@@ -77,10 +79,14 @@ const Navbar = ({ navLinks }: NavbarProps) => {
   }, [isUnderNavbar]);
 
   return (
-    <nav className={`main-navbar main-navbar--${language} fixed top-0 right-0 left-0 z-20 flex h-16 items-center justify-between px-4 transition-colors duration-300 sm:px-6 ${isOverLight ? "bg-black text-white" : "bg-white text-black"}`}>
+    <nav
+      className={`main-navbar main-navbar--${language} fixed top-0 right-0 left-0 z-20 flex h-16 items-center justify-between px-4 transition-colors duration-300 sm:px-6 ${isOverLight ? "bg-black text-white" : "bg-white text-black"}`}
+    >
       <Link
         href={localizeHref("/#home", language)}
-        aria-label={language === "pt" ? "Ir para a página inicial" : "Go to homepage"}
+        aria-label={
+          language === "pt" ? "Ir para a página inicial" : "Go to homepage"
+        }
         className={`block w-max shrink-0 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 ${language === "pt" ? "focus-visible:outline-green" : "focus-visible:outline-blue"}`}
       >
         <WalkingLogo inverted={isOverLight} />
@@ -93,21 +99,42 @@ const Navbar = ({ navLinks }: NavbarProps) => {
                 ? (PORTUGUESE_NAV_LABELS[link.label] ?? link.label)
                 : link.label;
 
-            return (
-              <Link
-                key={link.href}
-                href={localizeHref(link.href, language)}
-                className={`nav-color-link py-3 focus-visible:outline-2 focus-visible:outline-offset-2 ${language === "pt" ? "focus-visible:outline-green" : "focus-visible:outline-blue"}`}
-              >
+            const className = `nav-color-link py-3 focus-visible:outline-2 focus-visible:outline-offset-2 ${language === "pt" ? "focus-visible:outline-green" : "focus-visible:outline-blue"}`;
+            const content = (
+              <>
                 <span>{label.toLowerCase()}</span>
                 <span className="nav-color-link-accent" aria-hidden="true">
                   {label.toLowerCase()}
                 </span>
+              </>
+            );
+
+            return link.href === "/#contact" ? (
+              <button
+                key={link.href}
+                type="button"
+                aria-haspopup="dialog"
+                aria-controls="contact-dialog"
+                onClick={openContactDialog}
+                className={className}
+              >
+                {content}
+              </button>
+            ) : (
+              <Link
+                key={link.href}
+                href={localizeHref(link.href, language)}
+                className={className}
+              >
+                {content}
               </Link>
             );
           })}
         </div>
-        <span className="hidden text-current opacity-55 md:block" aria-hidden="true">
+        <span
+          className="hidden text-current opacity-55 md:block"
+          aria-hidden="true"
+        >
           |
         </span>
         <LanguageToggle />
