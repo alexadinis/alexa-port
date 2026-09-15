@@ -8,6 +8,7 @@ import { useLanguage } from "../Language/LanguageProvider";
 import { localizeHref } from "../../lib/i18n";
 import WalkingLogo from "./WalkingLogo";
 import { useContactDialog } from "../Contact/ContactDialogProvider";
+import MobileNavDrawer from "./MobileNavDrawer";
 
 interface NavLink {
   label: string;
@@ -138,6 +139,11 @@ const Navbar = ({ navLinks }: NavbarProps) => {
           |
         </span>
         <LanguageToggle />
+        <MobileNavDrawer
+          language={language}
+          navLinks={navLinks}
+          labels={PORTUGUESE_NAV_LABELS}
+        />
       </div>
     </nav>
   );

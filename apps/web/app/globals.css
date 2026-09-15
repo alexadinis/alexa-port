@@ -24,6 +24,7 @@
 }
 
 body {
+  position: relative;
   color: rgb(var(--foreground-rgb));
   background-color: var(--color-black);
 }
