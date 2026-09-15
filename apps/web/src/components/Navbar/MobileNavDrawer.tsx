@@ -1,7 +1,7 @@
 "use client";
 
 import { Drawer } from "@base-ui/react/drawer";
-import { ArrowRight, List, X } from "@phosphor-icons/react";
+import { ArrowRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import type { Language } from "../../lib/i18n";
@@ -17,6 +17,28 @@ interface MobileNavDrawerProps {
   language: Language;
   navLinks: NavLink[];
   labels: Record<string, string>;
+}
+
+function MenuToggleIcon({ open }: { open: boolean }) {
+  const lineClassName =
+    "absolute h-0.5 w-7 rounded-full bg-current transition-[transform,opacity] duration-[250ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:duration-0";
+
+  return (
+    <span
+      aria-hidden="true"
+      className="relative flex size-7 items-center justify-center"
+    >
+      <span
+        className={`${lineClassName} ${open ? "rotate-45" : "-translate-y-[7px]"}`}
+      />
+      <span
+        className={`${lineClassName} ${open ? "scale-x-0 opacity-0" : "opacity-100"}`}
+      />
+      <span
+        className={`${lineClassName} ${open ? "-rotate-45" : "translate-y-[7px]"}`}
+      />
+    </span>
+  );
 }
 
 export default function MobileNavDrawer({
@@ -53,7 +75,7 @@ export default function MobileNavDrawer({
         aria-label={language === "pt" ? "Abrir menu" : "Open menu"}
         className={`flex size-12 items-center justify-center rounded-full transition-opacity active:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden ${language === "pt" ? "focus-visible:outline-green" : "focus-visible:outline-blue"}`}
       >
-        <List size={28} weight="bold" />
+        <MenuToggleIcon open={open} />
       </Drawer.Trigger>
 
       <Drawer.Portal>
@@ -74,7 +96,7 @@ export default function MobileNavDrawer({
                   aria-label={language === "pt" ? "Fechar menu" : "Close menu"}
                   className="flex size-11 items-center justify-center rounded-full transition-colors hover:bg-black/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:bg-black/10"
                 >
-                  <X size={24} weight="bold" />
+                  <MenuToggleIcon open={open} />
                 </Drawer.Close>
               </div>
 
@@ -90,7 +112,11 @@ export default function MobileNavDrawer({
                       ? (labels[link.label] ?? link.label)
                       : link.label;
                   const itemClassName =
-                    "group flex min-h-16 w-full items-center justify-between border-t border-black/15 py-3 text-left text-[clamp(1.45rem,7vw,2rem)] font-semibold leading-tight transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-black active:text-red";
+                    "group flex min-h-16 w-full items-center justify-between border-t border-black/15 py-3 text-left text-[clamp(1.45rem,7vw,2rem)] font-semibold leading-tight transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-black";
+                  const activeColorClassName =
+                    language === "pt"
+                      ? "active:text-green"
+                      : "active:text-blue";
                   const content = (
                     <>
                       <span>{label.toLowerCase()}</span>
@@ -107,7 +133,7 @@ export default function MobileNavDrawer({
                       key={link.href}
                       type="button"
                       onClick={openContact}
-                      className={`${itemClassName} text-red`}
+                      className={`${itemClassName} text-red active:text-red`}
                     >
                       {content}
                     </button>
@@ -116,7 +142,7 @@ export default function MobileNavDrawer({
                       key={link.href}
                       href={localizeHref(link.href, language)}
                       onClick={closeForNavigation}
-                      className={itemClassName}
+                      className={`${itemClassName} ${activeColorClassName}`}
                     >
                       {content}
                     </Link>
