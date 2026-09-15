@@ -87,12 +87,33 @@ html {
   transform: translate3d(0.125rem, 0, 0);
 }
 
+.go-to-top-arrow {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.go-to-top:hover .go-to-top-arrow,
+.go-to-top:focus-visible .go-to-top-arrow {
+  transform: translateY(-18px);
+}
+
 /* The hero CTA reveals its arrow on hover, which no touch device can
    trigger. Below the desktop breakpoint the arrow is simply always there. */
 @media (max-width: 767px) {
   .hero-talk-arrow {
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .go-to-top {
+    transition-duration: 120ms;
+  }
+
+  .go-to-top-arrow {
+    transition-duration: 120ms;
   }
 }
 

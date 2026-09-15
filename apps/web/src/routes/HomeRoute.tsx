@@ -6,6 +6,7 @@ import {
   Seal,
 } from "@phosphor-icons/react/dist/ssr";
 import About from "../components/About/About";
+import BackToTop from "../components/BackToTop/BackToTop";
 import Contact from "../components/Contact/Contact";
 import Hero from "../components/Hero/Hero";
 import SectionLineMarquees from "../components/SectionLineMarquees/SectionLineMarquees";
@@ -85,6 +86,7 @@ export default function HomeRoute({ language }: { language: Language }) {
       </div>
 
       <Contact />
+      <BackToTop language={language} />
     </main>
   );
 }
