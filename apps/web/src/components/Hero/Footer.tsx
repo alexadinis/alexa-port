@@ -5,6 +5,7 @@ import Link from "next/link";
 import Button from "../Button/Button";
 import { useLanguage } from "../Language/LanguageProvider";
 import { localizeHref } from "../../lib/i18n";
+import { useContactDialog } from "../Contact/ContactDialogProvider";
 
 /**
  * The pair of actions under the copy. Mail is the point of the page, so it
@@ -13,16 +14,17 @@ import { localizeHref } from "../../lib/i18n";
  */
 export default function Footer() {
   const { language } = useLanguage();
+  const { openContactDialog } = useContactDialog();
 
   return (
     <div className="mt-2 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:gap-4">
       <Button
         size="lg"
         variant="solid"
+        aria-haspopup="dialog"
+        aria-controls="contact-dialog"
         className="hero-talk-button bg-red flex min-h-14 w-full items-center justify-center gap-2 overflow-hidden whitespace-nowrap sm:w-max"
-        onClick={() => {
-          window.location.href = "mailto:hello@alexandrabarbosa.pt";
-        }}
+        onClick={openContactDialog}
       >
         {language === "pt" ? "vamos falar?" : "let's talk"}
         <ArrowRight className="hero-talk-arrow h-6 w-6" />
