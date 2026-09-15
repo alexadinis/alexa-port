@@ -14,6 +14,7 @@ interface WalkingLogoProps {
   markClassName?: string;
   inverted?: boolean;
   trackingAreaId?: string;
+  deadEye?: boolean;
 }
 
 const RESTING_PUPIL = { x: 582.21, y: 358.75 };
@@ -24,6 +25,7 @@ export default function WalkingLogo({
   markClassName = "",
   inverted = false,
   trackingAreaId,
+  deadEye = false,
 }: WalkingLogoProps) {
   const logoRef = useRef<HTMLDivElement>(null);
   const markRef = useRef<SVGSVGElement>(null);
@@ -99,6 +101,7 @@ export default function WalkingLogo({
         | Pick<PointerEvent, "clientX" | "clientY" | "pointerType">
         | ReactPointerEvent<HTMLDivElement>,
     ) => {
+      if (deadEye) return;
       if (event.pointerType === "touch") return;
 
       const mark = markRef.current;
@@ -119,11 +122,11 @@ export default function WalkingLogo({
         y: 396.87 + normalizedY * 20,
       });
     },
-    [movePupilTo],
+    [deadEye, movePupilTo],
   );
 
   useEffect(() => {
-    if (!trackingAreaId) return;
+    if (!trackingAreaId || deadEye) return;
 
     const trackingArea = document.getElementById(trackingAreaId);
     if (!trackingArea) return;
@@ -163,15 +166,17 @@ export default function WalkingLogo({
       trackingArea.removeEventListener("pointerdown", resetPupil);
       document.removeEventListener("selectionchange", handleSelectionChange);
     };
-  }, [trackingAreaId, followPointer, movePupilTo]);
+  }, [deadEye, trackingAreaId, followPointer, movePupilTo]);
 
   return (
     <div
       ref={logoRef}
       className={`walking-logo ${isVisible ? "walking-logo--active" : ""} flex w-max items-center gap-2.5 ${className}`}
-      onPointerMove={trackingAreaId ? undefined : followPointer}
+      onPointerMove={trackingAreaId || deadEye ? undefined : followPointer}
       onPointerLeave={
-        trackingAreaId ? undefined : () => movePupilTo(RESTING_PUPIL)
+        trackingAreaId || deadEye
+          ? undefined
+          : () => movePupilTo(RESTING_PUPIL)
       }
     >
       <svg
@@ -198,13 +203,25 @@ export default function WalkingLogo({
             rx="141.78"
             ry="67.27"
           />
-          <circle
-            ref={pupilRef}
-            fill="currentColor"
-            cx={RESTING_PUPIL.x}
-            cy={RESTING_PUPIL.y}
-            r="55.58"
-          />
+          {deadEye ? (
+            <g
+              fill="none"
+              stroke={inverted ? "#ececec" : "#101010"}
+              strokeLinecap="round"
+              strokeWidth="24"
+            >
+              <path d="M543 355 621 433" />
+              <path d="m621 355-78 78" />
+            </g>
+          ) : (
+            <circle
+              ref={pupilRef}
+              fill="currentColor"
+              cx={RESTING_PUPIL.x}
+              cy={RESTING_PUPIL.y}
+              r="55.58"
+            />
+          )}
         </g>
         <g className="walking-logo-right-leg">
           <path
