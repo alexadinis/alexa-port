@@ -60,6 +60,9 @@ export const buildRootMetadata = (language: Language): Metadata => {
     applicationName: SITE_NAME,
     authors: [{ name: SITE_NAME, url: SITE_URL }],
     creator: SITE_NAME,
+    other: {
+      "p:domain_verify": "47f6664b4e7c86f1915a474dbc8a8fd8",
+    },
     icons: {
       icon: [
         { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
